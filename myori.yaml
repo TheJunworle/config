@@ -1,0 +1,284 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+allow-lan: true
+bind-address: "0.0.0.0"
+mode: Rule
+log-level: info
+ipv6: true
+unified-delay: true
+tcp-concurrent: true
+external-controller: "127.0.0.1:9090"
+
+dns:
+  enable: true
+  ipv6: true
+  listen: "0.0.0.0:1053"
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  use-system-hosts: false
+
+  default-nameserver:
+    - 114.114.114.114
+    - 119.29.29.29
+    - 223.5.5.5
+
+  nameserver:
+    - 114.114.114.114
+    - 119.29.29.29
+    - 223.5.5.5
+
+  fallback:
+    - 1.1.1.1
+
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - "*.localdomain"
+    - "*.localhost"
+    - "*.home.arpa"
+    - "*.test"
+    - "*.invalid"
+    - "time.*.com"
+    - "time.*.gov"
+    - "time.*.edu.cn"
+    - "ntp.*.com"
+    - "*.ntp.org"
+    - "*.ntp.org.cn"
+    - "stun.*.*"
+    - "stun.*.*.*"
+    - "mesu.apple.com"
+    - "swscan.apple.com"
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
+    - "music.163.com"
+    - "*.music.163.com"
+    - "*.126.net"
+    - "y.qq.com"
+    - "*.y.qq.com"
+    - "www.bilibili.com"
+    - "api.bilibili.com"
+    - "localhost.ptlogin2.qq.com"
+
+proxies:
+  - name: 老家hy
+    type: hysteria2
+    server: pan.juns.top
+    port: 51376
+    password: TNncOpYbCn
+    tls: true
+    servername: ts2.tc.mm.bing.net
+    skip-cert-verify: true
+    up: 1000
+    down: 1000
+    alpn:
+      - h3
+      - h2
+      - http/1.1
+
+  - name: 台
+    type: vless
+    server: 1.12.53.220
+    port: 59156
+    uuid: b813bea4-816c-47a9-bbb6-a7ec5d991bb4
+    network: tcp
+    tls: true
+    udp: true
+    servername: google.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: NnpWA13G1j6Eg88_YnyLoP9cper7ChatSCVZOCMQtVo
+      short-id: d2094b50
+
+  - name: 台湾1
+    type: vless
+    server: 1.12.53.220
+    port: 17183
+    uuid: 766143bd-a64c-4b94-add8-3f3f057af2da
+    network: tcp
+    tls: true
+    udp: true
+    servername: google.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: qZOcwoOCxmIdneXcskwV-FlGl_fnztQ2RWslgDinAVM
+      short-id: f73a5d
+
+  - name: 台湾2
+    type: vless
+    server: 1.12.53.220
+    port: 30447
+    uuid: e0d8c104-6238-409c-98c8-00ac856b57a8
+    network: tcp
+    tls: true
+    udp: true
+    servername: google.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: INC5t5OVzej39kZJzpWhRHRfQdGhf6lmzgCoxxDAK2w
+      short-id: "84"
+
+  - name: jp
+    type: vless
+    server: jp.sunipip.com
+    port: 32483
+    uuid: 63499dce-cbf6-4f24-98ff-05d4e84d7857
+    network: tcp
+    tls: true
+    udp: true
+    servername: tesla.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: sn7ZbFvx8WCYQ8nFvl4Bf3ZD_dc0e3HMOMsWjWodrGk
+      short-id: 57a5d6
+
+  - name: 中转谷歌
+    type: vless
+    flow: xtls-rprx-vision
+    server: 34.2.129.198
+    port: 50896
+    uuid: 9ade5891-0ab0-4c78-febf-0d3970377588
+    servername: fonts.gstatic.com
+    skip-cert-verify: true
+    tls: true
+    dialer-proxy: 新加坡23aws
+
+  - name: 新加坡23aws
+    type: hysteria2
+    server: sg23.476579.xyz
+    port: 8080
+    udp: true
+    skip-cert-verify: false
+    sni: sg23.476579.xyz
+    password: 9e509c63-5233-444f-87ca-778274566331
+
+proxy-groups:
+  - name: PROXY
+    type: select
+    proxies:
+      - DIRECT
+      - 老家hy
+      - jp
+      - 台湾1
+      - 台湾2
+      - 台
+      - 新加坡23aws
+      - 中转谷歌
+
+
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
+
+rules:
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,PROXY
+  - RULE-SET,proxy,PROXY
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,telegramcidr,PROXY
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY
+
+
+
+

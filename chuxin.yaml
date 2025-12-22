@@ -1,0 +1,94 @@
+mixed-port: 7890
+allow-lan: false
+bind-address: '*'
+mode: rule
+log-level: info
+external-controller: '127.0.0.1:9090'
+unified-delay: true
+tcp-concurrent: true
+
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  respect-rules: true
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 114.114.114.114
+  proxy-server-nameserver:
+    - 223.5.5.5
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - 1.1.1.1
+    - 8.8.8.8
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+
+proxies:
+  - name: "腾讯云-日本"
+    type: vless
+    server: 43.133.167.153
+    port: 443
+    uuid: 516f305b-abb4-4e20-f70f-322ee3d7177d
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: r.bing.com
+    skip-cert-verify: true
+    network: tcp
+    client-fingerprint: chrome
+
+  - name: "香港cn2"
+    type: hysteria2
+    server: 23.141.172.229
+    port: 50541
+    password: ePPsH1bMFD
+    sni: is1-ssl.mzstatic.com
+    skip-cert-verify: true
+    alpn:
+      - h3
+      - h2
+      - http/1.1
+
+  - name: "香港转日本"
+    type: vless
+    server: 43.133.167.153
+    port: 443
+    uuid: 516f305b-abb4-4e20-f70f-322ee3d7177d
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: r.bing.com
+    skip-cert-verify: true
+    network: tcp
+    client-fingerprint: chrome
+    dialer-proxy: "香港cn2"
+
+proxy-groups:
+  - name: "代理"
+    type: select
+    proxies:
+      - DIRECT
+      - "腾讯云-日本"
+      - "香港cn2"
+      - "香港转日本"
+
+
+rules:
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,代理

@@ -1,0 +1,3189 @@
+#!MANAGED-CONFIG https://my.yunti2.net/link/A0xcrs6DLRlKigL0?clash=1
+
+#---------------------------------------------------#
+## 上次更新于：2025-12-22 06:31:03
+#---------------------------------------------------#
+
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: false
+mode: rule
+log-level: silent
+external-controller: '0.0.0.0:9090'
+secret: ''
+dns:
+  enable: true
+  listen: '0.0.0.0:1053'
+  ipv6: false
+  default-nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+    - 114.114.114.114
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  nameserver:
+    - 'https://1.12.12.12/dns-query'
+    - 'https://223.5.5.5/dns-query'
+    - 'https://doh.360.cn/dns-query'
+  fallback:
+    - 'tls://1.12.12.12:853'
+    - 'tls://223.5.5.5:853'
+    - 'https://cloudflare-dns.com/dns-query'
+    - 'https://dns.google/dns-query'
+  fallback-filter:
+    geoip: true
+    ipcidr:
+    - 240.0.0.0/4
+    - 0.0.0.0/32
+proxies:
+  - flow: xtls-rprx-vision
+    name: 中转谷歌
+    port: 50896
+    server: 34.2.129.198
+    servername: fonts.gstatic.com
+    skip-cert-verify: true
+    tls: true
+    type: vless
+    uuid: 9ade5891-0ab0-4c78-febf-0d3970377588
+    dialer-proxy: 🇭🇰 IEPL-A-香港-HK04
+
+
+  -
+    name: IEPL-A-香港-HK01
+    type: ssr
+    server: iepl.sr.01.yunti-relay01.net
+    port: 33661
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: IEPL-A-香港-HK02
+    type: ssr
+    server: iepl.sr.01.yunti-relay01.net
+    port: 33662
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇭🇰 IEPL-A-香港-HK03'
+    type: vmess
+    server: cctv.iepl01.yuntiair365.top
+    port: 30894
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.hk03.ladderbest.xyz
+  -
+    name: '🇭🇰 IEPL-A-香港-HK04'
+    type: vmess
+    server: cctv.iepl01.yuntidns001.top
+    port: 30895
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.hk04.ladderbest.xyz
+  -
+    name: '🇭🇰 IEPL-A-香港-HK05-家宽'
+    type: vmess
+    server: cctv.iepl01.yuntidns001.top
+    port: 30555
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.hk05.ladderbest.xyz
+  -
+    name: IEPL-A-香港-HK06-家宽
+    type: ssr
+    server: iepl.sr.01.yunti-relay01.net
+    port: 33666
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇭🇰 IEPL-A-香港-HK07'
+    type: vmess
+    server: cctv.iepl01.yuntiair365.top
+    port: 30888
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.hk01.ladderbest.xyz
+  -
+    name: IEPL-A-香港-HK08
+    type: ssr
+    server: iepl.sr.01.yunti-relay01.net
+    port: 43002
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: 'IEPL-B-官网 yunti1.com'
+    type: vmess
+    server: iepl.us.vems.01.yunti-relay01.net
+    port: 30990
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.us02.ladderbest.xyz
+  -
+    name: '🇺🇲 IEPL-B-美国-US01'
+    type: vmess
+    server: iepl.us.01.baiducloud2025.com
+    port: 30899
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.us01.ladderbest.xyz
+  -
+    name: '🇺🇲 IEPL-B-美国-US02'
+    type: vmess
+    server: iepl.us.01.baiducloud2025.com
+    port: 30891
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.us02.ladderbest.xyz
+  -
+    name: '🇺🇲 IEPL-B-美国-US03'
+    type: vmess
+    server: iepl.us.01.baiducloud2025.com
+    port: 30898
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.us01.ladderbest.xyz
+  -
+    name: '🇺🇲 IEPL-B-美国-US04'
+    type: vmess
+    server: iepl.us.01.baiducloud2025.com
+    port: 30990
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.us02.ladderbest.xyz
+  -
+    name: IEPL-B-美国-US05-家宽（5倍率）
+    type: ssr
+    server: iepl.us.01.baiducloud2025.com
+    port: 36264
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇹🇼 IEPL-C-台湾-TW01'
+    type: vmess
+    server: cctv.iepl01.yuntidns001.top
+    port: 30892
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.tw01.ladderbest.xyz
+  -
+    name: '🇹🇼 IEPL-C-台湾-TW02'
+    type: vmess
+    server: cctv.iepl01.yuntiair365.top
+    port: 30893
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.tw02.ladderbest.xyz
+  -
+    name: '🇯🇵 IEPL-D-日本-JP01'
+    type: vmess
+    server: cctv.iepl02.yuntiair365.top
+    port: 30896
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.jp01.ladderbest.xyz
+  -
+    name: '🇯🇵 IEPL-D-日本-JP02'
+    type: vmess
+    server: cctv.iepl02.yuntiair365.top
+    port: 30897
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.jp02.ladderbest.xyz
+  -
+    name: '🇯🇵 IEPL-D-日本-JP03'
+    type: vmess
+    server: cctv.iepl02.yuntiair365.top
+    port: 53001
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.jp03.ladderbest.xyz
+  -
+    name: '🇯🇵 IEPL-D-日本-JP04'
+    type: vmess
+    server: cctv.iepl01.yuntiair365.top
+    port: 53002
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.jp04.ladderbest.xyz
+  -
+    name: '🇸🇬 IEPL-E-新加坡-SG01'
+    type: vmess
+    server: cctv.iepl01.yuntidns001.top
+    port: 53006
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.sg01.ladderbest.xyz
+  -
+    name: '🇸🇬 IEPL-E-新加坡-SG02'
+    type: vmess
+    server: cctv.iepl01.yuntidns001.top
+    port: 53005
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.sg02.ladderbest.xyz
+  -
+    name: '🇸🇬 IEPL-E-新加坡-SG03'
+    type: vmess
+    server: cctv.iepl01.yuntiair365.top
+    port: 53004
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.sg03.ladderbest.xyz
+  -
+    name: '🇸🇬 IEPL-E-新加坡-SG04'
+    type: vmess
+    server: cctv.iepl01.yuntiair365.top
+    port: 53003
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.sg04.ladderbest.xyz
+  -
+    name: '🇨🇦 IEPL-F-加拿大-CA01'
+    type: vmess
+    server: cctv.iepl01.yuntidns001.top
+    port: 53007
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.ca01.ladderbest.xyz
+  -
+    name: '🇮🇳 IEPL-F-印度-IN01'
+    type: vmess
+    server: cctv.iepl02.yuntiair365.top
+    port: 30991
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: in01.ladderbest.xyz
+  -
+    name: '🇹🇷 IEPL-F-土耳其-TR01'
+    type: vmess
+    server: cctv.iepl01.yuntidns001.top
+    port: 53070
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.tr01.ladderbest.xyz
+  -
+    name: IEPL-F-巴西-BR01
+    type: ssr
+    server: cctv.iepl01.yuntidns001.top
+    port: 53021
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇩🇪 IEPL-F-德国-DE01'
+    type: vmess
+    server: iepl.eu.yuntidns001.top
+    port: 30992
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: de01.ladderbest.xyz
+  -
+    name: IEPL-F-沙特-SA01
+    type: vmess
+    server: cctv.iepl01.yuntidns001.top
+    port: 53010
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.sa01.ladderbest.xyz
+  -
+    name: '🇫🇷 IEPL-F-法国-FR01'
+    type: vmess
+    server: iepl.eu.yuntidns001.top
+    port: 30993
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: fr01.ladderbest.xyz
+  -
+    name: '🇹🇭 IEPL-F-泰国-TH01'
+    type: vmess
+    server: cctv.iepl01.yuntidns001.top
+    port: 53052
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.th01.ladderbest.xyz
+  -
+    name: IEPL-F-澳洲-AU01
+    type: vmess
+    server: cctv.iepl01.yuntidns001.top
+    port: 53071
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.tr01.ladderbest.xyz
+  -
+    name: '🇨🇭 IEPL-F-瑞士-CHE01'
+    type: vmess
+    server: iepl.eu.yuntidns001.top
+    port: 53011
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.che01.ladderbest.xyz
+  -
+    name: '🇬🇧 IEPL-F-英国-UK01'
+    type: vmess
+    server: iepl.eu.yuntidns001.top
+    port: 31991
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.uk01.ladderbest.xyz
+  -
+    name: '🇬🇧 IEPL-F-英国-UK02'
+    type: vmess
+    server: iepl.eu.yuntidns001.top
+    port: 31992
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.uk02.ladderbest.xyz
+  -
+    name: IEPL-F-越南-VN01
+    type: ssr
+    server: iepl.sr.01.yunti-relay01.net
+    port: 43222
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: IEPL-F-迪拜-UAE01
+    type: ssr
+    server: iepl.sr.01.yunti-relay01.net
+    port: 53009
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: IEPL-F-韩国-KR01
+    type: ssr
+    server: iepl.sr.01.yunti-relay01.net
+    port: 33667
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: IEPL-F-韩国-KR02
+    type: ssr
+    server: iepl.sr.01.yunti-relay01.net
+    port: 33668
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇲🇾 IEPL-F-马来西亚-MY01'
+    type: vmess
+    server: cctv.iepl02.yuntidns001.top
+    port: 53022
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: best.my01.ladderbest.xyz
+  -
+    name: PRO-A-香港-HK01
+    type: ssr
+    server: cctv11.hk.tencent-cloud01.net
+    port: 32661
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: PRO-A-香港-HK02
+    type: ssr
+    server: cctv11.hk.tencent-cloud01.net
+    port: 32662
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇭🇰 PRO-A-香港-HK03 '
+    type: vmess
+    server: cctv11.hk.tencent-cloud01.net
+    port: 19988
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.hk03.ladderspeed.top
+  -
+    name: PRO-A-香港-HK04
+    type: ssr
+    server: cctv11.hk.tencent-cloud01.net
+    port: 45232
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: PRO-A-香港-HK05
+    type: ssr
+    server: cctv11.hk.tencent-cloud01.net
+    port: 54615
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: PRO-A-香港-HK06-家宽
+    type: ssr
+    server: cctv11.hk.tencent-cloud01.net
+    port: 57420
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇭🇰 PRO-A-香港-HK07-家宽'
+    type: vmess
+    server: cctv11.hk.tencent-cloud01.net
+    port: 21937
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.hk07.ladderspeed.top
+  -
+    name: PRO-A-香港-HK08-家宽
+    type: ssr
+    server: cctv11.hk.tencent-cloud01.net
+    port: 40240
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇭🇰 PRO-A-香港-HK09-家宽'
+    type: vmess
+    server: cctv11.hk.tencent-cloud01.net
+    port: 17809
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.hk01a.ladderspeed.top
+  -
+    name: '🇭🇰 PRO-A-香港-HK10-家宽'
+    type: vmess
+    server: cctv11.hk.tencent-cloud01.net
+    port: 21555
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.hk05.ladderspeed.top
+  -
+    name: '🇹🇼 PRO-B-台湾-TW01'
+    type: vmess
+    server: cctv8.tw.tencent-cloud01.net
+    port: 22085
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.tw02.ladderspeed.top
+  -
+    name: PRO-B-台湾-TW02
+    type: ssr
+    server: cctv8.tw.tencent-cloud01.net
+    port: 46132
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇹🇼 PRO-B-台湾-TW03'
+    type: vmess
+    server: cctv8.tw.tencent-cloud01.net
+    port: 40219
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.tw01.ladderlink.top
+  -
+    name: PRO-B-台湾-TW04
+    type: ssr
+    server: cctv8.tw.tencent-cloud01.net
+    port: 19117
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: PRO-B-官网yuntijiasu.com
+    type: vmess
+    server: cctv11.hk.tencent-cloud01.net
+    port: 17808
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.hk01.ladderspeed.top
+    network: ws
+    ws-path: /v2ray
+    ws-headers:
+    Host: pro.hk01.ladderspeed.top
+    ws-opts:
+    path: /v2ray
+    headers: { Host: pro.hk01.ladderspeed.top }
+  -
+    name: '🇯🇵 PRO-C-日本-JP01'
+    type: vmess
+    server: cctv12.jp.tencent-cloud01.net
+    port: 37201
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.jp01.ladderspeed.top
+  -
+    name: PRO-C-日本-JP02
+    type: ssr
+    server: cctv12.jp.tencent-cloud01.net
+    port: 53171
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇯🇵 PRO-C-日本-JP03'
+    type: vmess
+    server: cctv12.jp.tencent-cloud01.net
+    port: 37212
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.jp03.ladderspeed.top
+  -
+    name: PRO-C-日本-JP04
+    type: ssr
+    server: cctv12.jp.tencent-cloud01.net
+    port: 18081
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇯🇵 PRO-C-日本-JP05'
+    type: vmess
+    server: cctv12.jp.tencent-cloud01.net
+    port: 37215
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.jp05.ladderspeed.top
+  -
+    name: PRO-C-日本-JP06
+    type: ssr
+    server: cctv12.jp.tencent-cloud01.net
+    port: 29684
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇺🇲 PRO-D-美国-US01'
+    type: vmess
+    server: pro.us01.baiducloud2025.com
+    port: 53237
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.usa01.ladderspeed.top
+  -
+    name: PRO-D-美国-US02
+    type: ssr
+    server: pro.us01.baiducloud2025.com
+    port: 29839
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇺🇲 PRO-D-美国-US03'
+    type: vmess
+    server: pro.us01.baiducloud2025.com
+    port: 53247
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.usa03.ladderspeed.top
+  -
+    name: PRO-D-美国-US04
+    type: ssr
+    server: pro.us01.baiducloud2025.com
+    port: 4323
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇺🇲 PRO-D-美国-US05'
+    type: vmess
+    server: pro.us01.baiducloud2025.com
+    port: 53257
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.usa05.ladderspeed.top
+  -
+    name: PRO-D-美国-US06
+    type: ssr
+    server: pro.us01.baiducloud2025.com
+    port: 60122
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇺🇲 PRO-D-美国-US07'
+    type: vmess
+    server: pro.us01.baiducloud2025.com
+    port: 18005
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.usa07.ladderspeed.top
+  -
+    name: '🇺🇲 PRO-D-美国-US08'
+    type: vmess
+    server: pro.us01.baiducloud2025.com
+    port: 53206
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.usa08.ladderspeed.top
+  -
+    name: '🇰🇷 PRO-E-韩国-KR01'
+    type: vmess
+    server: cctv7.uk.kr.tencent-cloud01.net
+    port: 51234
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.kr01.ladderspeed.top
+  -
+    name: '🇰🇷 PRO-E-韩国-KR02'
+    type: vmess
+    server: cctv7.uk.kr.tencent-cloud01.net
+    port: 51248
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.kr02.ladderspeed.top
+  -
+    name: '🇸🇬 PRO-F-新加坡-SG01'
+    type: vmess
+    server: cctv9.sg.tencent-cloud01.net
+    port: 51235
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.sg01.ladderspeed.top
+  -
+    name: '🇸🇬 PRO-F-新加坡-SG02'
+    type: vmess
+    server: cctv9.sg.tencent-cloud01.net
+    port: 51245
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.sg02.ladderspeed.top
+  -
+    name: '🇬🇧 PRO-F-英国-UK01'
+    type: vmess
+    server: cctv7.uk.kr.tencent-cloud01.net
+    port: 19855
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: gb01.ladderspeed.top
+  -
+    name: '🇬🇧 PRO-F-英国-UK02'
+    type: vmess
+    server: cctv7.uk.kr.tencent-cloud01.net
+    port: 18011
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: gb02.ladderspeed.top
+  -
+    name: '🇦🇺 PRO-H-澳大利亚-AU01'
+    type: vmess
+    server: cctv7.uk.kr.tencent-cloud01.net
+    port: 24912
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: pro.aus01.ladderspeed.top
+  -
+    name: 轻量-A-香港-HK01
+    type: ssr
+    server: cctv1.hk.tencent-cloud01.com
+    port: 31661
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: 轻量-A-香港-HK02
+    type: ssr
+    server: cctv1.hk.tencent-cloud01.com
+    port: 31662
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇭🇰 轻量-A-香港-HK03 '
+    type: vmess
+    server: cctv1.hk.tencent-cloud01.com
+    port: 20216
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: air.hk03.ladderlink.top
+  -
+    name: 轻量-A-香港-HK04
+    type: ssr
+    server: cctv1.hk.tencent-cloud01.com
+    port: 6246
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇭🇰 轻量-A-香港-HK05-家宽'
+    type: vmess
+    server: cctv1.hk.tencent-cloud01.com
+    port: 15555
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: air.hk05.ladderlink.top
+  -
+    name: 轻量-A-香港-HK06-家宽
+    type: ssr
+    server: cctv1.hk.tencent-cloud01.com
+    port: 11666
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇭🇰 轻量-A-香港-HK07-家宽'
+    type: vmess
+    server: cctv1.hk.tencent-cloud01.com
+    port: 38092
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: air.hk01a.ladderlink.top
+  -
+    name: 轻量-A-香港-HK08
+    type: ssr
+    server: cctv1.hk.tencent-cloud01.com
+    port: 20245
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇹🇼 轻量-B-台湾-TW01'
+    type: vmess
+    server: cctv5.tw.tencent-cloud01.com
+    port: 19073
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: air.tw02.ladderlink.top
+  -
+    name: 轻量-B-台湾-TW02
+    type: ssr
+    server: cctv5.tw.tencent-cloud01.com
+    port: 57014
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇹🇼 轻量-B-台湾-TW03'
+    type: vmess
+    server: cctv5.tw.tencent-cloud01.com
+    port: 15544
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: air.tw01.ladderlink.top
+  -
+    name: 轻量-B-台湾-TW04
+    type: ssr
+    server: cctv5.tw.tencent-cloud01.com
+    port: 27514
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: 轻量-B-官网yunti.io
+    type: vmess
+    server: cctv1.hk.tencent-cloud01.com
+    port: 38090
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: air.hk05.ladderlink.top
+    network: ws
+    ws-path: /v2ray
+    ws-headers:
+    Host: air.hk05.ladderlink.top
+    ws-opts:
+    path: /v2ray
+    headers: { Host: air.hk05.ladderlink.top }
+  -
+    name: '🇯🇵 轻量-C-日本-JP01'
+    type: vmess
+    server: cctv3.jp.tencent-cloud01.com
+    port: 10128
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: jp01-v2.ladderspeed.top
+  -
+    name: 轻量-C-日本-JP02
+    type: ssr
+    server: cctv3.jp.tencent-cloud01.com
+    port: 21519
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇯🇵 轻量-C-日本-JP03'
+    type: vmess
+    server: cctv3.jp.tencent-cloud01.com
+    port: 20243
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: jp01-v2.ladderlink.top
+  -
+    name: 轻量-C-日本-JP04
+    type: ssr
+    server: cctv3.jp.tencent-cloud01.com
+    port: 21549
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇺🇲 轻量-D-美国-US01'
+    type: vmess
+    server: cctv2.us.tencent-cloud01.com
+    port: 10241
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: air.usa01.ladderlink.top
+  -
+    name: 轻量-D-美国-US02
+    type: ssr
+    server: cctv2.us.tencent-cloud01.com
+    port: 19763
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇺🇲 轻量-D-美国-US03'
+    type: vmess
+    server: cctv2.us.tencent-cloud01.com
+    port: 10243
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: air.usa03.ladderlink.top
+  -
+    name: 轻量-D-美国-US04
+    type: ssr
+    server: cctv2.us.tencent-cloud01.com
+    port: 49763
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇺🇲 轻量-D-美国-US05'
+    type: vmess
+    server: cctv2.us.tencent-cloud01.com
+    port: 10245
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: air.usa05.ladderlink.top
+  -
+    name: 轻量-D-美国-US06
+    type: ssr
+    server: cctv2.us.tencent-cloud01.com
+    port: 16700
+    cipher: chacha20-ietf
+    password: 4wMNkIVsgybXfA2u
+    protocol: auth_aes128_sha1
+    protocol-param: '165377:NLb8Jau6oV9sWozu'
+    obfs: plain
+  -
+    name: '🇸🇬 轻量-E-新加坡-SG01'
+    type: vmess
+    server: cctv4.sg.tencent-cloud01.com
+    port: 29900
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: sg01-v2.ladderlink.top
+  -
+    name: '🇸🇬 轻量-E-新加坡-SG02'
+    type: vmess
+    server: cctv4.sg.tencent-cloud01.com
+    port: 29909
+    uuid: b1551134-5566-300f-acae-9040a7f2ebbd
+    alterId: 0
+    cipher: auto
+    udp: true
+    servername: sg02-v2.ladderlink.top
+proxy-groups:
+  -
+    name: 🔰国外流量
+    type: select
+    proxies:
+    - 中转谷歌
+    - IEPL-A-香港-HK01
+    - IEPL-A-香港-HK02
+    - '🇭🇰 IEPL-A-香港-HK03'
+    - '🇭🇰 IEPL-A-香港-HK04'
+    - '🇭🇰 IEPL-A-香港-HK05-家宽'
+    - IEPL-A-香港-HK06-家宽
+    - '🇭🇰 IEPL-A-香港-HK07'
+    - IEPL-A-香港-HK08
+    - 'IEPL-B-官网 yunti1.com'
+    - '🇺🇲 IEPL-B-美国-US01'
+    - '🇺🇲 IEPL-B-美国-US02'
+    - '🇺🇲 IEPL-B-美国-US03'
+    - '🇺🇲 IEPL-B-美国-US04'
+    - IEPL-B-美国-US05-家宽（5倍率）
+    - '🇹🇼 IEPL-C-台湾-TW01'
+    - '🇹🇼 IEPL-C-台湾-TW02'
+    - '🇯🇵 IEPL-D-日本-JP01'
+    - '🇯🇵 IEPL-D-日本-JP02'
+    - '🇯🇵 IEPL-D-日本-JP03'
+    - '🇯🇵 IEPL-D-日本-JP04'
+    - '🇸🇬 IEPL-E-新加坡-SG01'
+    - '🇸🇬 IEPL-E-新加坡-SG02'
+    - '🇸🇬 IEPL-E-新加坡-SG03'
+    - '🇸🇬 IEPL-E-新加坡-SG04'
+    - '🇨🇦 IEPL-F-加拿大-CA01'
+    - '🇮🇳 IEPL-F-印度-IN01'
+    - '🇹🇷 IEPL-F-土耳其-TR01'
+    - IEPL-F-巴西-BR01
+    - '🇩🇪 IEPL-F-德国-DE01'
+    - IEPL-F-沙特-SA01
+    - '🇫🇷 IEPL-F-法国-FR01'
+    - '🇹🇭 IEPL-F-泰国-TH01'
+    - IEPL-F-澳洲-AU01
+    - '🇨🇭 IEPL-F-瑞士-CHE01'
+    - '🇬🇧 IEPL-F-英国-UK01'
+    - '🇬🇧 IEPL-F-英国-UK02'
+    - IEPL-F-越南-VN01
+    - IEPL-F-迪拜-UAE01
+    - IEPL-F-韩国-KR01
+    - IEPL-F-韩国-KR02
+    - '🇲🇾 IEPL-F-马来西亚-MY01'
+    - PRO-A-香港-HK01
+    - PRO-A-香港-HK02
+    - '🇭🇰 PRO-A-香港-HK03 '
+    - PRO-A-香港-HK04
+    - PRO-A-香港-HK05
+    - PRO-A-香港-HK06-家宽
+    - '🇭🇰 PRO-A-香港-HK07-家宽'
+    - PRO-A-香港-HK08-家宽
+    - '🇭🇰 PRO-A-香港-HK09-家宽'
+    - '🇭🇰 PRO-A-香港-HK10-家宽'
+    - '🇹🇼 PRO-B-台湾-TW01'
+    - PRO-B-台湾-TW02
+    - '🇹🇼 PRO-B-台湾-TW03'
+    - PRO-B-台湾-TW04
+    - PRO-B-官网yuntijiasu.com
+    - '🇯🇵 PRO-C-日本-JP01'
+    - PRO-C-日本-JP02
+    - '🇯🇵 PRO-C-日本-JP03'
+    - PRO-C-日本-JP04
+    - '🇯🇵 PRO-C-日本-JP05'
+    - PRO-C-日本-JP06
+    - '🇺🇲 PRO-D-美国-US01'
+    - PRO-D-美国-US02
+    - '🇺🇲 PRO-D-美国-US03'
+    - PRO-D-美国-US04
+    - '🇺🇲 PRO-D-美国-US05'
+    - PRO-D-美国-US06
+    - '🇺🇲 PRO-D-美国-US07'
+    - '🇺🇲 PRO-D-美国-US08'
+    - '🇰🇷 PRO-E-韩国-KR01'
+    - '🇰🇷 PRO-E-韩国-KR02'
+    - '🇸🇬 PRO-F-新加坡-SG01'
+    - '🇸🇬 PRO-F-新加坡-SG02'
+    - '🇬🇧 PRO-F-英国-UK01'
+    - '🇬🇧 PRO-F-英国-UK02'
+    - '🇦🇺 PRO-H-澳大利亚-AU01'
+    - 轻量-A-香港-HK01
+    - 轻量-A-香港-HK02
+    - '🇭🇰 轻量-A-香港-HK03 '
+    - 轻量-A-香港-HK04
+    - '🇭🇰 轻量-A-香港-HK05-家宽'
+    - 轻量-A-香港-HK06-家宽
+    - '🇭🇰 轻量-A-香港-HK07-家宽'
+    - 轻量-A-香港-HK08
+    - '🇹🇼 轻量-B-台湾-TW01'
+    - 轻量-B-台湾-TW02
+    - '🇹🇼 轻量-B-台湾-TW03'
+    - 轻量-B-台湾-TW04
+    - 轻量-B-官网yunti.io
+    - '🇯🇵 轻量-C-日本-JP01'
+    - 轻量-C-日本-JP02
+    - '🇯🇵 轻量-C-日本-JP03'
+    - 轻量-C-日本-JP04
+    - '🇺🇲 轻量-D-美国-US01'
+    - 轻量-D-美国-US02
+    - '🇺🇲 轻量-D-美国-US03'
+    - 轻量-D-美国-US04
+    - '🇺🇲 轻量-D-美国-US05'
+    - 轻量-D-美国-US06
+    - '🇸🇬 轻量-E-新加坡-SG01'
+    - '🇸🇬 轻量-E-新加坡-SG02'
+    - 🚀直接连接
+  -
+    name: ⚓️其他流量
+    type: select
+    proxies:
+    - 🔰国外流量
+    - 🚀直接连接
+  -
+    name: ✈️Telegram
+    type: select
+    proxies:
+    - 🔰国外流量
+    - IEPL-A-香港-HK01
+    - IEPL-A-香港-HK02
+    - '🇭🇰 IEPL-A-香港-HK03'
+    - '🇭🇰 IEPL-A-香港-HK04'
+    - '🇭🇰 IEPL-A-香港-HK05-家宽'
+    - IEPL-A-香港-HK06-家宽
+    - '🇭🇰 IEPL-A-香港-HK07'
+    - IEPL-A-香港-HK08
+    - 'IEPL-B-官网 yunti1.com'
+    - '🇺🇲 IEPL-B-美国-US01'
+    - '🇺🇲 IEPL-B-美国-US02'
+    - '🇺🇲 IEPL-B-美国-US03'
+    - '🇺🇲 IEPL-B-美国-US04'
+    - IEPL-B-美国-US05-家宽（5倍率）
+    - '🇹🇼 IEPL-C-台湾-TW01'
+    - '🇹🇼 IEPL-C-台湾-TW02'
+    - '🇯🇵 IEPL-D-日本-JP01'
+    - '🇯🇵 IEPL-D-日本-JP02'
+    - '🇯🇵 IEPL-D-日本-JP03'
+    - '🇯🇵 IEPL-D-日本-JP04'
+    - '🇸🇬 IEPL-E-新加坡-SG01'
+    - '🇸🇬 IEPL-E-新加坡-SG02'
+    - '🇸🇬 IEPL-E-新加坡-SG03'
+    - '🇸🇬 IEPL-E-新加坡-SG04'
+    - '🇨🇦 IEPL-F-加拿大-CA01'
+    - '🇮🇳 IEPL-F-印度-IN01'
+    - '🇹🇷 IEPL-F-土耳其-TR01'
+    - IEPL-F-巴西-BR01
+    - '🇩🇪 IEPL-F-德国-DE01'
+    - IEPL-F-沙特-SA01
+    - '🇫🇷 IEPL-F-法国-FR01'
+    - '🇹🇭 IEPL-F-泰国-TH01'
+    - IEPL-F-澳洲-AU01
+    - '🇨🇭 IEPL-F-瑞士-CHE01'
+    - '🇬🇧 IEPL-F-英国-UK01'
+    - '🇬🇧 IEPL-F-英国-UK02'
+    - IEPL-F-越南-VN01
+    - IEPL-F-迪拜-UAE01
+    - IEPL-F-韩国-KR01
+    - IEPL-F-韩国-KR02
+    - '🇲🇾 IEPL-F-马来西亚-MY01'
+    - PRO-A-香港-HK01
+    - PRO-A-香港-HK02
+    - '🇭🇰 PRO-A-香港-HK03 '
+    - PRO-A-香港-HK04
+    - PRO-A-香港-HK05
+    - PRO-A-香港-HK06-家宽
+    - '🇭🇰 PRO-A-香港-HK07-家宽'
+    - PRO-A-香港-HK08-家宽
+    - '🇭🇰 PRO-A-香港-HK09-家宽'
+    - '🇭🇰 PRO-A-香港-HK10-家宽'
+    - '🇹🇼 PRO-B-台湾-TW01'
+    - PRO-B-台湾-TW02
+    - '🇹🇼 PRO-B-台湾-TW03'
+    - PRO-B-台湾-TW04
+    - PRO-B-官网yuntijiasu.com
+    - '🇯🇵 PRO-C-日本-JP01'
+    - PRO-C-日本-JP02
+    - '🇯🇵 PRO-C-日本-JP03'
+    - PRO-C-日本-JP04
+    - '🇯🇵 PRO-C-日本-JP05'
+    - PRO-C-日本-JP06
+    - '🇺🇲 PRO-D-美国-US01'
+    - PRO-D-美国-US02
+    - '🇺🇲 PRO-D-美国-US03'
+    - PRO-D-美国-US04
+    - '🇺🇲 PRO-D-美国-US05'
+    - PRO-D-美国-US06
+    - '🇺🇲 PRO-D-美国-US07'
+    - '🇺🇲 PRO-D-美国-US08'
+    - '🇰🇷 PRO-E-韩国-KR01'
+    - '🇰🇷 PRO-E-韩国-KR02'
+    - '🇸🇬 PRO-F-新加坡-SG01'
+    - '🇸🇬 PRO-F-新加坡-SG02'
+    - '🇬🇧 PRO-F-英国-UK01'
+    - '🇬🇧 PRO-F-英国-UK02'
+    - '🇦🇺 PRO-H-澳大利亚-AU01'
+    - 轻量-A-香港-HK01
+    - 轻量-A-香港-HK02
+    - '🇭🇰 轻量-A-香港-HK03 '
+    - 轻量-A-香港-HK04
+    - '🇭🇰 轻量-A-香港-HK05-家宽'
+    - 轻量-A-香港-HK06-家宽
+    - '🇭🇰 轻量-A-香港-HK07-家宽'
+    - 轻量-A-香港-HK08
+    - '🇹🇼 轻量-B-台湾-TW01'
+    - 轻量-B-台湾-TW02
+    - '🇹🇼 轻量-B-台湾-TW03'
+    - 轻量-B-台湾-TW04
+    - 轻量-B-官网yunti.io
+    - '🇯🇵 轻量-C-日本-JP01'
+    - 轻量-C-日本-JP02
+    - '🇯🇵 轻量-C-日本-JP03'
+    - 轻量-C-日本-JP04
+    - '🇺🇲 轻量-D-美国-US01'
+    - 轻量-D-美国-US02
+    - '🇺🇲 轻量-D-美国-US03'
+    - 轻量-D-美国-US04
+    - '🇺🇲 轻量-D-美国-US05'
+    - 轻量-D-美国-US06
+    - '🇸🇬 轻量-E-新加坡-SG01'
+    - '🇸🇬 轻量-E-新加坡-SG02'
+  -
+    name: 🎬Youtube
+    type: select
+    proxies:
+    - 🔰国外流量
+    - IEPL-A-香港-HK01
+    - IEPL-A-香港-HK02
+    - '🇭🇰 IEPL-A-香港-HK03'
+    - '🇭🇰 IEPL-A-香港-HK04'
+    - '🇭🇰 IEPL-A-香港-HK05-家宽'
+    - IEPL-A-香港-HK06-家宽
+    - '🇭🇰 IEPL-A-香港-HK07'
+    - IEPL-A-香港-HK08
+    - 'IEPL-B-官网 yunti1.com'
+    - '🇺🇲 IEPL-B-美国-US01'
+    - '🇺🇲 IEPL-B-美国-US02'
+    - '🇺🇲 IEPL-B-美国-US03'
+    - '🇺🇲 IEPL-B-美国-US04'
+    - IEPL-B-美国-US05-家宽（5倍率）
+    - '🇹🇼 IEPL-C-台湾-TW01'
+    - '🇹🇼 IEPL-C-台湾-TW02'
+    - '🇯🇵 IEPL-D-日本-JP01'
+    - '🇯🇵 IEPL-D-日本-JP02'
+    - '🇯🇵 IEPL-D-日本-JP03'
+    - '🇯🇵 IEPL-D-日本-JP04'
+    - '🇸🇬 IEPL-E-新加坡-SG01'
+    - '🇸🇬 IEPL-E-新加坡-SG02'
+    - '🇸🇬 IEPL-E-新加坡-SG03'
+    - '🇸🇬 IEPL-E-新加坡-SG04'
+    - '🇨🇦 IEPL-F-加拿大-CA01'
+    - '🇮🇳 IEPL-F-印度-IN01'
+    - '🇹🇷 IEPL-F-土耳其-TR01'
+    - IEPL-F-巴西-BR01
+    - '🇩🇪 IEPL-F-德国-DE01'
+    - IEPL-F-沙特-SA01
+    - '🇫🇷 IEPL-F-法国-FR01'
+    - '🇹🇭 IEPL-F-泰国-TH01'
+    - IEPL-F-澳洲-AU01
+    - '🇨🇭 IEPL-F-瑞士-CHE01'
+    - '🇬🇧 IEPL-F-英国-UK01'
+    - '🇬🇧 IEPL-F-英国-UK02'
+    - IEPL-F-越南-VN01
+    - IEPL-F-迪拜-UAE01
+    - IEPL-F-韩国-KR01
+    - IEPL-F-韩国-KR02
+    - '🇲🇾 IEPL-F-马来西亚-MY01'
+    - PRO-A-香港-HK01
+    - PRO-A-香港-HK02
+    - '🇭🇰 PRO-A-香港-HK03 '
+    - PRO-A-香港-HK04
+    - PRO-A-香港-HK05
+    - PRO-A-香港-HK06-家宽
+    - '🇭🇰 PRO-A-香港-HK07-家宽'
+    - PRO-A-香港-HK08-家宽
+    - '🇭🇰 PRO-A-香港-HK09-家宽'
+    - '🇭🇰 PRO-A-香港-HK10-家宽'
+    - '🇹🇼 PRO-B-台湾-TW01'
+    - PRO-B-台湾-TW02
+    - '🇹🇼 PRO-B-台湾-TW03'
+    - PRO-B-台湾-TW04
+    - PRO-B-官网yuntijiasu.com
+    - '🇯🇵 PRO-C-日本-JP01'
+    - PRO-C-日本-JP02
+    - '🇯🇵 PRO-C-日本-JP03'
+    - PRO-C-日本-JP04
+    - '🇯🇵 PRO-C-日本-JP05'
+    - PRO-C-日本-JP06
+    - '🇺🇲 PRO-D-美国-US01'
+    - PRO-D-美国-US02
+    - '🇺🇲 PRO-D-美国-US03'
+    - PRO-D-美国-US04
+    - '🇺🇲 PRO-D-美国-US05'
+    - PRO-D-美国-US06
+    - '🇺🇲 PRO-D-美国-US07'
+    - '🇺🇲 PRO-D-美国-US08'
+    - '🇰🇷 PRO-E-韩国-KR01'
+    - '🇰🇷 PRO-E-韩国-KR02'
+    - '🇸🇬 PRO-F-新加坡-SG01'
+    - '🇸🇬 PRO-F-新加坡-SG02'
+    - '🇬🇧 PRO-F-英国-UK01'
+    - '🇬🇧 PRO-F-英国-UK02'
+    - '🇦🇺 PRO-H-澳大利亚-AU01'
+    - 轻量-A-香港-HK01
+    - 轻量-A-香港-HK02
+    - '🇭🇰 轻量-A-香港-HK03 '
+    - 轻量-A-香港-HK04
+    - '🇭🇰 轻量-A-香港-HK05-家宽'
+    - 轻量-A-香港-HK06-家宽
+    - '🇭🇰 轻量-A-香港-HK07-家宽'
+    - 轻量-A-香港-HK08
+    - '🇹🇼 轻量-B-台湾-TW01'
+    - 轻量-B-台湾-TW02
+    - '🇹🇼 轻量-B-台湾-TW03'
+    - 轻量-B-台湾-TW04
+    - 轻量-B-官网yunti.io
+    - '🇯🇵 轻量-C-日本-JP01'
+    - 轻量-C-日本-JP02
+    - '🇯🇵 轻量-C-日本-JP03'
+    - 轻量-C-日本-JP04
+    - '🇺🇲 轻量-D-美国-US01'
+    - 轻量-D-美国-US02
+    - '🇺🇲 轻量-D-美国-US03'
+    - 轻量-D-美国-US04
+    - '🇺🇲 轻量-D-美国-US05'
+    - 轻量-D-美国-US06
+    - '🇸🇬 轻量-E-新加坡-SG01'
+    - '🇸🇬 轻量-E-新加坡-SG02'
+  -
+    name: 🎬ChatGPT
+    type: select
+    proxies:
+    - 🔰国外流量
+    - IEPL-A-香港-HK01
+    - IEPL-A-香港-HK02
+    - '🇭🇰 IEPL-A-香港-HK03'
+    - '🇭🇰 IEPL-A-香港-HK04'
+    - '🇭🇰 IEPL-A-香港-HK05-家宽'
+    - IEPL-A-香港-HK06-家宽
+    - '🇭🇰 IEPL-A-香港-HK07'
+    - IEPL-A-香港-HK08
+    - 'IEPL-B-官网 yunti1.com'
+    - '🇺🇲 IEPL-B-美国-US01'
+    - '🇺🇲 IEPL-B-美国-US02'
+    - '🇺🇲 IEPL-B-美国-US03'
+    - '🇺🇲 IEPL-B-美国-US04'
+    - IEPL-B-美国-US05-家宽（5倍率）
+    - '🇹🇼 IEPL-C-台湾-TW01'
+    - '🇹🇼 IEPL-C-台湾-TW02'
+    - '🇯🇵 IEPL-D-日本-JP01'
+    - '🇯🇵 IEPL-D-日本-JP02'
+    - '🇯🇵 IEPL-D-日本-JP03'
+    - '🇯🇵 IEPL-D-日本-JP04'
+    - '🇸🇬 IEPL-E-新加坡-SG01'
+    - '🇸🇬 IEPL-E-新加坡-SG02'
+    - '🇸🇬 IEPL-E-新加坡-SG03'
+    - '🇸🇬 IEPL-E-新加坡-SG04'
+    - '🇨🇦 IEPL-F-加拿大-CA01'
+    - '🇮🇳 IEPL-F-印度-IN01'
+    - '🇹🇷 IEPL-F-土耳其-TR01'
+    - IEPL-F-巴西-BR01
+    - '🇩🇪 IEPL-F-德国-DE01'
+    - IEPL-F-沙特-SA01
+    - '🇫🇷 IEPL-F-法国-FR01'
+    - '🇹🇭 IEPL-F-泰国-TH01'
+    - IEPL-F-澳洲-AU01
+    - '🇨🇭 IEPL-F-瑞士-CHE01'
+    - '🇬🇧 IEPL-F-英国-UK01'
+    - '🇬🇧 IEPL-F-英国-UK02'
+    - IEPL-F-越南-VN01
+    - IEPL-F-迪拜-UAE01
+    - IEPL-F-韩国-KR01
+    - IEPL-F-韩国-KR02
+    - '🇲🇾 IEPL-F-马来西亚-MY01'
+    - PRO-A-香港-HK01
+    - PRO-A-香港-HK02
+    - '🇭🇰 PRO-A-香港-HK03 '
+    - PRO-A-香港-HK04
+    - PRO-A-香港-HK05
+    - PRO-A-香港-HK06-家宽
+    - '🇭🇰 PRO-A-香港-HK07-家宽'
+    - PRO-A-香港-HK08-家宽
+    - '🇭🇰 PRO-A-香港-HK09-家宽'
+    - '🇭🇰 PRO-A-香港-HK10-家宽'
+    - '🇹🇼 PRO-B-台湾-TW01'
+    - PRO-B-台湾-TW02
+    - '🇹🇼 PRO-B-台湾-TW03'
+    - PRO-B-台湾-TW04
+    - PRO-B-官网yuntijiasu.com
+    - '🇯🇵 PRO-C-日本-JP01'
+    - PRO-C-日本-JP02
+    - '🇯🇵 PRO-C-日本-JP03'
+    - PRO-C-日本-JP04
+    - '🇯🇵 PRO-C-日本-JP05'
+    - PRO-C-日本-JP06
+    - '🇺🇲 PRO-D-美国-US01'
+    - PRO-D-美国-US02
+    - '🇺🇲 PRO-D-美国-US03'
+    - PRO-D-美国-US04
+    - '🇺🇲 PRO-D-美国-US05'
+    - PRO-D-美国-US06
+    - '🇺🇲 PRO-D-美国-US07'
+    - '🇺🇲 PRO-D-美国-US08'
+    - '🇰🇷 PRO-E-韩国-KR01'
+    - '🇰🇷 PRO-E-韩国-KR02'
+    - '🇸🇬 PRO-F-新加坡-SG01'
+    - '🇸🇬 PRO-F-新加坡-SG02'
+    - '🇬🇧 PRO-F-英国-UK01'
+    - '🇬🇧 PRO-F-英国-UK02'
+    - '🇦🇺 PRO-H-澳大利亚-AU01'
+    - 轻量-A-香港-HK01
+    - 轻量-A-香港-HK02
+    - '🇭🇰 轻量-A-香港-HK03 '
+    - 轻量-A-香港-HK04
+    - '🇭🇰 轻量-A-香港-HK05-家宽'
+    - 轻量-A-香港-HK06-家宽
+    - '🇭🇰 轻量-A-香港-HK07-家宽'
+    - 轻量-A-香港-HK08
+    - '🇹🇼 轻量-B-台湾-TW01'
+    - 轻量-B-台湾-TW02
+    - '🇹🇼 轻量-B-台湾-TW03'
+    - 轻量-B-台湾-TW04
+    - 轻量-B-官网yunti.io
+    - '🇯🇵 轻量-C-日本-JP01'
+    - 轻量-C-日本-JP02
+    - '🇯🇵 轻量-C-日本-JP03'
+    - 轻量-C-日本-JP04
+    - '🇺🇲 轻量-D-美国-US01'
+    - 轻量-D-美国-US02
+    - '🇺🇲 轻量-D-美国-US03'
+    - 轻量-D-美国-US04
+    - '🇺🇲 轻量-D-美国-US05'
+    - 轻量-D-美国-US06
+    - '🇸🇬 轻量-E-新加坡-SG01'
+    - '🇸🇬 轻量-E-新加坡-SG02'
+  -
+    name: 🎮Steam
+    type: select
+    proxies:
+    - 🚀直接连接
+    - 🔰国外流量
+  -
+    name: 🎬Netflix
+    type: select
+    proxies:
+    - 🔰国外流量
+    - IEPL-A-香港-HK01
+    - IEPL-A-香港-HK02
+    - '🇭🇰 IEPL-A-香港-HK03'
+    - '🇭🇰 IEPL-A-香港-HK04'
+    - '🇭🇰 IEPL-A-香港-HK05-家宽'
+    - IEPL-A-香港-HK06-家宽
+    - '🇭🇰 IEPL-A-香港-HK07'
+    - IEPL-A-香港-HK08
+    - 'IEPL-B-官网 yunti1.com'
+    - '🇺🇲 IEPL-B-美国-US01'
+    - '🇺🇲 IEPL-B-美国-US02'
+    - '🇺🇲 IEPL-B-美国-US03'
+    - '🇺🇲 IEPL-B-美国-US04'
+    - IEPL-B-美国-US05-家宽（5倍率）
+    - '🇹🇼 IEPL-C-台湾-TW01'
+    - '🇹🇼 IEPL-C-台湾-TW02'
+    - '🇯🇵 IEPL-D-日本-JP01'
+    - '🇯🇵 IEPL-D-日本-JP02'
+    - '🇯🇵 IEPL-D-日本-JP03'
+    - '🇯🇵 IEPL-D-日本-JP04'
+    - '🇸🇬 IEPL-E-新加坡-SG01'
+    - '🇸🇬 IEPL-E-新加坡-SG02'
+    - '🇸🇬 IEPL-E-新加坡-SG03'
+    - '🇸🇬 IEPL-E-新加坡-SG04'
+    - '🇨🇦 IEPL-F-加拿大-CA01'
+    - '🇮🇳 IEPL-F-印度-IN01'
+    - '🇹🇷 IEPL-F-土耳其-TR01'
+    - IEPL-F-巴西-BR01
+    - '🇩🇪 IEPL-F-德国-DE01'
+    - IEPL-F-沙特-SA01
+    - '🇫🇷 IEPL-F-法国-FR01'
+    - '🇹🇭 IEPL-F-泰国-TH01'
+    - IEPL-F-澳洲-AU01
+    - '🇨🇭 IEPL-F-瑞士-CHE01'
+    - '🇬🇧 IEPL-F-英国-UK01'
+    - '🇬🇧 IEPL-F-英国-UK02'
+    - IEPL-F-越南-VN01
+    - IEPL-F-迪拜-UAE01
+    - IEPL-F-韩国-KR01
+    - IEPL-F-韩国-KR02
+    - '🇲🇾 IEPL-F-马来西亚-MY01'
+    - PRO-A-香港-HK01
+    - PRO-A-香港-HK02
+    - '🇭🇰 PRO-A-香港-HK03 '
+    - PRO-A-香港-HK04
+    - PRO-A-香港-HK05
+    - PRO-A-香港-HK06-家宽
+    - '🇭🇰 PRO-A-香港-HK07-家宽'
+    - PRO-A-香港-HK08-家宽
+    - '🇭🇰 PRO-A-香港-HK09-家宽'
+    - '🇭🇰 PRO-A-香港-HK10-家宽'
+    - '🇹🇼 PRO-B-台湾-TW01'
+    - PRO-B-台湾-TW02
+    - '🇹🇼 PRO-B-台湾-TW03'
+    - PRO-B-台湾-TW04
+    - PRO-B-官网yuntijiasu.com
+    - '🇯🇵 PRO-C-日本-JP01'
+    - PRO-C-日本-JP02
+    - '🇯🇵 PRO-C-日本-JP03'
+    - PRO-C-日本-JP04
+    - '🇯🇵 PRO-C-日本-JP05'
+    - PRO-C-日本-JP06
+    - '🇺🇲 PRO-D-美国-US01'
+    - PRO-D-美国-US02
+    - '🇺🇲 PRO-D-美国-US03'
+    - PRO-D-美国-US04
+    - '🇺🇲 PRO-D-美国-US05'
+    - PRO-D-美国-US06
+    - '🇺🇲 PRO-D-美国-US07'
+    - '🇺🇲 PRO-D-美国-US08'
+    - '🇰🇷 PRO-E-韩国-KR01'
+    - '🇰🇷 PRO-E-韩国-KR02'
+    - '🇸🇬 PRO-F-新加坡-SG01'
+    - '🇸🇬 PRO-F-新加坡-SG02'
+    - '🇬🇧 PRO-F-英国-UK01'
+    - '🇬🇧 PRO-F-英国-UK02'
+    - '🇦🇺 PRO-H-澳大利亚-AU01'
+    - 轻量-A-香港-HK01
+    - 轻量-A-香港-HK02
+    - '🇭🇰 轻量-A-香港-HK03 '
+    - 轻量-A-香港-HK04
+    - '🇭🇰 轻量-A-香港-HK05-家宽'
+    - 轻量-A-香港-HK06-家宽
+    - '🇭🇰 轻量-A-香港-HK07-家宽'
+    - 轻量-A-香港-HK08
+    - '🇹🇼 轻量-B-台湾-TW01'
+    - 轻量-B-台湾-TW02
+    - '🇹🇼 轻量-B-台湾-TW03'
+    - 轻量-B-台湾-TW04
+    - 轻量-B-官网yunti.io
+    - '🇯🇵 轻量-C-日本-JP01'
+    - 轻量-C-日本-JP02
+    - '🇯🇵 轻量-C-日本-JP03'
+    - 轻量-C-日本-JP04
+    - '🇺🇲 轻量-D-美国-US01'
+    - 轻量-D-美国-US02
+    - '🇺🇲 轻量-D-美国-US03'
+    - 轻量-D-美国-US04
+    - '🇺🇲 轻量-D-美国-US05'
+    - 轻量-D-美国-US06
+    - '🇸🇬 轻量-E-新加坡-SG01'
+    - '🇸🇬 轻量-E-新加坡-SG02'
+  -
+    name: 🎬哔哩哔哩
+    type: select
+    proxies:
+    - 🚀直接连接
+    - IEPL-A-香港-HK01
+    - IEPL-A-香港-HK02
+    - '🇭🇰 IEPL-A-香港-HK03'
+    - '🇭🇰 IEPL-A-香港-HK04'
+    - '🇭🇰 IEPL-A-香港-HK05-家宽'
+    - IEPL-A-香港-HK06-家宽
+    - '🇭🇰 IEPL-A-香港-HK07'
+    - IEPL-A-香港-HK08
+    - 'IEPL-B-官网 yunti1.com'
+    - '🇺🇲 IEPL-B-美国-US01'
+    - '🇺🇲 IEPL-B-美国-US02'
+    - '🇺🇲 IEPL-B-美国-US03'
+    - '🇺🇲 IEPL-B-美国-US04'
+    - IEPL-B-美国-US05-家宽（5倍率）
+    - '🇹🇼 IEPL-C-台湾-TW01'
+    - '🇹🇼 IEPL-C-台湾-TW02'
+    - '🇯🇵 IEPL-D-日本-JP01'
+    - '🇯🇵 IEPL-D-日本-JP02'
+    - '🇯🇵 IEPL-D-日本-JP03'
+    - '🇯🇵 IEPL-D-日本-JP04'
+    - '🇸🇬 IEPL-E-新加坡-SG01'
+    - '🇸🇬 IEPL-E-新加坡-SG02'
+    - '🇸🇬 IEPL-E-新加坡-SG03'
+    - '🇸🇬 IEPL-E-新加坡-SG04'
+    - '🇨🇦 IEPL-F-加拿大-CA01'
+    - '🇮🇳 IEPL-F-印度-IN01'
+    - '🇹🇷 IEPL-F-土耳其-TR01'
+    - IEPL-F-巴西-BR01
+    - '🇩🇪 IEPL-F-德国-DE01'
+    - IEPL-F-沙特-SA01
+    - '🇫🇷 IEPL-F-法国-FR01'
+    - '🇹🇭 IEPL-F-泰国-TH01'
+    - IEPL-F-澳洲-AU01
+    - '🇨🇭 IEPL-F-瑞士-CHE01'
+    - '🇬🇧 IEPL-F-英国-UK01'
+    - '🇬🇧 IEPL-F-英国-UK02'
+    - IEPL-F-越南-VN01
+    - IEPL-F-迪拜-UAE01
+    - IEPL-F-韩国-KR01
+    - IEPL-F-韩国-KR02
+    - '🇲🇾 IEPL-F-马来西亚-MY01'
+    - PRO-A-香港-HK01
+    - PRO-A-香港-HK02
+    - '🇭🇰 PRO-A-香港-HK03 '
+    - PRO-A-香港-HK04
+    - PRO-A-香港-HK05
+    - PRO-A-香港-HK06-家宽
+    - '🇭🇰 PRO-A-香港-HK07-家宽'
+    - PRO-A-香港-HK08-家宽
+    - '🇭🇰 PRO-A-香港-HK09-家宽'
+    - '🇭🇰 PRO-A-香港-HK10-家宽'
+    - '🇹🇼 PRO-B-台湾-TW01'
+    - PRO-B-台湾-TW02
+    - '🇹🇼 PRO-B-台湾-TW03'
+    - PRO-B-台湾-TW04
+    - PRO-B-官网yuntijiasu.com
+    - '🇯🇵 PRO-C-日本-JP01'
+    - PRO-C-日本-JP02
+    - '🇯🇵 PRO-C-日本-JP03'
+    - PRO-C-日本-JP04
+    - '🇯🇵 PRO-C-日本-JP05'
+    - PRO-C-日本-JP06
+    - '🇺🇲 PRO-D-美国-US01'
+    - PRO-D-美国-US02
+    - '🇺🇲 PRO-D-美国-US03'
+    - PRO-D-美国-US04
+    - '🇺🇲 PRO-D-美国-US05'
+    - PRO-D-美国-US06
+    - '🇺🇲 PRO-D-美国-US07'
+    - '🇺🇲 PRO-D-美国-US08'
+    - '🇰🇷 PRO-E-韩国-KR01'
+    - '🇰🇷 PRO-E-韩国-KR02'
+    - '🇸🇬 PRO-F-新加坡-SG01'
+    - '🇸🇬 PRO-F-新加坡-SG02'
+    - '🇬🇧 PRO-F-英国-UK01'
+    - '🇬🇧 PRO-F-英国-UK02'
+    - '🇦🇺 PRO-H-澳大利亚-AU01'
+    - 轻量-A-香港-HK01
+    - 轻量-A-香港-HK02
+    - '🇭🇰 轻量-A-香港-HK03 '
+    - 轻量-A-香港-HK04
+    - '🇭🇰 轻量-A-香港-HK05-家宽'
+    - 轻量-A-香港-HK06-家宽
+    - '🇭🇰 轻量-A-香港-HK07-家宽'
+    - 轻量-A-香港-HK08
+    - '🇹🇼 轻量-B-台湾-TW01'
+    - 轻量-B-台湾-TW02
+    - '🇹🇼 轻量-B-台湾-TW03'
+    - 轻量-B-台湾-TW04
+    - 轻量-B-官网yunti.io
+    - '🇯🇵 轻量-C-日本-JP01'
+    - 轻量-C-日本-JP02
+    - '🇯🇵 轻量-C-日本-JP03'
+    - 轻量-C-日本-JP04
+    - '🇺🇲 轻量-D-美国-US01'
+    - 轻量-D-美国-US02
+    - '🇺🇲 轻量-D-美国-US03'
+    - 轻量-D-美国-US04
+    - '🇺🇲 轻量-D-美国-US05'
+    - 轻量-D-美国-US06
+    - '🇸🇬 轻量-E-新加坡-SG01'
+    - '🇸🇬 轻量-E-新加坡-SG02'
+  -
+    name: 🎬国外媒体
+    type: select
+    proxies:
+    - 🔰国外流量
+    - IEPL-A-香港-HK01
+    - IEPL-A-香港-HK02
+    - '🇭🇰 IEPL-A-香港-HK03'
+    - '🇭🇰 IEPL-A-香港-HK04'
+    - '🇭🇰 IEPL-A-香港-HK05-家宽'
+    - IEPL-A-香港-HK06-家宽
+    - '🇭🇰 IEPL-A-香港-HK07'
+    - IEPL-A-香港-HK08
+    - 'IEPL-B-官网 yunti1.com'
+    - '🇺🇲 IEPL-B-美国-US01'
+    - '🇺🇲 IEPL-B-美国-US02'
+    - '🇺🇲 IEPL-B-美国-US03'
+    - '🇺🇲 IEPL-B-美国-US04'
+    - IEPL-B-美国-US05-家宽（5倍率）
+    - '🇹🇼 IEPL-C-台湾-TW01'
+    - '🇹🇼 IEPL-C-台湾-TW02'
+    - '🇯🇵 IEPL-D-日本-JP01'
+    - '🇯🇵 IEPL-D-日本-JP02'
+    - '🇯🇵 IEPL-D-日本-JP03'
+    - '🇯🇵 IEPL-D-日本-JP04'
+    - '🇸🇬 IEPL-E-新加坡-SG01'
+    - '🇸🇬 IEPL-E-新加坡-SG02'
+    - '🇸🇬 IEPL-E-新加坡-SG03'
+    - '🇸🇬 IEPL-E-新加坡-SG04'
+    - '🇨🇦 IEPL-F-加拿大-CA01'
+    - '🇮🇳 IEPL-F-印度-IN01'
+    - '🇹🇷 IEPL-F-土耳其-TR01'
+    - IEPL-F-巴西-BR01
+    - '🇩🇪 IEPL-F-德国-DE01'
+    - IEPL-F-沙特-SA01
+    - '🇫🇷 IEPL-F-法国-FR01'
+    - '🇹🇭 IEPL-F-泰国-TH01'
+    - IEPL-F-澳洲-AU01
+    - '🇨🇭 IEPL-F-瑞士-CHE01'
+    - '🇬🇧 IEPL-F-英国-UK01'
+    - '🇬🇧 IEPL-F-英国-UK02'
+    - IEPL-F-越南-VN01
+    - IEPL-F-迪拜-UAE01
+    - IEPL-F-韩国-KR01
+    - IEPL-F-韩国-KR02
+    - '🇲🇾 IEPL-F-马来西亚-MY01'
+    - PRO-A-香港-HK01
+    - PRO-A-香港-HK02
+    - '🇭🇰 PRO-A-香港-HK03 '
+    - PRO-A-香港-HK04
+    - PRO-A-香港-HK05
+    - PRO-A-香港-HK06-家宽
+    - '🇭🇰 PRO-A-香港-HK07-家宽'
+    - PRO-A-香港-HK08-家宽
+    - '🇭🇰 PRO-A-香港-HK09-家宽'
+    - '🇭🇰 PRO-A-香港-HK10-家宽'
+    - '🇹🇼 PRO-B-台湾-TW01'
+    - PRO-B-台湾-TW02
+    - '🇹🇼 PRO-B-台湾-TW03'
+    - PRO-B-台湾-TW04
+    - PRO-B-官网yuntijiasu.com
+    - '🇯🇵 PRO-C-日本-JP01'
+    - PRO-C-日本-JP02
+    - '🇯🇵 PRO-C-日本-JP03'
+    - PRO-C-日本-JP04
+    - '🇯🇵 PRO-C-日本-JP05'
+    - PRO-C-日本-JP06
+    - '🇺🇲 PRO-D-美国-US01'
+    - PRO-D-美国-US02
+    - '🇺🇲 PRO-D-美国-US03'
+    - PRO-D-美国-US04
+    - '🇺🇲 PRO-D-美国-US05'
+    - PRO-D-美国-US06
+    - '🇺🇲 PRO-D-美国-US07'
+    - '🇺🇲 PRO-D-美国-US08'
+    - '🇰🇷 PRO-E-韩国-KR01'
+    - '🇰🇷 PRO-E-韩国-KR02'
+    - '🇸🇬 PRO-F-新加坡-SG01'
+    - '🇸🇬 PRO-F-新加坡-SG02'
+    - '🇬🇧 PRO-F-英国-UK01'
+    - '🇬🇧 PRO-F-英国-UK02'
+    - '🇦🇺 PRO-H-澳大利亚-AU01'
+    - 轻量-A-香港-HK01
+    - 轻量-A-香港-HK02
+    - '🇭🇰 轻量-A-香港-HK03 '
+    - 轻量-A-香港-HK04
+    - '🇭🇰 轻量-A-香港-HK05-家宽'
+    - 轻量-A-香港-HK06-家宽
+    - '🇭🇰 轻量-A-香港-HK07-家宽'
+    - 轻量-A-香港-HK08
+    - '🇹🇼 轻量-B-台湾-TW01'
+    - 轻量-B-台湾-TW02
+    - '🇹🇼 轻量-B-台湾-TW03'
+    - 轻量-B-台湾-TW04
+    - 轻量-B-官网yunti.io
+    - '🇯🇵 轻量-C-日本-JP01'
+    - 轻量-C-日本-JP02
+    - '🇯🇵 轻量-C-日本-JP03'
+    - 轻量-C-日本-JP04
+    - '🇺🇲 轻量-D-美国-US01'
+    - 轻量-D-美国-US02
+    - '🇺🇲 轻量-D-美国-US03'
+    - 轻量-D-美国-US04
+    - '🇺🇲 轻量-D-美国-US05'
+    - 轻量-D-美国-US06
+    - '🇸🇬 轻量-E-新加坡-SG01'
+    - '🇸🇬 轻量-E-新加坡-SG02'
+  -
+    name: 🍎苹果服务
+    type: select
+    proxies:
+    - 🚀直接连接
+    - 🔰国外流量
+  -
+    name: 🎨Adobe
+    type: select
+    proxies:
+    - 🔰国外流量
+    - ❗禁止连接
+    - 🚀直接连接
+  -
+    name: ❗禁止连接
+    type: select
+    proxies:
+    - REJECT
+  -
+    name: 🚀直接连接
+    type: select
+    proxies:
+    - DIRECT
+
+
+rules:
+ 
+ 
+  - DOMAIN-SUFFIX,smtp,DIRECT
+  - DOMAIN-KEYWORD,aria2,DIRECT
+
+  - DOMAIN-SUFFIX,ampproject.org,🔰国外流量
+  - DOMAIN-SUFFIX,appspot.com,🔰国外流量
+  - DOMAIN-SUFFIX,blogger.com,🔰国外流量
+  - DOMAIN-SUFFIX,getoutline.org,🔰国外流量
+  - DOMAIN-SUFFIX,gvt0.com,🔰国外流量
+  - DOMAIN-SUFFIX,gvt1.com,🔰国外流量
+  - DOMAIN-SUFFIX,gvt3.com,🔰国外流量
+  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🔰国外流量
+  - DOMAIN-KEYWORD,google,🔰国外流量
+  - DOMAIN-KEYWORD,blogspot,🔰国外流量
+  - DOMAIN-SUFFIX,onedrive.live.com,🔰国外流量
+  - DOMAIN-SUFFIX,xboxlive.com,🔰国外流量
+  - DOMAIN-SUFFIX,cdninstagram.com,🔰国外流量
+  - DOMAIN-SUFFIX,fb.com,🔰国外流量
+  - DOMAIN-SUFFIX,fb.me,🔰国外流量
+  - DOMAIN-SUFFIX,fbaddins.com,🔰国外流量
+  - DOMAIN-SUFFIX,fbcdn.net,🔰国外流量
+  - DOMAIN-SUFFIX,fbsbx.com,🔰国外流量
+  - DOMAIN-SUFFIX,fbworkmail.com,🔰国外流量
+  - DOMAIN-SUFFIX,instagram.com,🔰国外流量
+  - DOMAIN-SUFFIX,m.me,🔰国外流量
+  - DOMAIN-SUFFIX,messenger.com,🔰国外流量
+  - DOMAIN-SUFFIX,oculus.com,🔰国外流量
+  - DOMAIN-SUFFIX,oculuscdn.com,🔰国外流量
+  - DOMAIN-SUFFIX,rocksdb.org,🔰国外流量
+  - DOMAIN-SUFFIX,whatsapp.biz,🔰国外流量
+  - DOMAIN-SUFFIX,whatsapp.com,🔰国外流量
+  - DOMAIN-SUFFIX,whatsapp.net,🔰国外流量
+  - DOMAIN-KEYWORD,whatsapp,🔰国外流量
+  - DOMAIN-KEYWORD,facebook,🔰国外流量
+  - IP-CIDR,158.85.224.160/27,🔰国外流量,no-resolve
+  - IP-CIDR,158.85.46.128/27,🔰国外流量,no-resolve
+  - IP-CIDR,158.85.5.192/27,🔰国外流量,no-resolve
+  - IP-CIDR,173.192.222.160/27,🔰国外流量,no-resolve
+  - IP-CIDR,173.192.231.32/27,🔰国外流量,no-resolve
+  - IP-CIDR,18.194.0.0/15,🔰国外流量,no-resolve
+  - IP-CIDR,184.173.128.0/17,🔰国外流量,no-resolve
+  - IP-CIDR,208.43.122.128/27,🔰国外流量,no-resolve
+  - IP-CIDR,34.224.0.0/12,🔰国外流量,no-resolve
+  - IP-CIDR,50.22.198.204/30,🔰国外流量,no-resolve
+  - IP-CIDR,54.242.0.0/15,🔰国外流量,no-resolve
+  - IP-CIDR,3.123.36.126/32,🔰国外流量,no-resolve
+  - IP-CIDR,35.157.215.84/32,🔰国外流量,no-resolve
+  - IP-CIDR,35.157.217.255/32,🔰国外流量,no-resolve
+  - IP-CIDR,52.58.209.134/32,🔰国外流量,no-resolve
+  - IP-CIDR,54.93.124.31/32,🔰国外流量,no-resolve
+  - IP-CIDR,54.162.243.80/32,🔰国外流量,no-resolve
+  - IP-CIDR,54.173.34.141/32,🔰国外流量,no-resolve
+  - IP-CIDR,54.235.23.242/32,🔰国外流量,no-resolve
+  - IP-CIDR,169.45.248.118/32,🔰国外流量,no-resolve
+  - DOMAIN-SUFFIX,pscp.tv,🔰国外流量
+  - DOMAIN-SUFFIX,periscope.tv,🔰国外流量
+  - DOMAIN-SUFFIX,t.co,🔰国外流量
+  - DOMAIN-SUFFIX,twimg.co,🔰国外流量
+  - DOMAIN-SUFFIX,twimg.com,🔰国外流量
+  - DOMAIN-SUFFIX,twitpic.com,🔰国外流量
+  - DOMAIN-SUFFIX,vine.co,🔰国外流量
+  - DOMAIN-KEYWORD,twitter,🔰国外流量
+  - DOMAIN-SUFFIX,t.me,🔰国外流量
+  - DOMAIN-SUFFIX,tdesktop.com,🔰国外流量
+  - DOMAIN-SUFFIX,telegra.ph,🔰国外流量
+  - DOMAIN-SUFFIX,telegram.me,🔰国外流量
+  - DOMAIN-SUFFIX,telegram.org,🔰国外流量
+  - IP-CIDR,91.108.4.0/22,🔰国外流量,no-resolve
+  - IP-CIDR,91.108.8.0/22,🔰国外流量,no-resolve
+  - IP-CIDR,91.108.12.0/22,🔰国外流量,no-resolve
+  - IP-CIDR,91.108.16.0/22,🔰国外流量,no-resolve
+  - IP-CIDR,91.108.56.0/22,🔰国外流量,no-resolve
+  - IP-CIDR,149.154.160.0/20,🔰国外流量,no-resolve
+  - IP-CIDR6,2001:b28:f23d::/48,🔰国外流量,no-resolve
+  - IP-CIDR6,2001:b28:f23f::/48,🔰国外流量,no-resolve
+  - IP-CIDR6,2001:67c:4e8::/48,🔰国外流量,no-resolve
+  - DOMAIN-SUFFIX,line.me,🔰国外流量
+  - DOMAIN-SUFFIX,line-apps.com,🔰国外流量
+  - DOMAIN-SUFFIX,line-scdn.net,🔰国外流量
+  - DOMAIN-SUFFIX,naver.jp,🔰国外流量
+  - IP-CIDR,103.2.30.0/23,🔰国外流量,no-resolve
+  - IP-CIDR,125.209.208.0/20,🔰国外流量,no-resolve
+  - IP-CIDR,147.92.128.0/17,🔰国外流量,no-resolve
+  - IP-CIDR,203.104.144.0/21,🔰国外流量,no-resolve
+  - DOMAIN-SUFFIX,4shared.com,🔰国外流量
+  - DOMAIN-SUFFIX,520cc.cc,🔰国外流量
+  - DOMAIN-SUFFIX,881903.com,🔰国外流量
+  - DOMAIN-SUFFIX,9cache.com,🔰国外流量
+  - DOMAIN-SUFFIX,9gag.com,🔰国外流量
+  - DOMAIN-SUFFIX,abc.com,🔰国外流量
+  - DOMAIN-SUFFIX,abc.net.au,🔰国外流量
+  - DOMAIN-SUFFIX,abebooks.com,🔰国外流量
+  - DOMAIN-SUFFIX,amazon.co.jp,🔰国外流量
+  - DOMAIN-SUFFIX,apigee.com,🔰国外流量
+  - DOMAIN-SUFFIX,apk-dl.com,🔰国外流量
+  - DOMAIN-SUFFIX,apkfind.com,🔰国外流量
+  - DOMAIN-SUFFIX,apkmirror.com,🔰国外流量
+  - DOMAIN-SUFFIX,apkmonk.com,🔰国外流量
+  - DOMAIN-SUFFIX,apkpure.com,🔰国外流量
+  - DOMAIN-SUFFIX,aptoide.com,🔰国外流量
+  - DOMAIN-SUFFIX,archive.is,🔰国外流量
+  - DOMAIN-SUFFIX,archive.org,🔰国外流量
+  - DOMAIN-SUFFIX,arte.tv,🔰国外流量
+  - DOMAIN-SUFFIX,artstation.com,🔰国外流量
+  - DOMAIN-SUFFIX,arukas.io,🔰国外流量
+  - DOMAIN-SUFFIX,ask.com,🔰国外流量
+  - DOMAIN-SUFFIX,avg.com,🔰国外流量
+  - DOMAIN-SUFFIX,avgle.com,🔰国外流量
+  - DOMAIN-SUFFIX,badoo.com,🔰国外流量
+  - DOMAIN-SUFFIX,bandwagonhost.com,🔰国外流量
+  - DOMAIN-SUFFIX,bbc.com,🔰国外流量
+  - DOMAIN-SUFFIX,behance.net,🔰国外流量
+  - DOMAIN-SUFFIX,bibox.com,🔰国外流量
+  - DOMAIN-SUFFIX,biggo.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,binance.com,🔰国外流量
+  - DOMAIN-SUFFIX,bitcointalk.org,🔰国外流量
+  - DOMAIN-SUFFIX,bitfinex.com,🔰国外流量
+  - DOMAIN-SUFFIX,bitmex.com,🔰国外流量
+  - DOMAIN-SUFFIX,bit-z.com,🔰国外流量
+  - DOMAIN-SUFFIX,bloglovin.com,🔰国外流量
+  - DOMAIN-SUFFIX,bloomberg.cn,🔰国外流量
+  - DOMAIN-SUFFIX,bloomberg.com,🔰国外流量
+  - DOMAIN-SUFFIX,blubrry.com,🔰国外流量
+  - DOMAIN-SUFFIX,book.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,booklive.jp,🔰国外流量
+  - DOMAIN-SUFFIX,books.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,boslife.net,🔰国外流量
+  - DOMAIN-SUFFIX,box.com,🔰国外流量
+  - DOMAIN-SUFFIX,businessinsider.com,🔰国外流量
+  - DOMAIN-SUFFIX,bwh1.net,🔰国外流量
+  - DOMAIN-SUFFIX,castbox.fm,🔰国外流量
+  - DOMAIN-SUFFIX,cbc.ca,🔰国外流量
+  - DOMAIN-SUFFIX,cdw.com,🔰国外流量
+  - DOMAIN-SUFFIX,change.org,🔰国外流量
+  - DOMAIN-SUFFIX,channelnewsasia.com,🔰国外流量
+  - DOMAIN-SUFFIX,ck101.com,🔰国外流量
+  - DOMAIN-SUFFIX,clarionproject.org,🔰国外流量
+  - DOMAIN-SUFFIX,clyp.it,🔰国外流量
+  - DOMAIN-SUFFIX,cna.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,comparitech.com,🔰国外流量
+  - DOMAIN-SUFFIX,conoha.jp,🔰国外流量
+  - DOMAIN-SUFFIX,crucial.com,🔰国外流量
+  - DOMAIN-SUFFIX,cts.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,cw.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,cyberctm.com,🔰国外流量
+  - DOMAIN-SUFFIX,dailymotion.com,🔰国外流量
+  - DOMAIN-SUFFIX,dailyview.tw,🔰国外流量
+  - DOMAIN-SUFFIX,daum.net,🔰国外流量
+  - DOMAIN-SUFFIX,daumcdn.net,🔰国外流量
+  - DOMAIN-SUFFIX,dcard.tw,🔰国外流量
+  - DOMAIN-SUFFIX,deepdiscount.com,🔰国外流量
+  - DOMAIN-SUFFIX,depositphotos.com,🔰国外流量
+  - DOMAIN-SUFFIX,deviantart.com,🔰国外流量
+  - DOMAIN-SUFFIX,disconnect.me,🔰国外流量
+  - DOMAIN-SUFFIX,discordapp.com,🔰国外流量
+  - DOMAIN-SUFFIX,airhorn.solutions,🔰国外流量
+  - DOMAIN-SUFFIX,airhornbot.com,🔰国外流量
+  - DOMAIN-SUFFIX,bigbeans.solutions,🔰国外流量
+  - DOMAIN-SUFFIX,dis.gd,🔰国外流量
+  - DOMAIN-SUFFIX,discord-activities.com,🔰国外流量
+  - DOMAIN-SUFFIX,discord-attachments-uploads-prd.storage.googleapis.com,🔰国外流量
+  - DOMAIN-SUFFIX,discord.co,🔰国外流量
+  - DOMAIN-SUFFIX,discord.com,🔰国外流量
+  - DOMAIN-SUFFIX,discord.design,🔰国外流量
+  - DOMAIN-SUFFIX,discord.dev,🔰国外流量
+  - DOMAIN-SUFFIX,discord.gg,🔰国外流量
+  - DOMAIN-SUFFIX,discord.gift,🔰国外流量
+  - DOMAIN-SUFFIX,discord.gifts,🔰国外流量
+  - DOMAIN-SUFFIX,discord.media,🔰国外流量
+  - DOMAIN-SUFFIX,discord.new,🔰国外流量
+  - DOMAIN-SUFFIX,discord.store,🔰国外流量
+  - DOMAIN-SUFFIX,discord.tools,🔰国外流量
+  - DOMAIN-SUFFIX,discordactivities.com,🔰国外流量
+  - DOMAIN-SUFFIX,discordapp.com,🔰国外流量
+  - DOMAIN-SUFFIX,discordapp.io,🔰国外流量
+  - DOMAIN-SUFFIX,discordapp.net,🔰国外流量
+  - DOMAIN-SUFFIX,discordapp.page.link,🔰国外流量
+  - DOMAIN-SUFFIX,discordcdn.com,🔰国外流量
+  - DOMAIN-SUFFIX,discordmerch.com,🔰国外流量
+  - DOMAIN-SUFFIX,discordpartygames.com,🔰国外流量
+  - DOMAIN-SUFFIX,discordsays.com,🔰国外流量
+  - DOMAIN-SUFFIX,discordstatus.com,🔰国外流量
+  - DOMAIN-SUFFIX,hammerandchisel.ssl.zendesk.com,🔰国外流量
+  - DOMAIN-SUFFIX,watchanimeattheoffice.com,🔰国外流量
+  - DOMAIN-SUFFIX,discordapp.net,🔰国外流量
+  - DOMAIN-SUFFIX,disqus.com,🔰国外流量
+  - DOMAIN-SUFFIX,dlercloud.com,🔰国外流量
+  - DOMAIN-SUFFIX,dns2go.com,🔰国外流量
+  - DOMAIN-SUFFIX,dowjones.com,🔰国外流量
+  - DOMAIN-SUFFIX,dropbox.com,🔰国外流量
+  - DOMAIN-SUFFIX,dropboxusercontent.com,🔰国外流量
+  - DOMAIN-SUFFIX,duckduckgo.com,🔰国外流量
+  - DOMAIN-SUFFIX,dw.com,🔰国外流量
+  - DOMAIN-SUFFIX,dynu.com,🔰国外流量
+  - DOMAIN-SUFFIX,earthcam.com,🔰国外流量
+  - DOMAIN-SUFFIX,ebookservice.tw,🔰国外流量
+  - DOMAIN-SUFFIX,economist.com,🔰国外流量
+  - DOMAIN-SUFFIX,edgecastcdn.net,🔰国外流量
+  - DOMAIN-SUFFIX,edu,🔰国外流量
+  - DOMAIN-SUFFIX,elpais.com,🔰国外流量
+  - DOMAIN-SUFFIX,enanyang.my,🔰国外流量
+  - DOMAIN-SUFFIX,encyclopedia.com,🔰国外流量
+  - DOMAIN-SUFFIX,esoir.be,🔰国外流量
+  - DOMAIN-SUFFIX,etherscan.io,🔰国外流量
+  - DOMAIN-SUFFIX,euronews.com,🔰国外流量
+  - DOMAIN-SUFFIX,evozi.com,🔰国外流量
+  - DOMAIN-SUFFIX,feedly.com,🔰国外流量
+  - DOMAIN-SUFFIX,firech.at,🔰国外流量
+  - DOMAIN-SUFFIX,flickr.com,🔰国外流量
+  - DOMAIN-SUFFIX,flitto.com,🔰国外流量
+  - DOMAIN-SUFFIX,foreignpolicy.com,🔰国外流量
+  - DOMAIN-SUFFIX,freebrowser.org,🔰国外流量
+  - DOMAIN-SUFFIX,freewechat.com,🔰国外流量
+  - DOMAIN-SUFFIX,freeweibo.com,🔰国外流量
+  - DOMAIN-SUFFIX,friday.tw,🔰国外流量
+  - DOMAIN-SUFFIX,ftchinese.com,🔰国外流量
+  - DOMAIN-SUFFIX,ftimg.net,🔰国外流量
+  - DOMAIN-SUFFIX,gate.io,🔰国外流量
+  - DOMAIN-SUFFIX,getlantern.org,🔰国外流量
+  - DOMAIN-SUFFIX,getsync.com,🔰国外流量
+  - DOMAIN-SUFFIX,globalvoices.org,🔰国外流量
+  - DOMAIN-SUFFIX,goo.ne.jp,🔰国外流量
+  - DOMAIN-SUFFIX,goodreads.com,🔰国外流量
+  - DOMAIN-SUFFIX,gov,🔰国外流量
+  - DOMAIN-SUFFIX,gov.tw,🔰国外流量
+  - DOMAIN-SUFFIX,greatfire.org,🔰国外流量
+  - DOMAIN-SUFFIX,gumroad.com,🔰国外流量
+  - DOMAIN-SUFFIX,hbg.com,🔰国外流量
+  - DOMAIN-SUFFIX,heroku.com,🔰国外流量
+  - DOMAIN-SUFFIX,hightail.com,🔰国外流量
+  - DOMAIN-SUFFIX,hk01.com,🔰国外流量
+  - DOMAIN-SUFFIX,hkbf.org,🔰国外流量
+  - DOMAIN-SUFFIX,hkbookcity.com,🔰国外流量
+  - DOMAIN-SUFFIX,hkej.com,🔰国外流量
+  - DOMAIN-SUFFIX,hket.com,🔰国外流量
+  - DOMAIN-SUFFIX,hkgolden.com,🔰国外流量
+  - DOMAIN-SUFFIX,hootsuite.com,🔰国外流量
+  - DOMAIN-SUFFIX,hudson.org,🔰国外流量
+  - DOMAIN-SUFFIX,hyread.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,ibtimes.com,🔰国外流量
+  - DOMAIN-SUFFIX,i-cable.com,🔰国外流量
+  - DOMAIN-SUFFIX,icij.org,🔰国外流量
+  - DOMAIN-SUFFIX,icoco.com,🔰国外流量
+  - DOMAIN-SUFFIX,imgur.com,🔰国外流量
+  - DOMAIN-SUFFIX,initiummall.com,🔰国外流量
+  - DOMAIN-SUFFIX,insecam.org,🔰国外流量
+  - DOMAIN-SUFFIX,ipfs.io,🔰国外流量
+  - DOMAIN-SUFFIX,issuu.com,🔰国外流量
+  - DOMAIN-SUFFIX,istockphoto.com,🔰国外流量
+  - DOMAIN-SUFFIX,japantimes.co.jp,🔰国外流量
+  - DOMAIN-SUFFIX,jiji.com,🔰国外流量
+  - DOMAIN-SUFFIX,jinx.com,🔰国外流量
+  - DOMAIN-SUFFIX,jkforum.net,🔰国外流量
+  - DOMAIN-SUFFIX,joinmastodon.org,🔰国外流量
+  - DOMAIN-SUFFIX,justmysocks.net,🔰国外流量
+  - DOMAIN-SUFFIX,justpaste.it,🔰国外流量
+  - DOMAIN-SUFFIX,kakao.com,🔰国外流量
+  - DOMAIN-SUFFIX,kakaocorp.com,🔰国外流量
+  - DOMAIN-SUFFIX,kik.com,🔰国外流量
+  - DOMAIN-SUFFIX,kobo.com,🔰国外流量
+  - DOMAIN-SUFFIX,kobobooks.com,🔰国外流量
+  - DOMAIN-SUFFIX,kodingen.com,🔰国外流量
+  - DOMAIN-SUFFIX,licdn.com,🔰国外流量
+  - DOMAIN-SUFFIX,linkedin.com,🔰国外流量
+  - DOMAIN-SUFFIX,lemonde.fr,🔰国外流量
+  - DOMAIN-SUFFIX,lepoint.fr,🔰国外流量
+  - DOMAIN-SUFFIX,lihkg.com,🔰国外流量
+  - DOMAIN-SUFFIX,listennotes.com,🔰国外流量
+  - DOMAIN-SUFFIX,livestream.com,🔰国外流量
+  - DOMAIN-SUFFIX,logmein.com,🔰国外流量
+  - DOMAIN-SUFFIX,mail.ru,🔰国外流量
+  - DOMAIN-SUFFIX,mailchimp.com,🔰国外流量
+  - DOMAIN-SUFFIX,marc.info,🔰国外流量
+  - DOMAIN-SUFFIX,matters.news,🔰国外流量
+  - DOMAIN-SUFFIX,maying.co,🔰国外流量
+  - DOMAIN-SUFFIX,medium.com,🔰国外流量
+  - DOMAIN-SUFFIX,mega.nz,🔰国外流量
+  - DOMAIN-SUFFIX,mil,🔰国外流量
+  - DOMAIN-SUFFIX,mingpao.com,🔰国外流量
+  - DOMAIN-SUFFIX,mobile01.com,🔰国外流量
+  - DOMAIN-SUFFIX,myspace.com,🔰国外流量
+  - DOMAIN-SUFFIX,myspacecdn.com,🔰国外流量
+  - DOMAIN-SUFFIX,nanyang.com,🔰国外流量
+  - DOMAIN-SUFFIX,naver.com,🔰国外流量
+  - DOMAIN-SUFFIX,neowin.net,🔰国外流量
+  - DOMAIN-SUFFIX,newstapa.org,🔰国外流量
+  - DOMAIN-SUFFIX,nexitally.com,🔰国外流量
+  - DOMAIN-SUFFIX,nhk.or.jp,🔰国外流量
+  - DOMAIN-SUFFIX,nicovideo.jp,🔰国外流量
+  - DOMAIN-SUFFIX,nii.ac.jp,🔰国外流量
+  - DOMAIN-SUFFIX,nikkei.com,🔰国外流量
+  - DOMAIN-SUFFIX,nofile.io,🔰国外流量
+  - DOMAIN-SUFFIX,now.com,🔰国外流量
+  - DOMAIN-SUFFIX,nrk.no,🔰国外流量
+  - DOMAIN-SUFFIX,nyt.com,🔰国外流量
+  - DOMAIN-SUFFIX,nytchina.com,🔰国外流量
+  - DOMAIN-SUFFIX,nytcn.me,🔰国外流量
+  - DOMAIN-SUFFIX,nytco.com,🔰国外流量
+  - DOMAIN-SUFFIX,nytimes.com,🔰国外流量
+  - DOMAIN-SUFFIX,nytimg.com,🔰国外流量
+  - DOMAIN-SUFFIX,nytlog.com,🔰国外流量
+  - DOMAIN-SUFFIX,nytstyle.com,🔰国外流量
+  - DOMAIN-SUFFIX,ok.ru,🔰国外流量
+  - DOMAIN-SUFFIX,okex.com,🔰国外流量
+  - DOMAIN-SUFFIX,on.cc,🔰国外流量
+  - DOMAIN-SUFFIX,orientaldaily.com.my,🔰国外流量
+  - DOMAIN-SUFFIX,overcast.fm,🔰国外流量
+  - DOMAIN-SUFFIX,paltalk.com,🔰国外流量
+  - DOMAIN-SUFFIX,pao-pao.net,🔰国外流量
+  - DOMAIN-SUFFIX,parsevideo.com,🔰国外流量
+  - DOMAIN-SUFFIX,pbxes.com,🔰国外流量
+  - DOMAIN-SUFFIX,pcdvd.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,pchome.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,pcloud.com,🔰国外流量
+  - DOMAIN-SUFFIX,picacomic.com,🔰国外流量
+  - DOMAIN-SUFFIX,pinimg.com,🔰国外流量
+  - DOMAIN-SUFFIX,pixiv.net,🔰国外流量
+  - DOMAIN-SUFFIX,player.fm,🔰国外流量
+  - DOMAIN-SUFFIX,plurk.com,🔰国外流量
+  - DOMAIN-SUFFIX,po18.tw,🔰国外流量
+  - DOMAIN-SUFFIX,potato.im,🔰国外流量
+  - DOMAIN-SUFFIX,potatso.com,🔰国外流量
+  - DOMAIN-SUFFIX,prism-break.org,🔰国外流量
+  - DOMAIN-SUFFIX,proxifier.com,🔰国外流量
+  - DOMAIN-SUFFIX,pt.im,🔰国外流量
+  - DOMAIN-SUFFIX,pts.org.tw,🔰国外流量
+  - DOMAIN-SUFFIX,pubu.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,pubu.tw,🔰国外流量
+  - DOMAIN-SUFFIX,pureapk.com,🔰国外流量
+  - DOMAIN-SUFFIX,quora.com,🔰国外流量
+  - DOMAIN-SUFFIX,quoracdn.net,🔰国外流量
+  - DOMAIN-SUFFIX,rakuten.co.jp,🔰国外流量
+  - DOMAIN-SUFFIX,readingtimes.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,readmoo.com,🔰国外流量
+  - DOMAIN-SUFFIX,redbubble.com,🔰国外流量
+  - DOMAIN-SUFFIX,reddit.com,🔰国外流量
+  - DOMAIN-SUFFIX,redditmedia.com,🔰国外流量
+  - DOMAIN-SUFFIX,resilio.com,🔰国外流量
+  - DOMAIN-SUFFIX,reuters.com,🔰国外流量
+  - DOMAIN-SUFFIX,reutersmedia.net,🔰国外流量
+  - DOMAIN-SUFFIX,rfi.fr,🔰国外流量
+  - DOMAIN-SUFFIX,rixcloud.com,🔰国外流量
+  - DOMAIN-SUFFIX,roadshow.hk,🔰国外流量
+  - DOMAIN-SUFFIX,scmp.com,🔰国外流量
+  - DOMAIN-SUFFIX,scribd.com,🔰国外流量
+  - DOMAIN-SUFFIX,seatguru.com,🔰国外流量
+  - DOMAIN-SUFFIX,shadowsocks.org,🔰国外流量
+  - DOMAIN-SUFFIX,shopee.tw,🔰国外流量
+  - DOMAIN-SUFFIX,slideshare.net,🔰国外流量
+  - DOMAIN-SUFFIX,softfamous.com,🔰国外流量
+  - DOMAIN-SUFFIX,soundcloud.com,🔰国外流量
+  - DOMAIN-SUFFIX,ssrcloud.org,🔰国外流量
+  - DOMAIN-SUFFIX,startpage.com,🔰国外流量
+  - DOMAIN-SUFFIX,steamcommunity.com,🔰国外流量
+  - DOMAIN-SUFFIX,steemit.com,🔰国外流量
+  - DOMAIN-SUFFIX,steemitwallet.com,🔰国外流量
+  - DOMAIN-SUFFIX,t66y.com,🔰国外流量
+  - DOMAIN-SUFFIX,tapatalk.com,🔰国外流量
+  - DOMAIN-SUFFIX,teco-hk.org,🔰国外流量
+  - DOMAIN-SUFFIX,teco-mo.org,🔰国外流量
+  - DOMAIN-SUFFIX,teddysun.com,🔰国外流量
+  - DOMAIN-SUFFIX,textnow.me,🔰国外流量
+  - DOMAIN-SUFFIX,theguardian.com,🔰国外流量
+  - DOMAIN-SUFFIX,theinitium.com,🔰国外流量
+  - DOMAIN-SUFFIX,thetvdb.com,🔰国外流量
+  - DOMAIN-SUFFIX,tineye.com,🔰国外流量
+  - DOMAIN-SUFFIX,torproject.org,🔰国外流量
+  - DOMAIN-SUFFIX,tumblr.com,🔰国外流量
+  - DOMAIN-SUFFIX,turbobit.net,🔰国外流量
+  - DOMAIN-SUFFIX,tutanota.com,🔰国外流量
+  - DOMAIN-SUFFIX,tvboxnow.com,🔰国外流量
+  - DOMAIN-SUFFIX,udn.com,🔰国外流量
+  - DOMAIN-SUFFIX,unseen.is,🔰国外流量
+  - DOMAIN-SUFFIX,upmedia.mg,🔰国外流量
+  - DOMAIN-SUFFIX,uptodown.com,🔰国外流量
+  - DOMAIN-SUFFIX,urbandictionary.com,🔰国外流量
+  - DOMAIN-SUFFIX,ustream.tv,🔰国外流量
+  - DOMAIN-SUFFIX,uwants.com,🔰国外流量
+  - DOMAIN-SUFFIX,v2ray.com,🔰国外流量
+  - DOMAIN-SUFFIX,viber.com,🔰国外流量
+  - DOMAIN-SUFFIX,videopress.com,🔰国外流量
+  - DOMAIN-SUFFIX,vimeo.com,🔰国外流量
+  - DOMAIN-SUFFIX,voachinese.com,🔰国外流量
+  - DOMAIN-SUFFIX,voanews.com,🔰国外流量
+  - DOMAIN-SUFFIX,voxer.com,🔰国外流量
+  - DOMAIN-SUFFIX,vzw.com,🔰国外流量
+  - DOMAIN-SUFFIX,w3schools.com,🔰国外流量
+  - DOMAIN-SUFFIX,washingtonpost.com,🔰国外流量
+  - DOMAIN-SUFFIX,wattpad.com,🔰国外流量
+  - DOMAIN-SUFFIX,whoer.net,🔰国外流量
+  - DOMAIN-SUFFIX,wikimapia.org,🔰国外流量
+  - DOMAIN-SUFFIX,wikipedia.org,🔰国外流量
+  - DOMAIN-SUFFIX,wikiquote.org,🔰国外流量
+  - DOMAIN-SUFFIX,wikiwand.com,🔰国外流量
+  - DOMAIN-SUFFIX,winudf.com,🔰国外流量
+  - DOMAIN-SUFFIX,wire.com,🔰国外流量
+  - DOMAIN-SUFFIX,wordpress.com,🔰国外流量
+  - DOMAIN-SUFFIX,workflow.is,🔰国外流量
+  - DOMAIN-SUFFIX,worldcat.org,🔰国外流量
+  - DOMAIN-SUFFIX,wsj.com,🔰国外流量
+  - DOMAIN-SUFFIX,wsj.net,🔰国外流量
+  - DOMAIN-SUFFIX,xhamster.com,🔰国外流量
+  - DOMAIN-SUFFIX,xn--90wwvt03e.com,🔰国外流量
+  - DOMAIN-SUFFIX,xn--i2ru8q2qg.com,🔰国外流量
+  - DOMAIN-SUFFIX,xnxx.com,🔰国外流量
+  - DOMAIN-SUFFIX,xvideos.com,🔰国外流量
+  - DOMAIN-SUFFIX,yahoo.com,🔰国外流量
+  - DOMAIN-SUFFIX,yandex.ru,🔰国外流量
+  - DOMAIN-SUFFIX,ycombinator.com,🔰国外流量
+  - DOMAIN-SUFFIX,yesasia.com,🔰国外流量
+  - DOMAIN-SUFFIX,yes-news.com,🔰国外流量
+  - DOMAIN-SUFFIX,yomiuri.co.jp,🔰国外流量
+  - DOMAIN-SUFFIX,you-get.org,🔰国外流量
+  - DOMAIN-SUFFIX,zaobao.com,🔰国外流量
+  - DOMAIN-SUFFIX,zb.com,🔰国外流量
+  - DOMAIN-SUFFIX,zello.com,🔰国外流量
+  - DOMAIN-SUFFIX,zeronet.io,🔰国外流量
+  - DOMAIN-SUFFIX,zoom.us,🔰国外流量
+  - DOMAIN-KEYWORD,github,🔰国外流量
+  - DOMAIN-KEYWORD,jav,🔰国外流量
+  - DOMAIN-KEYWORD,pinterest,🔰国外流量
+  - DOMAIN-KEYWORD,porn,🔰国外流量
+  - DOMAIN-KEYWORD,wikileaks,🔰国外流量
+  - DOMAIN-SUFFIX,apartmentratings.com,🔰国外流量
+  - DOMAIN-SUFFIX,apartments.com,🔰国外流量
+  - DOMAIN-SUFFIX,bankmobilevibe.com,🔰国外流量
+  - DOMAIN-SUFFIX,bing.com,🔰国外流量
+  - DOMAIN-SUFFIX,booktopia.com.au,🔰国外流量
+  - DOMAIN-SUFFIX,cccat.io,🔰国外流量
+  - DOMAIN-SUFFIX,centauro.com.br,🔰国外流量
+  - DOMAIN-SUFFIX,clearsurance.com,🔰国外流量
+  - DOMAIN-SUFFIX,costco.com,🔰国外流量
+  - DOMAIN-SUFFIX,crackle.com,🔰国外流量
+  - DOMAIN-SUFFIX,depositphotos.cn,🔰国外流量
+  - DOMAIN-SUFFIX,dish.com,🔰国外流量
+  - DOMAIN-SUFFIX,dmm.co.jp,🔰国外流量
+  - DOMAIN-SUFFIX,dmm.com,🔰国外流量
+  - DOMAIN-SUFFIX,dnvod.tv,🔰国外流量
+  - DOMAIN-SUFFIX,esurance.com,🔰国外流量
+  - DOMAIN-SUFFIX,extmatrix.com,🔰国外流量
+  - DOMAIN-SUFFIX,fastpic.ru,🔰国外流量
+  - DOMAIN-SUFFIX,flipboard.com,🔰国外流量
+  - DOMAIN-SUFFIX,fnac.be,🔰国外流量
+  - DOMAIN-SUFFIX,fnac.com,🔰国外流量
+  - DOMAIN-SUFFIX,funkyimg.com,🔰国外流量
+  - DOMAIN-SUFFIX,fxnetworks.com,🔰国外流量
+  - DOMAIN-SUFFIX,gettyimages.com,🔰国外流量
+  - DOMAIN-SUFFIX,go.com,🔰国外流量
+  - DOMAIN-SUFFIX,here.com,🔰国外流量
+  - DOMAIN-SUFFIX,jcpenney.com,🔰国外流量
+  - DOMAIN-SUFFIX,jiehua.tv,🔰国外流量
+  - DOMAIN-SUFFIX,mailfence.com,🔰国外流量
+  - DOMAIN-SUFFIX,nationwide.com,🔰国外流量
+  - DOMAIN-SUFFIX,nbc.com,🔰国外流量
+  - DOMAIN-SUFFIX,nexon.com,🔰国外流量
+  - DOMAIN-SUFFIX,nordstrom.com,🔰国外流量
+  - DOMAIN-SUFFIX,nordstromimage.com,🔰国外流量
+  - DOMAIN-SUFFIX,nordstromrack.com,🔰国外流量
+  - DOMAIN-SUFFIX,superpages.com,🔰国外流量
+  - DOMAIN-SUFFIX,target.com,🔰国外流量
+  - DOMAIN-SUFFIX,thinkgeek.com,🔰国外流量
+  - DOMAIN-SUFFIX,tracfone.com,🔰国外流量
+  - DOMAIN-SUFFIX,unity3d.com,🔰国外流量
+  - DOMAIN-SUFFIX,uploader.jp,🔰国外流量
+  - DOMAIN-SUFFIX,vevo.com,🔰国外流量
+  - DOMAIN-SUFFIX,viu.tv,🔰国外流量
+  - DOMAIN-SUFFIX,vk.com,🔰国外流量
+  - DOMAIN-SUFFIX,vsco.co,🔰国外流量
+  - DOMAIN-SUFFIX,xfinity.com,🔰国外流量
+  - DOMAIN-SUFFIX,zattoo.com,🔰国外流量
+  - DOMAIN,testflight.apple.com,🔰国外流量
+  - DOMAIN-SUFFIX,appsto.re,🔰国外流量
+  - DOMAIN,books.itunes.apple.com,🔰国外流量
+  - DOMAIN,hls.itunes.apple.com,🔰国外流量
+  - DOMAIN,apps.apple.com,🔰国外流量
+  - DOMAIN,itunes.apple.com,🔰国外流量
+  - DOMAIN,api-glb-sea.smoot.apple.com,🔰国外流量
+  - DOMAIN,lookup-api.apple.com,🔰国外流量
+  - DOMAIN-SUFFIX,abc.xyz,🔰国外流量
+  - DOMAIN-SUFFIX,android.com,🔰国外流量
+  - DOMAIN-SUFFIX,androidify.com,🔰国外流量
+  - DOMAIN-SUFFIX,dialogflow.com,🔰国外流量
+  - DOMAIN-SUFFIX,autodraw.com,🔰国外流量
+  - DOMAIN-SUFFIX,capitalg.com,🔰国外流量
+  - DOMAIN-SUFFIX,certificate-transparency.org,🔰国外流量
+  - DOMAIN-SUFFIX,chrome.com,🔰国外流量
+  - DOMAIN-SUFFIX,chromeexperiments.com,🔰国外流量
+  - DOMAIN-SUFFIX,chromestatus.com,🔰国外流量
+  - DOMAIN-SUFFIX,chromium.org,🔰国外流量
+  - DOMAIN-SUFFIX,creativelab5.com,🔰国外流量
+  - DOMAIN-SUFFIX,debug.com,🔰国外流量
+  - DOMAIN-SUFFIX,deepmind.com,🔰国外流量
+  - DOMAIN-SUFFIX,firebaseio.com,🔰国外流量
+  - DOMAIN-SUFFIX,getmdl.io,🔰国外流量
+  - DOMAIN-SUFFIX,ggpht.com,🔰国外流量
+  - DOMAIN-SUFFIX,gmail.com,🔰国外流量
+  - DOMAIN-SUFFIX,gmodules.com,🔰国外流量
+  - DOMAIN-SUFFIX,godoc.org,🔰国外流量
+  - DOMAIN-SUFFIX,golang.org,🔰国外流量
+  - DOMAIN-SUFFIX,gstatic.com,🔰国外流量
+  - DOMAIN-SUFFIX,gv.com,🔰国外流量
+  - DOMAIN-SUFFIX,gwtproject.org,🔰国外流量
+  - DOMAIN-SUFFIX,itasoftware.com,🔰国外流量
+  - DOMAIN-SUFFIX,madewithcode.com,🔰国外流量
+  - DOMAIN-SUFFIX,material.io,🔰国外流量
+  - DOMAIN-SUFFIX,polymer-project.org,🔰国外流量
+  - DOMAIN-SUFFIX,admin.recaptcha.net,🔰国外流量
+  - DOMAIN-SUFFIX,recaptcha.net,🔰国外流量
+  - DOMAIN-SUFFIX,shattered.io,🔰国外流量
+  - DOMAIN-SUFFIX,synergyse.com,🔰国外流量
+  - DOMAIN-SUFFIX,tensorflow.org,🔰国外流量
+  - DOMAIN-SUFFIX,tfhub.dev,🔰国外流量
+  - DOMAIN-SUFFIX,tiltbrush.com,🔰国外流量
+  - DOMAIN-SUFFIX,waveprotocol.org,🔰国外流量
+  - DOMAIN-SUFFIX,waymo.com,🔰国外流量
+  - DOMAIN-SUFFIX,webmproject.org,🔰国外流量
+  - DOMAIN-SUFFIX,webrtc.org,🔰国外流量
+  - DOMAIN-SUFFIX,whatbrowser.org,🔰国外流量
+  - DOMAIN-SUFFIX,widevine.com,🔰国外流量
+  - DOMAIN-SUFFIX,x.company,🔰国外流量
+  - DOMAIN-SUFFIX,youtu.be,🔰国外流量
+  - DOMAIN-SUFFIX,yt.be,🔰国外流量
+  - DOMAIN-SUFFIX,ytimg.com,🔰国外流量
+  - DOMAIN-SUFFIX,1drv.com,🔰国外流量
+  - DOMAIN-SUFFIX,1drv.ms,🔰国外流量
+  - DOMAIN-SUFFIX,blob.core.windows.net,🔰国外流量
+  - DOMAIN-SUFFIX,livefilestore.com,🔰国外流量
+  - DOMAIN-SUFFIX,onedrive.com,🔰国外流量
+  - DOMAIN-SUFFIX,storage.live.com,🔰国外流量
+  - DOMAIN-SUFFIX,storage.msn.com,🔰国外流量
+  - DOMAIN,oneclient.sfx.ms,🔰国外流量
+  - DOMAIN-SUFFIX,0rz.tw,🔰国外流量
+  - DOMAIN-SUFFIX,4bluestones.biz,🔰国外流量
+  - DOMAIN-SUFFIX,9bis.net,🔰国外流量
+  - DOMAIN-SUFFIX,allconnected.co,🔰国外流量
+  - DOMAIN-SUFFIX,aol.com,🔰国外流量
+  - DOMAIN-SUFFIX,bcc.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,bit.ly,🔰国外流量
+  - DOMAIN-SUFFIX,bitshare.com,🔰国外流量
+  - DOMAIN-SUFFIX,blog.jp,🔰国外流量
+  - DOMAIN-SUFFIX,blogimg.jp,🔰国外流量
+  - DOMAIN-SUFFIX,blogtd.org,🔰国外流量
+  - DOMAIN-SUFFIX,broadcast.co.nz,🔰国外流量
+  - DOMAIN-SUFFIX,camfrog.com,🔰国外流量
+  - DOMAIN-SUFFIX,cfos.de,🔰国外流量
+  - DOMAIN-SUFFIX,citypopulation.de,🔰国外流量
+  - DOMAIN-SUFFIX,cloudfront.net,🔰国外流量
+  - DOMAIN-SUFFIX,ctitv.com.tw,🔰国外流量
+  - DOMAIN-SUFFIX,cuhk.edu.hk,🔰国外流量
+  - DOMAIN-SUFFIX,cusu.hk,🔰国外流量
+  - DOMAIN-SUFFIX,discord.gg,🔰国外流量
+  - DOMAIN-SUFFIX,discuss.com.hk,🔰国外流量
+  - DOMAIN-SUFFIX,dropboxapi.com,🔰国外流量
+  - DOMAIN-SUFFIX,duolingo.cn,🔰国外流量
+  - DOMAIN-SUFFIX,edditstatic.com,🔰国外流量
+  - DOMAIN-SUFFIX,flickriver.com,🔰国外流量
+  - DOMAIN-SUFFIX,focustaiwan.tw,🔰国外流量
+  - DOMAIN-SUFFIX,free.fr,🔰国外流量
+  - DOMAIN-SUFFIX,gigacircle.com,🔰国外流量
+  - DOMAIN-SUFFIX,hk-pub.com,🔰国外流量
+  - DOMAIN-SUFFIX,hosting.co.uk,🔰国外流量
+  - DOMAIN-SUFFIX,hwcdn.net,🔰国外流量
+  - DOMAIN-SUFFIX,ifixit.com,🔰国外流量
+  - DOMAIN-SUFFIX,iphone4hongkong.com,🔰国外流量
+  - DOMAIN-SUFFIX,iphonetaiwan.org,🔰国外流量
+  - DOMAIN-SUFFIX,iptvbin.com,🔰国外流量
+  - DOMAIN-SUFFIX,linksalpha.com,🔰国外流量
+  - DOMAIN-SUFFIX,manyvids.com,🔰国外流量
+  - DOMAIN-SUFFIX,myactimes.com,🔰国外流量
+  - DOMAIN-SUFFIX,newsblur.com,🔰国外流量
+  - DOMAIN-SUFFIX,now.im,🔰国外流量
+  - DOMAIN-SUFFIX,nowe.com,🔰国外流量
+  - DOMAIN-SUFFIX,redditlist.com,🔰国外流量
+  - DOMAIN-SUFFIX,s3.amazonaws.com,🔰国外流量
+  - DOMAIN-SUFFIX,signal.org,🔰国外流量
+  - DOMAIN-SUFFIX,smartmailcloud.com,🔰国外流量
+  - DOMAIN-SUFFIX,sparknotes.com,🔰国外流量
+  - DOMAIN-SUFFIX,streetvoice.com,🔰国外流量
+  - DOMAIN-SUFFIX,supertop.co,🔰国外流量
+  - DOMAIN-SUFFIX,tv.com,🔰国外流量
+  - DOMAIN-SUFFIX,typepad.com,🔰国外流量
+  - DOMAIN-SUFFIX,udnbkk.com,🔰国外流量
+  - DOMAIN-SUFFIX,urbanairship.com,🔰国外流量
+  - DOMAIN-SUFFIX,whispersystems.org,🔰国外流量
+  - DOMAIN-SUFFIX,wikia.com,🔰国外流量
+  - DOMAIN-SUFFIX,wn.com,🔰国外流量
+  - DOMAIN-SUFFIX,wolframalpha.com,🔰国外流量
+  - DOMAIN-SUFFIX,x-art.com,🔰国外流量
+  - DOMAIN-SUFFIX,yimg.com,🔰国外流量
+  - DOMAIN-SUFFIX,anthropic.com,🔰国外流量
+  - DOMAIN-SUFFIX,claude.ai,🔰国外流量
+  - DOMAIN-SUFFIX,temu.com,🔰国外流量
+  - DOMAIN,api.steampowered.com,🔰国外流量
+  - DOMAIN,store.steampowered.com,🔰国外流量
+  - DOMAIN,cdn.usefathom.com,🔰国外流量
+  - DOMAIN-SUFFIX,sciencedirect.com,🔰国外流量
+  - DOMAIN-SUFFIX,sciencemag.org,🔰国外流量
+  - DOMAIN-SUFFIX,scopus.com,🔰国外流量
+  - DOMAIN-SUFFIX,monica.im,🔰国外流量
+  
+
+
+  - DOMAIN-SUFFIX,aaplimg.com,🍎苹果服务
+  - DOMAIN-SUFFIX,apple.co,🍎苹果服务
+  - DOMAIN-SUFFIX,apple.com,🍎苹果服务
+  - DOMAIN-SUFFIX,apple-cloudkit.com,🍎苹果服务
+  - DOMAIN-SUFFIX,appstore.com,🍎苹果服务
+  - DOMAIN-SUFFIX,cdn-apple.com,🍎苹果服务
+  - DOMAIN-SUFFIX,crashlytics.com,🍎苹果服务
+  - DOMAIN-SUFFIX,icloud.com,🍎苹果服务
+  - DOMAIN-SUFFIX,icloud-content.com,🍎苹果服务
+  - DOMAIN-SUFFIX,me.com,🍎苹果服务
+  - DOMAIN-SUFFIX,mzstatic.com,🍎苹果服务
+  - DOMAIN,www-cdn.icloud.com.akadns.net,🍎苹果服务
+
+  - DOMAIN-SUFFIX,t.me,✈️Telegram
+  - DOMAIN-SUFFIX,tdesktop.com,✈️Telegram
+  - DOMAIN-SUFFIX,telegra.ph,✈️Telegram
+  - DOMAIN-SUFFIX,telegram.me,✈️Telegram
+  - DOMAIN-SUFFIX,telegram.org,✈️Telegram
+  - IP-CIDR,91.108.4.0/22,✈️Telegram,no-resolve
+  - IP-CIDR,91.108.8.0/22,✈️Telegram,no-resolve
+  - IP-CIDR,91.108.12.0/22,✈️Telegram,no-resolve
+  - IP-CIDR,91.108.16.0/22,✈️Telegram,no-resolve
+  - IP-CIDR,91.108.56.0/22,✈️Telegram,no-resolve
+  - IP-CIDR,149.154.160.0/20,✈️Telegram,no-resolve
+  - IP-CIDR6,2001:b28:f23d::/48,✈️Telegram,no-resolve
+  - IP-CIDR6,2001:b28:f23f::/48,✈️Telegram,no-resolve
+  - IP-CIDR6,2001:67c:4e8::/48,✈️Telegram,no-resolve
+
+  - DOMAIN-SUFFIX,googlevideo.com,🎬Youtube
+  - DOMAIN-SUFFIX,youtube.com,🎬Youtube
+  - DOMAIN,youtubei.googleapis.com,🎬Youtube
+  
+
+  - DOMAIN,cc-ext-prod-pkgs.s3.amazonaws.com,🎨Adobe
+  - DOMAIN-SUFFIX,10xfotolia.com,🎨Adobe
+  - DOMAIN-SUFFIX,2o7.net,🎨Adobe
+  - DOMAIN-SUFFIX,acrobat.com,🎨Adobe
+  - DOMAIN-SUFFIX,adbecrsl.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobe-aemassets-value.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobe-audience-finder.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobe-video-partner-finder.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobe.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobe.io,🎨Adobe
+  - DOMAIN-SUFFIX,adobe.ly,🎨Adobe
+  - DOMAIN-SUFFIX,adobeaemcloud.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobeaemcloud.net,🎨Adobe
+  - DOMAIN-SUFFIX,adobeawards.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobecc.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobecce.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobeccstatic.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobecontent.io,🎨Adobe
+  - DOMAIN-SUFFIX,adobecreativityawards.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobedc.cn,🎨Adobe
+  - DOMAIN-SUFFIX,adobedc.net,🎨Adobe
+  - DOMAIN-SUFFIX,adobedemo.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobedtm.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobeexchange.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobeexperienceawards.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobegov.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobehiddentreasures.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobejanus.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobeku.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobelanding.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobelogin.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobeoobe.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobeplatinumclub.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobeprojectm.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobesc.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobesign.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobesigncdn.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobespark.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobess.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobestock.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobetag.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobetarget.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobetcstrialdvd.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobetechcomm.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobetechcommcallback.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobetechcommdemo.com,🎨Adobe
+  - DOMAIN-SUFFIX,adobexdplatform.com,🎨Adobe
+  - DOMAIN-SUFFIX,assetsadobe.com,🎨Adobe
+  - DOMAIN-SUFFIX,authorxml.com,🎨Adobe
+  - DOMAIN-SUFFIX,bam.nr-data.net,🎨Adobe
+  
+  - DOMAIN-SUFFIX,cdn-ali.content.steamchina.com,🎮Steam
+  - DOMAIN-SUFFIX,cdn-qc.content.steamchina.com,🎮Steam
+  - DOMAIN-SUFFIX,cdn-ws.content.steamchina.com,🎮Steam
+  - DOMAIN-SUFFIX,csgo.wmsj.cn,🎮Steam
+  - DOMAIN-SUFFIX,dl.steam.clngaa.com,🎮Steam
+  - DOMAIN-SUFFIX,dl.steam.ksyna.com,🎮Steam
+  - DOMAIN-SUFFIX,dota2.wmsj.cn,🎮Steam
+  - DOMAIN-SUFFIX,edge.steam-dns.top.comcast.net,🎮Steam
+  - DOMAIN-SUFFIX,f3b7q2p3.ssl.hwcdn.net,🎮Steam
+  - DOMAIN-SUFFIX,fanatical.com,🎮Steam
+  - DOMAIN-SUFFIX,humblebundle.com,🎮Steam
+  - DOMAIN-SUFFIX,playartifact.com,🎮Steam
+  - DOMAIN-SUFFIX,s.team,🎮Steam
+  - DOMAIN-SUFFIX,st.dl.bscstorage.net,🎮Steam
+  - DOMAIN-SUFFIX,st.dl.eccdnx.com,🎮Steam
+  - DOMAIN-SUFFIX,st.dl.pinyuncloud.com,🎮Steam
+  - DOMAIN-SUFFIX,steam-api.com,🎮Steam
+  - DOMAIN-SUFFIX,steam-chat.com,🎮Steam
+  - DOMAIN-SUFFIX,steam.apac.qtlglb.com,🎮Steam
+  - DOMAIN-SUFFIX,steam.cdn.on.net,🎮Steam
+  - DOMAIN-SUFFIX,steam.cdn.orcon.net.nz,🎮Steam
+  - DOMAIN-SUFFIX,steam.cdn.slingshot.co.nz,🎮Steam
+  - DOMAIN-SUFFIX,steam.cdn.webra.ru,🎮Steam
+  - DOMAIN-SUFFIX,steam.eca.qtlglb.com,🎮Steam
+  - DOMAIN-SUFFIX,steam.naeu.qtlglb.com,🎮Steam
+  - DOMAIN-SUFFIX,steam.ru.qtlglb.com,🎮Steam
+  - DOMAIN-SUFFIX,steam.tv,🎮Steam
+  - DOMAIN-SUFFIX,steambroadcast.akamaized.net,🎮Steam
+  - DOMAIN-SUFFIX,steamcdn-a.akamaihd.net,🎮Steam
+  - DOMAIN-SUFFIX,steamcommunity-a.akamaihd.net,🎮Steam
+  - DOMAIN-SUFFIX,steamcommunity.com,🎮Steam
+  - DOMAIN-SUFFIX,steamcontent.tnkjmec.com,🎮Steam
+  - DOMAIN-SUFFIX,steamdeck.com,🎮Steam
+  - DOMAIN-SUFFIX,steamgames.com,🎮Steam
+  - DOMAIN-SUFFIX,steammobile.akamaized.net,🎮Steam
+  - DOMAIN-SUFFIX,steampipe-kr.akamaized.net,🎮Steam
+  - DOMAIN-SUFFIX,steampipe-partner.akamaized.net,🎮Steam
+  - DOMAIN-SUFFIX,steampipe.akamaized.net,🎮Steam
+  - DOMAIN-SUFFIX,steampowered.com,🎮Steam
+  - DOMAIN-SUFFIX,steampowered.com.8686c.com,🎮Steam
+  - DOMAIN-SUFFIX,steamstat.us,🎮Steam
+  - DOMAIN-SUFFIX,steamstatic.com,🎮Steam
+  - DOMAIN-SUFFIX,steamstatic.com.8686c.com,🎮Steam
+  - DOMAIN-SUFFIX,steamstore-a.akamaihd.net,🎮Steam
+  - DOMAIN-SUFFIX,steamunlocked.net,🎮Steam
+  - DOMAIN-SUFFIX,steamusercontent-a.akamaihd.net,🎮Steam
+  - DOMAIN-SUFFIX,steamuserimages-a.akamaihd.net,🎮Steam
+  - DOMAIN-SUFFIX,steamvideo-a.akamaihd.net,🎮Steam
+  - DOMAIN-SUFFIX,underlords.com,🎮Steam
+  - DOMAIN-SUFFIX,valvesoftware.com,🎮Steam
+  - DOMAIN-SUFFIX,wmsjsteam.com,🎮Steam
+  - DOMAIN-KEYWORD,steambroadcast,🎮Steam
+  - DOMAIN-KEYWORD,steamstore,🎮Steam
+  - DOMAIN-KEYWORD,steamuserimages,🎮Steam
+  
+  - DOMAIN,browser-intake-datadoghq.com,🎬ChatGPT
+  - DOMAIN,static.cloudflareinsights.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,ai.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,algolia.net,🎬ChatGPT
+  - DOMAIN-SUFFIX,api.statsig.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,auth0.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,chatgpt.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,chatgpt.livekit.cloud,🎬ChatGPT
+  - DOMAIN-SUFFIX,client-api.arkoselabs.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,events.statsigapi.net,🎬ChatGPT
+  - DOMAIN-SUFFIX,featuregates.org,🎬ChatGPT
+  - DOMAIN-SUFFIX,host.livekit.cloud,🎬ChatGPT
+  - DOMAIN-SUFFIX,identrust.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,intercom.io,🎬ChatGPT
+  - DOMAIN-SUFFIX,intercomcdn.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,launchdarkly.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,oaistatic.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,oaiusercontent.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,observeit.net,🎬ChatGPT
+  - DOMAIN-SUFFIX,segment.io,🎬ChatGPT
+  - DOMAIN-SUFFIX,sentry.io,🎬ChatGPT
+  - DOMAIN-SUFFIX,stripe.com,🎬ChatGPT
+  - DOMAIN-SUFFIX,turn.livekit.cloud,🎬ChatGPT
+  - DOMAIN-KEYWORD,openai,🎬ChatGPT
+
+  - DOMAIN-SUFFIX,netflix.com,🎬Netflix
+  - DOMAIN-SUFFIX,netflix.net,🎬Netflix
+  - DOMAIN-SUFFIX,nflxext.com,🎬Netflix
+  - DOMAIN-SUFFIX,nflximg.com,🎬Netflix
+  - DOMAIN-SUFFIX,nflximg.net,🎬Netflix
+  - DOMAIN-SUFFIX,nflxso.net,🎬Netflix
+  - DOMAIN-SUFFIX,nflxvideo.net,🎬Netflix
+  - DOMAIN-SUFFIX,netflixdnstest0.com,🎬Netflix
+  - DOMAIN-SUFFIX,netflixdnstest1.com,🎬Netflix
+  - DOMAIN-SUFFIX,netflixdnstest2.com,🎬Netflix
+  - DOMAIN-SUFFIX,netflixdnstest3.com,🎬Netflix
+  - DOMAIN-SUFFIX,netflixdnstest4.com,🎬Netflix
+  - DOMAIN-SUFFIX,netflixdnstest5.com,🎬Netflix
+  - DOMAIN-SUFFIX,netflixdnstest6.com,🎬Netflix
+  - DOMAIN-SUFFIX,netflixdnstest7.com,🎬Netflix
+  - DOMAIN-SUFFIX,netflixdnstest8.com,🎬Netflix
+  - DOMAIN-SUFFIX,netflixdnstest9.com,🎬Netflix
+  - IP-CIDR,23.246.0.0/18,🎬Netflix,no-resolve
+  - IP-CIDR,37.77.184.0/21,🎬Netflix,no-resolve
+  - IP-CIDR,45.57.0.0/17,🎬Netflix,no-resolve
+  - IP-CIDR,64.120.128.0/17,🎬Netflix,no-resolve
+  - IP-CIDR,66.197.128.0/17,🎬Netflix,no-resolve
+  - IP-CIDR,108.175.32.0/20,🎬Netflix,no-resolve
+  - IP-CIDR,192.173.64.0/18,🎬Netflix,no-resolve
+  - IP-CIDR,198.38.96.0/19,🎬Netflix,no-resolve
+  - IP-CIDR,198.45.48.0/20,🎬Netflix,no-resolve
+
+  - DOMAIN-SUFFIX,deezer.com,🎬国外媒体
+  - DOMAIN-SUFFIX,dzcdn.net,🎬国外媒体
+  - DOMAIN-SUFFIX,kkbox.com,🎬国外媒体
+  - DOMAIN-SUFFIX,kkbox.com.tw,🎬国外媒体
+  - DOMAIN-SUFFIX,kfs.io,🎬国外媒体
+  - DOMAIN-SUFFIX,joox.com,🎬国外媒体
+  - DOMAIN-SUFFIX,pandora.com,🎬国外媒体
+  - DOMAIN-SUFFIX,p-cdn.us,🎬国外媒体
+  - DOMAIN-SUFFIX,sndcdn.com,🎬国外媒体
+  - DOMAIN-SUFFIX,soundcloud.com,🎬国外媒体
+  - DOMAIN-SUFFIX,pscdn.co,🎬国外媒体
+  - DOMAIN-SUFFIX,scdn.co,🎬国外媒体
+  - DOMAIN-SUFFIX,spotify.com,🎬国外媒体
+  - DOMAIN-SUFFIX,spoti.fi,🎬国外媒体
+  - DOMAIN-KEYWORD,spotify.com,🎬国外媒体
+  - DOMAIN-KEYWORD,-spotify-com,🎬国外媒体
+  - DOMAIN-SUFFIX,tidal.com,🎬国外媒体
+  - DOMAIN-SUFFIX,c4assets.com,🎬国外媒体
+  - DOMAIN-SUFFIX,channel4.com,🎬国外媒体
+  - DOMAIN-SUFFIX,abema.io,🎬国外媒体
+  - DOMAIN-SUFFIX,ameba.jp,🎬国外媒体
+  - DOMAIN-SUFFIX,abema.tv,🎬国外媒体
+  - DOMAIN-SUFFIX,hayabusa.io,🎬国外媒体
+  - DOMAIN,abematv.akamaized.net,🎬国外媒体
+  - DOMAIN,ds-linear-abematv.akamaized.net,🎬国外媒体
+  - DOMAIN,ds-vod-abematv.akamaized.net,🎬国外媒体
+  - DOMAIN,linear-abematv.akamaized.net,🎬国外媒体
+  - DOMAIN-SUFFIX,aiv-cdn.net,🎬国外媒体
+  - DOMAIN-SUFFIX,aiv-delivery.net,🎬国外媒体
+  - DOMAIN-SUFFIX,amazonvideo.com,🎬国外媒体
+  - DOMAIN-SUFFIX,primevideo.com,🎬国外媒体
+  - DOMAIN,avodmp4s3ww-a.akamaihd.net,🎬国外媒体
+  - DOMAIN,d25xi40x97liuc.cloudfront.net,🎬国外媒体
+  - DOMAIN,dmqdd6hw24ucf.cloudfront.net,🎬国外媒体
+  - DOMAIN,d22qjgkvxw22r6.cloudfront.net,🎬国外媒体
+  - DOMAIN,d1v5ir2lpwr8os.cloudfront.net,🎬国外媒体
+  - DOMAIN-KEYWORD,avoddashs,🎬国外媒体
+  - DOMAIN-SUFFIX,bahamut.com.tw,🎬国外媒体
+  - DOMAIN-SUFFIX,gamer.com.tw,🎬国外媒体
+  - DOMAIN,gamer-cds.cdn.hinet.net,🎬国外媒体
+  - DOMAIN,gamer2-cds.cdn.hinet.net,🎬国外媒体
+  - DOMAIN-SUFFIX,bbc.co.uk,🎬国外媒体
+  - DOMAIN-SUFFIX,bbci.co.uk,🎬国外媒体
+  - DOMAIN-KEYWORD,bbcfmt,🎬国外媒体
+  - DOMAIN-KEYWORD,uk-live,🎬国外媒体
+  - DOMAIN-SUFFIX,dazn.com,🎬国外媒体
+  - DOMAIN-SUFFIX,dazn-api.com,🎬国外媒体
+  - DOMAIN,d151l6v8er5bdm.cloudfront.net,🎬国外媒体
+  - DOMAIN-KEYWORD,voddazn,🎬国外媒体
+  - DOMAIN-SUFFIX,bamgrid.com,🎬国外媒体
+  - DOMAIN-SUFFIX,disney-plus.net,🎬国外媒体
+  - DOMAIN-SUFFIX,disneyplus.com,🎬国外媒体
+  - DOMAIN-SUFFIX,dssott.com,🎬国外媒体
+  - DOMAIN,cdn.registerdisney.go.com,🎬国外媒体
+  - DOMAIN-SUFFIX,encoretvb.com,🎬国外媒体
+  - DOMAIN,edge.api.brightcove.com,🎬国外媒体
+  - DOMAIN,bcbolt446c5271-a.akamaihd.net,🎬国外媒体
+  - DOMAIN-SUFFIX,fox.com,🎬国外媒体
+  - DOMAIN-SUFFIX,foxdcg.com,🎬国外媒体
+  - DOMAIN-SUFFIX,theplatform.com,🎬国外媒体
+  - DOMAIN-SUFFIX,uplynk.com,🎬国外媒体
+  - DOMAIN-SUFFIX,hbo.com,🎬国外媒体
+  - DOMAIN-SUFFIX,hbogo.com,🎬国外媒体
+  - DOMAIN-SUFFIX,hbonow.com,🎬国外媒体
+  - DOMAIN-SUFFIX,hbogoasia.com,🎬国外媒体
+  - DOMAIN-SUFFIX,hbogoasia.hk,🎬国外媒体
+  - DOMAIN,bcbolthboa-a.akamaihd.net,🎬国外媒体
+  - DOMAIN,players.brightcove.net,🎬国外媒体
+  - DOMAIN,s3-ap-southeast-1.amazonaws.com,🎬国外媒体
+  - DOMAIN,dai3fd1oh325y.cloudfront.net,🎬国外媒体
+  - DOMAIN,44wilhpljf.execute-api.ap-southeast-1.amazonaws.com,🎬国外媒体
+  - DOMAIN,hboasia1-i.akamaihd.net,🎬国外媒体
+  - DOMAIN,hboasia2-i.akamaihd.net,🎬国外媒体
+  - DOMAIN,hboasia3-i.akamaihd.net,🎬国外媒体
+  - DOMAIN,hboasia4-i.akamaihd.net,🎬国外媒体
+  - DOMAIN,hboasia5-i.akamaihd.net,🎬国外媒体
+  - DOMAIN,cf-images.ap-southeast-1.prod.boltdns.net,🎬国外媒体
+  - DOMAIN-SUFFIX,5itv.tv,🎬国外媒体
+  - DOMAIN-SUFFIX,ocnttv.com,🎬国外媒体
+  - DOMAIN-SUFFIX,hulu.com,🎬国外媒体
+  - DOMAIN-SUFFIX,huluim.com,🎬国外媒体
+  - DOMAIN-SUFFIX,hulustream.com,🎬国外媒体
+  - DOMAIN-SUFFIX,happyon.jp,🎬国外媒体
+  - DOMAIN-SUFFIX,hulu.jp,🎬国外媒体
+  - DOMAIN-SUFFIX,itv.com,🎬国外媒体
+  - DOMAIN-SUFFIX,itvstatic.com,🎬国外媒体
+  - DOMAIN,itvpnpmobile-a.akamaihd.net,🎬国外媒体
+  - DOMAIN-SUFFIX,kktv.com.tw,🎬国外媒体
+  - DOMAIN-SUFFIX,kktv.me,🎬国外媒体
+  - DOMAIN,kktv-theater.kk.stream,🎬国外媒体
+  - DOMAIN-SUFFIX,linetv.tw,🎬国外媒体
+  - DOMAIN,d3c7rimkq79yfu.cloudfront.net,🎬国外媒体
+  - DOMAIN-SUFFIX,litv.tv,🎬国外媒体
+  - DOMAIN,litvfreemobile-hichannel.cdn.hinet.net,🎬国外媒体
+  - DOMAIN-SUFFIX,channel5.com,🎬国外媒体
+  - DOMAIN-SUFFIX,my5.tv,🎬国外媒体
+  - DOMAIN,d349g9zuie06uo.cloudfront.net,🎬国外媒体
+  - DOMAIN-SUFFIX,mytvsuper.com,🎬国外媒体
+  - DOMAIN-SUFFIX,tvb.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflix.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflix.net,🎬国外媒体
+  - DOMAIN-SUFFIX,nflxext.com,🎬国外媒体
+  - DOMAIN-SUFFIX,nflximg.com,🎬国外媒体
+  - DOMAIN-SUFFIX,nflximg.net,🎬国外媒体
+  - DOMAIN-SUFFIX,nflxso.net,🎬国外媒体
+  - DOMAIN-SUFFIX,nflxvideo.net,🎬国外媒体
+  - DOMAIN-SUFFIX,netflixdnstest0.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflixdnstest1.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflixdnstest2.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflixdnstest3.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflixdnstest4.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflixdnstest5.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflixdnstest6.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflixdnstest7.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflixdnstest8.com,🎬国外媒体
+  - DOMAIN-SUFFIX,netflixdnstest9.com,🎬国外媒体
+  - IP-CIDR,23.246.0.0/18,🎬国外媒体,no-resolve
+  - IP-CIDR,37.77.184.0/21,🎬国外媒体,no-resolve
+  - IP-CIDR,45.57.0.0/17,🎬国外媒体,no-resolve
+  - IP-CIDR,64.120.128.0/17,🎬国外媒体,no-resolve
+  - IP-CIDR,66.197.128.0/17,🎬国外媒体,no-resolve
+  - IP-CIDR,108.175.32.0/20,🎬国外媒体,no-resolve
+  - IP-CIDR,192.173.64.0/18,🎬国外媒体,no-resolve
+  - IP-CIDR,198.38.96.0/19,🎬国外媒体,no-resolve
+  - IP-CIDR,198.45.48.0/20,🎬国外媒体,no-resolve
+  - DOMAIN-SUFFIX,dmc.nico,🎬国外媒体
+  - DOMAIN-SUFFIX,nicovideo.jp,🎬国外媒体
+  - DOMAIN-SUFFIX,nimg.jp,🎬国外媒体
+  - DOMAIN-SUFFIX,socdm.com,🎬国外媒体
+  - DOMAIN-SUFFIX,pbs.org,🎬国外媒体
+  - DOMAIN-SUFFIX,phncdn.com,🎬国外媒体
+  - DOMAIN-SUFFIX,pornhub.com,🎬国外媒体
+  - DOMAIN-SUFFIX,pornhubpremium.com,🎬国外媒体
+  - DOMAIN-SUFFIX,skyking.com.tw,🎬国外媒体
+  - DOMAIN,hamifans.emome.net,🎬国外媒体
+  - DOMAIN-SUFFIX,twitch.tv,🎬国外媒体
+  - DOMAIN-SUFFIX,twitchcdn.net,🎬国外媒体
+  - DOMAIN-SUFFIX,ttvnw.net,🎬国外媒体
+  - DOMAIN-SUFFIX,jtvnw.net,🎬国外媒体
+  - DOMAIN-SUFFIX,viu.com,🎬国外媒体
+  - DOMAIN-SUFFIX,viu.tv,🎬国外媒体
+  - DOMAIN,api.viu.now.com,🎬国外媒体
+  - DOMAIN,d1k2us671qcoau.cloudfront.net,🎬国外媒体
+  - DOMAIN,d2anahhhmp1ffz.cloudfront.net,🎬国外媒体
+  - DOMAIN,dfp6rglgjqszk.cloudfront.net,🎬国外媒体
+  - DOMAIN-SUFFIX,googlevideo.com,🎬国外媒体
+  - DOMAIN-SUFFIX,youtube.com,🎬国外媒体
+  - DOMAIN,youtubei.googleapis.com,🎬国外媒体
+  - DOMAIN-SUFFIX,biliapi.com,🎬哔哩哔哩
+  - DOMAIN-SUFFIX,biliapi.net,🎬哔哩哔哩
+  - DOMAIN-SUFFIX,bilibili.com,🎬哔哩哔哩
+  - DOMAIN-SUFFIX,bilibili.tv,🎬哔哩哔哩
+  - DOMAIN-SUFFIX,bilivideo.com,🎬哔哩哔哩
+
+  - DOMAIN-SUFFIX,local,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
+  - IP-CIDR6,::1/128,DIRECT,no-resolve
+  - IP-CIDR6,fc00::/7,DIRECT,no-resolve
+  - IP-CIDR6,fe80::/10,DIRECT,no-resolve
+  - IP-CIDR6,fd00::/8,DIRECT,no-resolve
+  - DOMAIN,app.adjust.com,DIRECT
+  - DOMAIN,hho-inc.com,DIRECT
+  - DOMAIN-SUFFIX,googletraveladservices.com,DIRECT
+  - DOMAIN,dl.google.com,DIRECT
+  - DOMAIN,mtalk.google.com,DIRECT
+  - DOMAIN,livew.l.qq.com,DIRECT
+  - DOMAIN,vd.l.qq.com,DIRECT
+  - DOMAIN,analytics.strava.com,DIRECT
+  - DOMAIN,msg.umeng.com,DIRECT
+  - DOMAIN,msg.umengcloud.com,DIRECT
+  - DOMAIN-SUFFIX,qhres.com,DIRECT
+  - DOMAIN-SUFFIX,qhimg.com,DIRECT
+  - DOMAIN-SUFFIX,akadns.net,DIRECT
+  - DOMAIN-SUFFIX,alibaba.com,DIRECT
+  - DOMAIN-SUFFIX,alicdn.com,DIRECT
+  - DOMAIN-SUFFIX,alikunlun.com,DIRECT
+  - DOMAIN-SUFFIX,alipay.com,DIRECT
+  - DOMAIN-SUFFIX,amap.com,DIRECT
+  - DOMAIN-SUFFIX,autonavi.com,DIRECT
+  - DOMAIN-SUFFIX,dingtalk.com,DIRECT
+  - DOMAIN-SUFFIX,mxhichina.com,DIRECT
+  - DOMAIN-SUFFIX,soku.com,DIRECT
+  - DOMAIN-SUFFIX,taobao.com,DIRECT
+  - DOMAIN-SUFFIX,tmall.com,DIRECT
+  - DOMAIN-SUFFIX,tmall.hk,DIRECT
+  - DOMAIN-SUFFIX,ykimg.com,DIRECT
+  - DOMAIN-SUFFIX,youku.com,DIRECT
+  - DOMAIN-SUFFIX,xiami.com,DIRECT
+  - DOMAIN-SUFFIX,xiami.net,DIRECT
+  - DOMAIN-SUFFIX,aaplimg.com,DIRECT
+  - DOMAIN-SUFFIX,apple.co,DIRECT
+  - DOMAIN-SUFFIX,apple.com,DIRECT
+  - DOMAIN-SUFFIX,apple-cloudkit.com,DIRECT
+  - DOMAIN-SUFFIX,appstore.com,DIRECT
+  - DOMAIN-SUFFIX,cdn-apple.com,DIRECT
+  - DOMAIN-SUFFIX,crashlytics.com,DIRECT
+  - DOMAIN-SUFFIX,icloud.com,DIRECT
+  - DOMAIN-SUFFIX,icloud-content.com,DIRECT
+  - DOMAIN-SUFFIX,me.com,DIRECT
+  - DOMAIN-SUFFIX,mzstatic.com,DIRECT
+  - DOMAIN,www-cdn.icloud.com.akadns.net,DIRECT
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-SUFFIX,baidubcr.com,DIRECT
+  - DOMAIN-SUFFIX,bdstatic.com,DIRECT
+  - DOMAIN-SUFFIX,yunjiasu-cdn.net,DIRECT
+  - DOMAIN-SUFFIX,acgvideo.com,DIRECT
+  - DOMAIN-SUFFIX,hdslb.com,DIRECT
+  - DOMAIN-SUFFIX,blizzard.com,DIRECT
+  - DOMAIN-SUFFIX,battle.net,DIRECT
+  - DOMAIN,blzddist1-a.akamaihd.net,DIRECT
+  - DOMAIN-SUFFIX,feiliao.com,DIRECT
+  - DOMAIN-SUFFIX,pstatp.com,DIRECT
+  - DOMAIN-SUFFIX,snssdk.com,DIRECT
+  - DOMAIN-SUFFIX,iesdouyin.com,DIRECT
+  - DOMAIN-SUFFIX,toutiao.com,DIRECT
+  - DOMAIN-SUFFIX,cctv.com,DIRECT
+  - DOMAIN-SUFFIX,cctvpic.com,DIRECT
+  - DOMAIN-SUFFIX,livechina.com,DIRECT
+  - DOMAIN-SUFFIX,didialift.com,DIRECT
+  - DOMAIN-SUFFIX,didiglobal.com,DIRECT
+  - DOMAIN-SUFFIX,udache.com,DIRECT
+  - DOMAIN-SUFFIX,343480.com,DIRECT
+  - DOMAIN-SUFFIX,baduziyuan.com,DIRECT
+  - DOMAIN-SUFFIX,com-hs-hkdy.com,DIRECT
+  - DOMAIN-SUFFIX,czybjz.com,DIRECT
+  - DOMAIN-SUFFIX,dandanzan.com,DIRECT
+  - DOMAIN-SUFFIX,fjhps.com,DIRECT
+  - DOMAIN-SUFFIX,kuyunbo.club,DIRECT
+  - DOMAIN-SUFFIX,21cn.com,DIRECT
+  - DOMAIN-SUFFIX,hitv.com,DIRECT
+  - DOMAIN-SUFFIX,mgtv.com,DIRECT
+  - DOMAIN-SUFFIX,iqiyi.com,DIRECT
+  - DOMAIN-SUFFIX,iqiyipic.com,DIRECT
+  - DOMAIN-SUFFIX,71.am.com,DIRECT
+  - DOMAIN-SUFFIX,jd.com,DIRECT
+  - DOMAIN-SUFFIX,jd.hk,DIRECT
+  - DOMAIN-SUFFIX,jdpay.com,DIRECT
+  - DOMAIN-SUFFIX,360buyimg.com,DIRECT
+  - DOMAIN-SUFFIX,iciba.com,DIRECT
+  - DOMAIN-SUFFIX,ksosoft.com,DIRECT
+  - DOMAIN-SUFFIX,meitu.com,DIRECT
+  - DOMAIN-SUFFIX,meitudata.com,DIRECT
+  - DOMAIN-SUFFIX,meitustat.com,DIRECT
+  - DOMAIN-SUFFIX,meipai.com,DIRECT
+  - DOMAIN-SUFFIX,duokan.com,DIRECT
+  - DOMAIN-SUFFIX,mi-img.com,DIRECT
+  - DOMAIN-SUFFIX,miui.com,DIRECT
+  - DOMAIN-SUFFIX,miwifi.com,DIRECT
+  - DOMAIN-SUFFIX,xiaomi.com,DIRECT
+  - DOMAIN-SUFFIX,microsoft.com,DIRECT
+  - DOMAIN-SUFFIX,msecnd.net,DIRECT
+  - DOMAIN-SUFFIX,office365.com,DIRECT
+  - DOMAIN-SUFFIX,outlook.com,DIRECT
+  - DOMAIN-SUFFIX,s-microsoft.com,DIRECT
+  - DOMAIN-SUFFIX,visualstudio.com,DIRECT
+  - DOMAIN-SUFFIX,windows.com,DIRECT
+  - DOMAIN-SUFFIX,windowsupdate.com,DIRECT
+  - DOMAIN,officecdn-microsoft-com.akamaized.net,DIRECT
+  - DOMAIN-SUFFIX,163.com,DIRECT
+  - DOMAIN-SUFFIX,126.net,DIRECT
+  - DOMAIN-SUFFIX,127.net,DIRECT
+  - DOMAIN-SUFFIX,163yun.com,DIRECT
+  - DOMAIN-SUFFIX,lofter.com,DIRECT
+  - DOMAIN-SUFFIX,netease.com,DIRECT
+  - DOMAIN-SUFFIX,ydstatic.com,DIRECT
+  - DOMAIN-SUFFIX,sina.com,DIRECT
+  - DOMAIN-SUFFIX,weibo.com,DIRECT
+  - DOMAIN-SUFFIX,weibocdn.com,DIRECT
+  - DOMAIN-SUFFIX,sohu.com,DIRECT
+  - DOMAIN-SUFFIX,sohucs.com,DIRECT
+  - DOMAIN-SUFFIX,sohu-inc.com,DIRECT
+  - DOMAIN-SUFFIX,v-56.com,DIRECT
+  - DOMAIN-SUFFIX,sogo.com,DIRECT
+  - DOMAIN-SUFFIX,sogou.com,DIRECT
+  - DOMAIN-SUFFIX,sogoucdn.com,DIRECT
+  - DOMAIN-SUFFIX,steampowered.com,DIRECT
+  - DOMAIN-SUFFIX,steam-chat.com,DIRECT
+  - DOMAIN-SUFFIX,steamgames.com,DIRECT
+  - DOMAIN-SUFFIX,steamusercontent.com,DIRECT
+  - DOMAIN-SUFFIX,steamcontent.com,DIRECT
+  - DOMAIN-SUFFIX,steamstatic.com,DIRECT
+  - DOMAIN-SUFFIX,steamcdn-a.akamaihd.net,DIRECT
+  - DOMAIN-SUFFIX,steamstat.us,DIRECT
+  - DOMAIN-SUFFIX,gtimg.com,DIRECT
+  - DOMAIN-SUFFIX,idqqimg.com,DIRECT
+  - DOMAIN-SUFFIX,igamecj.com,DIRECT
+  - DOMAIN-SUFFIX,myapp.com,DIRECT
+  - DOMAIN-SUFFIX,myqcloud.com,DIRECT
+  - DOMAIN-SUFFIX,qq.com,DIRECT
+  - DOMAIN-SUFFIX,tencent.com,DIRECT
+  - DOMAIN-SUFFIX,tencent-cloud.net,DIRECT
+  - DOMAIN-SUFFIX,jstucdn.com,DIRECT
+  - DOMAIN-SUFFIX,zimuzu.io,DIRECT
+  - DOMAIN-SUFFIX,zimuzu.tv,DIRECT
+  - DOMAIN-SUFFIX,zmz2019.com,DIRECT
+  - DOMAIN-SUFFIX,zmzapi.com,DIRECT
+  - DOMAIN-SUFFIX,zmzapi.net,DIRECT
+  - DOMAIN-SUFFIX,zmzfile.com,DIRECT
+  - DOMAIN-SUFFIX,ccgslb.com,DIRECT
+  - DOMAIN-SUFFIX,ccgslb.net,DIRECT
+  - DOMAIN-SUFFIX,chinanetcenter.com,DIRECT
+  - DOMAIN-SUFFIX,meixincdn.com,DIRECT
+  - DOMAIN-SUFFIX,ourdvs.com,DIRECT
+  - DOMAIN-SUFFIX,staticdn.net,DIRECT
+  - DOMAIN-SUFFIX,wangsu.com,DIRECT
+  - DOMAIN-SUFFIX,ipip.net,DIRECT
+  - DOMAIN-SUFFIX,ip.la,DIRECT
+  - DOMAIN-SUFFIX,ip-cdn.com,DIRECT
+  - DOMAIN-SUFFIX,ipv6-test.com,DIRECT
+  - DOMAIN-SUFFIX,test-ipv6.com,DIRECT
+  - DOMAIN-SUFFIX,whatismyip.com,DIRECT
+  - DOMAIN-SUFFIX,netspeedtestmaster.com,DIRECT
+  - DOMAIN,speedtest.macpaw.com,DIRECT
+  - DOMAIN-SUFFIX,awesome-hd.me,DIRECT
+  - DOMAIN-SUFFIX,broadcasthe.net,DIRECT
+  - DOMAIN-SUFFIX,chdbits.co,DIRECT
+  - DOMAIN-SUFFIX,classix-unlimited.co.uk,DIRECT
+  - DOMAIN-SUFFIX,empornium.me,DIRECT
+  - DOMAIN-SUFFIX,gazellegames.net,DIRECT
+  - DOMAIN-SUFFIX,hdchina.org,DIRECT
+  - DOMAIN-SUFFIX,hdsky.me,DIRECT
+  - DOMAIN-SUFFIX,icetorrent.org,DIRECT
+  - DOMAIN-SUFFIX,jpopsuki.eu,DIRECT
+  - DOMAIN-SUFFIX,keepfrds.com,DIRECT
+  - DOMAIN-SUFFIX,madsrevolution.net,DIRECT
+  - DOMAIN-SUFFIX,m-team.cc,DIRECT
+  - DOMAIN-SUFFIX,nanyangpt.com,DIRECT
+  - DOMAIN-SUFFIX,ncore.cc,DIRECT
+  - DOMAIN-SUFFIX,open.cd,DIRECT
+  - DOMAIN-SUFFIX,ourbits.club,DIRECT
+  - DOMAIN-SUFFIX,passthepopcorn.me,DIRECT
+  - DOMAIN-SUFFIX,privatehd.to,DIRECT
+  - DOMAIN-SUFFIX,redacted.ch,DIRECT
+  - DOMAIN-SUFFIX,springsunday.net,DIRECT
+  - DOMAIN-SUFFIX,tjupt.org,DIRECT
+  - DOMAIN-SUFFIX,totheglory.im,DIRECT
+  - DOMAIN-SUFFIX,acm.org,DIRECT
+  - DOMAIN-SUFFIX,acs.org,DIRECT
+  - DOMAIN-SUFFIX,aip.org,DIRECT
+  - DOMAIN-SUFFIX,ams.org,DIRECT
+  - DOMAIN-SUFFIX,annualreviews.org,DIRECT
+  - DOMAIN-SUFFIX,aps.org,DIRECT
+  - DOMAIN-SUFFIX,ascelibrary.org,DIRECT
+  - DOMAIN-SUFFIX,asm.org,DIRECT
+  - DOMAIN-SUFFIX,asme.org,DIRECT
+  - DOMAIN-SUFFIX,astm.org,DIRECT
+  - DOMAIN-SUFFIX,bmj.com,DIRECT
+  - DOMAIN-SUFFIX,cambridge.org,DIRECT
+  - DOMAIN-SUFFIX,cas.org,DIRECT
+  - DOMAIN-SUFFIX,clarivate.com,DIRECT
+  - DOMAIN-SUFFIX,ebscohost.com,DIRECT
+  - DOMAIN-SUFFIX,emerald.com,DIRECT
+  - DOMAIN-SUFFIX,engineeringvillage.com,DIRECT
+  - DOMAIN-SUFFIX,icevirtuallibrary.com,DIRECT
+  - DOMAIN-SUFFIX,ieee.org,DIRECT
+  - DOMAIN-SUFFIX,imf.org,DIRECT
+  - DOMAIN-SUFFIX,iop.org,DIRECT
+  - DOMAIN-SUFFIX,jamanetwork.com,DIRECT
+  - DOMAIN-SUFFIX,jhu.edu,DIRECT
+  - DOMAIN-SUFFIX,jstor.org,DIRECT
+  - DOMAIN-SUFFIX,karger.com,DIRECT
+  - DOMAIN-SUFFIX,libguides.com,DIRECT
+  - DOMAIN-SUFFIX,madsrevolution.net,DIRECT
+  - DOMAIN-SUFFIX,mpg.de,DIRECT
+  - DOMAIN-SUFFIX,myilibrary.com,DIRECT
+  - DOMAIN-SUFFIX,nature.com,DIRECT
+  - DOMAIN-SUFFIX,oecd-ilibrary.org,DIRECT
+  - DOMAIN-SUFFIX,osapublishing.org,DIRECT
+  - DOMAIN-SUFFIX,oup.com,DIRECT
+  - DOMAIN-SUFFIX,ovid.com,DIRECT
+  - DOMAIN-SUFFIX,oxfordartonline.com,DIRECT
+  - DOMAIN-SUFFIX,oxfordbibliographies.com,DIRECT
+  - DOMAIN-SUFFIX,oxfordmusiconline.com,DIRECT
+  - DOMAIN-SUFFIX,pnas.org,DIRECT
+  - DOMAIN-SUFFIX,proquest.com,DIRECT
+  - DOMAIN-SUFFIX,rsc.org,DIRECT
+  - DOMAIN-SUFFIX,sagepub.com,DIRECT
+  - DOMAIN-SUFFIX,siam.org,DIRECT
+  - DOMAIN-SUFFIX,spiedigitallibrary.org,DIRECT
+  - DOMAIN-SUFFIX,springer.com,DIRECT
+  - DOMAIN-SUFFIX,springerlink.com,DIRECT
+  - DOMAIN-SUFFIX,tandfonline.com,DIRECT
+  - DOMAIN-SUFFIX,un.org,DIRECT
+  - DOMAIN-SUFFIX,uni-bielefeld.de,DIRECT
+  - DOMAIN-SUFFIX,webofknowledge.com,DIRECT
+  - DOMAIN-SUFFIX,westlaw.com,DIRECT
+  - DOMAIN-SUFFIX,wiley.com,DIRECT
+  - DOMAIN-SUFFIX,worldbank.org,DIRECT
+  - DOMAIN-SUFFIX,worldscientific.com,DIRECT
+  - DOMAIN-SUFFIX,cn,DIRECT
+  - DOMAIN-SUFFIX,360in.com,DIRECT
+  - DOMAIN-SUFFIX,51ym.me,DIRECT
+  - DOMAIN-SUFFIX,8686c.com,DIRECT
+  - DOMAIN-SUFFIX,abchina.com,DIRECT
+  - DOMAIN-SUFFIX,accuweather.com,DIRECT
+  - DOMAIN-SUFFIX,aicoinstorge.com,DIRECT
+  - DOMAIN-SUFFIX,air-matters.com,DIRECT
+  - DOMAIN-SUFFIX,air-matters.io,DIRECT
+  - DOMAIN-SUFFIX,aixifan.com,DIRECT
+  - DOMAIN-SUFFIX,amd.com,DIRECT
+  - DOMAIN-SUFFIX,b612.net,DIRECT
+  - DOMAIN-SUFFIX,bdatu.com,DIRECT
+  - DOMAIN-SUFFIX,beitaichufang.com,DIRECT
+  - DOMAIN-SUFFIX,bjango.com,DIRECT
+  - DOMAIN-SUFFIX,booking.com,DIRECT
+  - DOMAIN-SUFFIX,bstatic.com,DIRECT
+  - DOMAIN-SUFFIX,cailianpress.com,DIRECT
+  - DOMAIN-SUFFIX,camera360.com,DIRECT
+  - DOMAIN-SUFFIX,chinaso.com,DIRECT
+  - DOMAIN-SUFFIX,chua.pro,DIRECT
+  - DOMAIN-SUFFIX,chuimg.com,DIRECT
+  - DOMAIN-SUFFIX,chunyu.mobi,DIRECT
+  - DOMAIN-SUFFIX,chushou.tv,DIRECT
+  - DOMAIN-SUFFIX,cmbchina.com,DIRECT
+  - DOMAIN-SUFFIX,cmbimg.com,DIRECT
+  - DOMAIN-SUFFIX,ctrip.com,DIRECT
+  - DOMAIN-SUFFIX,dfcfw.com,DIRECT
+  - DOMAIN-SUFFIX,docschina.org,DIRECT
+  - DOMAIN-SUFFIX,douban.com,DIRECT
+  - DOMAIN-SUFFIX,doubanio.com,DIRECT
+  - DOMAIN-SUFFIX,douyu.com,DIRECT
+  - DOMAIN-SUFFIX,dxycdn.com,DIRECT
+  - DOMAIN-SUFFIX,dytt8.net,DIRECT
+  - DOMAIN-SUFFIX,eastmoney.com,DIRECT
+  - DOMAIN-SUFFIX,eudic.net,DIRECT
+  - DOMAIN-SUFFIX,feng.com,DIRECT
+  - DOMAIN-SUFFIX,fengkongcloud.com,DIRECT
+  - DOMAIN-SUFFIX,frdic.com,DIRECT
+  - DOMAIN-SUFFIX,futu5.com,DIRECT
+  - DOMAIN-SUFFIX,futunn.com,DIRECT
+  - DOMAIN-SUFFIX,gandi.net,DIRECT
+  - DOMAIN-SUFFIX,geilicdn.com,DIRECT
+  - DOMAIN-SUFFIX,getpricetag.com,DIRECT
+  - DOMAIN-SUFFIX,gifshow.com,DIRECT
+  - DOMAIN-SUFFIX,godic.net,DIRECT
+  - DOMAIN-SUFFIX,hicloud.com,DIRECT
+  - DOMAIN-SUFFIX,hongxiu.com,DIRECT
+  - DOMAIN-SUFFIX,hostbuf.com,DIRECT
+  - DOMAIN-SUFFIX,huxiucdn.com,DIRECT
+  - DOMAIN-SUFFIX,huya.com,DIRECT
+  - DOMAIN-SUFFIX,infinitynewtab.com,DIRECT
+  - DOMAIN-SUFFIX,ithome.com,DIRECT
+  - DOMAIN-SUFFIX,java.com,DIRECT
+  - DOMAIN-SUFFIX,jidian.im,DIRECT
+  - DOMAIN-SUFFIX,kaiyanapp.com,DIRECT
+  - DOMAIN-SUFFIX,kaspersky-labs.com,DIRECT
+  - DOMAIN-SUFFIX,keepcdn.com,DIRECT
+  - DOMAIN-SUFFIX,kkmh.com,DIRECT
+  - DOMAIN-SUFFIX,loli.net,DIRECT
+  - DOMAIN-SUFFIX,luojilab.com,DIRECT
+  - DOMAIN-SUFFIX,maoyan.com,DIRECT
+  - DOMAIN-SUFFIX,maoyun.tv,DIRECT
+  - DOMAIN-SUFFIX,meituan.com,DIRECT
+  - DOMAIN-SUFFIX,meituan.net,DIRECT
+  - DOMAIN-SUFFIX,mobike.com,DIRECT
+  - DOMAIN-SUFFIX,moke.com,DIRECT
+  - DOMAIN-SUFFIX,mubu.com,DIRECT
+  - DOMAIN-SUFFIX,myzaker.com,DIRECT
+  - DOMAIN-SUFFIX,nim-lang-cn.org,DIRECT
+  - DOMAIN-SUFFIX,nvidia.com,DIRECT
+  - DOMAIN-SUFFIX,oracle.com,DIRECT
+  - DOMAIN-SUFFIX,paypal.com,DIRECT
+  - DOMAIN-SUFFIX,paypalobjects.com,DIRECT
+  - DOMAIN-SUFFIX,qdaily.com,DIRECT
+  - DOMAIN-SUFFIX,qidian.com,DIRECT
+  - DOMAIN-SUFFIX,qyer.com,DIRECT
+  - DOMAIN-SUFFIX,qyerstatic.com,DIRECT
+  - DOMAIN-SUFFIX,raychase.net,DIRECT
+  - DOMAIN-SUFFIX,ronghub.com,DIRECT
+  - DOMAIN-SUFFIX,ruguoapp.com,DIRECT
+  - DOMAIN-SUFFIX,s-reader.com,DIRECT
+  - DOMAIN-SUFFIX,sankuai.com,DIRECT
+  - DOMAIN-SUFFIX,scomper.me,DIRECT
+  - DOMAIN-SUFFIX,seafile.com,DIRECT
+  - DOMAIN-SUFFIX,sm.ms,DIRECT
+  - DOMAIN-SUFFIX,smzdm.com,DIRECT
+  - DOMAIN-SUFFIX,snapdrop.net,DIRECT
+  - DOMAIN-SUFFIX,snwx.com,DIRECT
+  - DOMAIN-SUFFIX,sspai.com,DIRECT
+  - DOMAIN-SUFFIX,takungpao.com,DIRECT
+  - DOMAIN-SUFFIX,teamviewer.com,DIRECT
+  - DOMAIN-SUFFIX,tianyancha.com,DIRECT
+  - DOMAIN-SUFFIX,udacity.com,DIRECT
+  - DOMAIN-SUFFIX,uning.com,DIRECT
+  - DOMAIN-SUFFIX,vmware.com,DIRECT
+  - DOMAIN-SUFFIX,weather.com,DIRECT
+  - DOMAIN-SUFFIX,weico.cc,DIRECT
+  - DOMAIN-SUFFIX,weidian.com,DIRECT
+  - DOMAIN-SUFFIX,xiachufang.com,DIRECT
+  - DOMAIN-SUFFIX,ximalaya.com,DIRECT
+  - DOMAIN-SUFFIX,xinhuanet.com,DIRECT
+  - DOMAIN-SUFFIX,xmcdn.com,DIRECT
+  - DOMAIN-SUFFIX,yangkeduo.com,DIRECT
+  - DOMAIN-SUFFIX,zhangzishi.cc,DIRECT
+  - DOMAIN-SUFFIX,zhihu.com,DIRECT
+  - DOMAIN-SUFFIX,zhimg.com,DIRECT
+  - DOMAIN-SUFFIX,zhuihd.com,DIRECT
+  - DOMAIN-SUFFIX,coincall.com,DIRECT
+  - DOMAIN-SUFFIX,adobe.io,DIRECT
+  - DOMAIN-SUFFIX,ddurl.to,DIRECT
+  - DOMAIN-SUFFIX,dg-work.cn,DIRECT
+  - DOMAIN-SUFFIX,dingding.xin,DIRECT
+  - DOMAIN-SUFFIX,dingtalk.cn,DIRECT
+  - DOMAIN-SUFFIX,dingtalk.com,DIRECT
+  - DOMAIN-SUFFIX,dingtalk.com.cn,DIRECT
+  - DOMAIN-SUFFIX,dingtalk.net,DIRECT
+  - DOMAIN-SUFFIX,dingtalkapps.com,DIRECT
+  - DOMAIN-SUFFIX,laiwang.com,DIRECT
+  - DOMAIN-SUFFIX,lwurl.to,DIRECT
+  - DOMAIN-SUFFIX,realapp.xin,DIRECT
+  - DOMAIN,download.jetbrains.com,DIRECT
+  - DOMAIN,images-cn.ssl-images-amazon.com,DIRECT
+  - IP-CIDR,119.28.28.28/32,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT
+
+  - MATCH,⚓️其他流量

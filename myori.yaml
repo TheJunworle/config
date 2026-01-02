@@ -63,7 +63,16 @@ dns:
     - "localhost.ptlogin2.qq.com"
 
 proxies:
-  - name: 老家hy
+  - name: "马来"
+    type: socks5
+    server: 1.9.206.192
+    port: 6023
+    username: bp-zhongxiang
+    password: ip666666
+    udp: true
+    dialer-proxy: 台湾2
+
+  - name: "老家hy"
     type: hysteria2
     server: pan.juns.top
     port: 51376
@@ -78,7 +87,7 @@ proxies:
       - h2
       - http/1.1
 
-  - name: 台
+  - name: "台"
     type: vless
     server: 1.12.53.220
     port: 59156
@@ -92,7 +101,7 @@ proxies:
       public-key: NnpWA13G1j6Eg88_YnyLoP9cper7ChatSCVZOCMQtVo
       short-id: d2094b50
 
-  - name: 台湾1
+  - name: "台湾1"
     type: vless
     server: 1.12.53.220
     port: 17183
@@ -106,7 +115,7 @@ proxies:
       public-key: qZOcwoOCxmIdneXcskwV-FlGl_fnztQ2RWslgDinAVM
       short-id: f73a5d
 
-  - name: 台湾2
+  - name: "台湾2"
     type: vless
     server: 1.12.53.220
     port: 30447
@@ -120,7 +129,7 @@ proxies:
       public-key: INC5t5OVzej39kZJzpWhRHRfQdGhf6lmzgCoxxDAK2w
       short-id: "84"
 
-  - name: jp
+  - name: "jp"
     type: vless
     server: jp.sunipip.com
     port: 32483
@@ -134,18 +143,23 @@ proxies:
       public-key: sn7ZbFvx8WCYQ8nFvl4Bf3ZD_dc0e3HMOMsWjWodrGk
       short-id: 57a5d6
 
-  - name: 中转谷歌
-    type: vless
-    flow: xtls-rprx-vision
-    server: 34.2.129.198
-    port: 50896
-    uuid: 9ade5891-0ab0-4c78-febf-0d3970377588
-    servername: fonts.gstatic.com
-    skip-cert-verify: true
+  # --- 已替换节点开始 ---
+  - name: "谷歌云-美国"
+    type: hysteria2
+    server: 35.212.137.61
+    port: 21814
+    password: u8odbHQpHV
     tls: true
-    dialer-proxy: 新加坡23aws
+    servername: www.google.com
+    skip-cert-verify: true
+    down: 1000
+    alpn:
+      - h3
+      - h2
+      - http/1.1
+  # --- 已替换节点结束 ---
 
-  - name: 新加坡23aws
+  - name: "新加坡23aws"
     type: hysteria2
     server: sg23.476579.xyz
     port: 8080
@@ -153,6 +167,58 @@ proxies:
     skip-cert-verify: false
     sni: sg23.476579.xyz
     password: 9e509c63-5233-444f-87ca-778274566331
+
+  - name: "中转谷歌云"
+    type: hysteria2
+    server: 35.212.137.61
+    port: 21814
+    password: u8odbHQpHV
+    tls: true
+    servername: www.google.com
+    skip-cert-verify: true
+    down: 1000
+    alpn:
+      - h3
+      - h2
+      - http/1.1
+    dialer-proxy: 新加坡23aws
+
+  # ========== 已添加的三个新节点 ==========
+  - name: "新-HK"
+    type: hysteria2
+    server: test.sunip.qzz.io
+    port: 52366
+    password: bCh7XHETVC
+    tls: true
+    servername: amd.com
+    skip-cert-verify: true
+    udp: true
+
+  - name: "新-US"
+    type: vmess
+    server: 47.100.121.82
+    port: 53164
+    uuid: 6f55ea35-d5d5-4999-a87c-8e89a1012755
+    alterId: 0
+    cipher: auto
+    network: tcp
+    udp: true
+
+  - name: "新-JP"
+    type: vless
+    server: yinghua3.sunipip.com
+    port: 42376
+    uuid: e3c2cb56-c1e6-4b7d-a724-bfb8f00d7b93
+    network: tcp
+    tls: true
+    servername: www.amd.com
+    client-fingerprint: chrome
+    flow: xtls-rprx-vision
+    udp: true
+    reality-opts:
+      public-key: Z5RKrZnIv9mgwQ5J7dMvWBqhUg2BSH0BHa15bhKDvjk
+      short-id: 353f2c
+  # ========== 三个新节点结束 ==========
 
 proxy-groups:
   - name: PROXY
@@ -165,8 +231,12 @@ proxy-groups:
       - 台湾2
       - 台
       - 新加坡23aws
-      - 中转谷歌
-
+      - 谷歌云-美国
+      - 中转谷歌云
+      - 马来
+      - 新-HK
+      - 新-US
+      - 新-JP
 
 rule-providers:
   reject:
@@ -260,7 +330,6 @@ rule-providers:
     path: ./ruleset/applications.yaml
     interval: 86400
 
-
 rules:
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
@@ -278,7 +347,3 @@ rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,PROXY
-
-
-
-

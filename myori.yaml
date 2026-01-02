@@ -52,6 +52,22 @@ dns:
     - "localhost.ptlogin2.qq.com"
 
 proxies:
+  # --- 新增的日本节点 ---
+  - name: "Vl-ws-tls-junsv jp"
+    type: vless
+    server: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+    port: 443
+    uuid: 340ce710-8daf-4204-8d0d-74f2edc46386
+    udp: true
+    tls: true
+    network: ws
+    servername: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+    client-fingerprint: chrome
+    ws-opts:
+      path: /
+      headers:
+        Host: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+
   # --- 原有节点 ---
   - name: 老家hy
     type: hysteria2
@@ -131,7 +147,6 @@ proxies:
     udp: true
     sni: sg23.476579.xyz
 
-  # --- 新增节点 ---
   - name: "HK-Hysteria2"
     type: hysteria2
     server: test.sunip.qzz.io
@@ -171,6 +186,7 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
+      - Vl-ws-tls-junsv jp
       - 老家hy
       - jp
       - JP-VLESS-test01

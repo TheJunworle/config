@@ -166,12 +166,32 @@ proxies:
     tls: true
     servername: www.google.com
     skip-cert-verify: true
-    down: 1000
     alpn:
       - h3
       - h2
       - http/1.1
   # --- 已替换节点结束 ---
+
+  # --- 已替换节点开始 ---
+  - name: "谷歌云-US2"
+    type: hysteria2
+    server: 35.212.222.192
+    port: 88
+    password: twwjOzHCo5
+    tls: true
+    servername: www.google.com
+    skip-cert-verify: true
+    alpn:
+      - h3
+      - h2
+      - http/1.1
+  # --- 已替换节点结束 ---
+
+
+
+
+
+
 
   - name: "新加坡23aws"
     type: hysteria2
@@ -240,6 +260,7 @@ proxy-groups:
     proxies:
       - DIRECT
       - 谷歌云-美国
+      - 谷歌云-US2
       - 中转谷歌云
       - 爪云-JP-WS
       - 新加坡23aws

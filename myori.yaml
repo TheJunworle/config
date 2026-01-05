@@ -1,76 +1,24 @@
-# ===========================================================
-# 基础设置
-# ===========================================================
-port: 7890
-socks-port: 7891
-redir-port: 7892
-mixed-port: 7893
-allow-lan: true
-bind-address: "0.0.0.0"
-mode: Rule
+mixed-port: 7890
+allow-lan: false
+bind-address: '*'
+mode: rule
 log-level: info
-ipv6: true
+external-controller: '127.0.0.1:9090'
 unified-delay: true
 tcp-concurrent: true
-external-controller: "127.0.0.1:9090"
-
-# ===========================================================
-# DNS 设置
-# ===========================================================
 dns:
-  enable: true
-  ipv6: true
-  listen: "0.0.0.0:1053"
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  use-hosts: true
-  use-system-hosts: false
+    enable: true
+    ipv6: false
+    default-nameserver: [223.5.5.5, 119.29.29.29, 114.114.114.114]
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    respect-rules: true
+    proxy-server-nameserver: [223.5.5.5, 119.29.29.29, 114.114.114.114]
+    nameserver: [223.5.5.5, 119.29.29.29, 114.114.114.114]
+    fallback: [1.1.1.1, 8.8.8.8]
+    fallback-filter: { geoip: true, geoip-code: CN, geosite: [gfw], ipcidr: [240.0.0.0/4], domain: [+.google.com, +.facebook.com, +.youtube.com] }
 
-  default-nameserver:
-    - 114.114.114.114
-    - 119.29.29.29
-    - 223.5.5.5
-
-  nameserver:
-    - 114.114.114.114
-    - 119.29.29.29
-    - 223.5.5.5
-
-  fallback:
-    - 1.1.1.1
-
-  fake-ip-filter:
-    - "*.lan"
-    - "*.local"
-    - "*.localdomain"
-    - "*.localhost"
-    - "*.home.arpa"
-    - "*.test"
-    - "*.invalid"
-    - "time.*.com"
-    - "time.*.gov"
-    - "time.*.edu.cn"
-    - "ntp.*.com"
-    - "*.ntp.org"
-    - "*.ntp.org.cn"
-    - "stun.*.*"
-    - "stun.*.*.*"
-    - "mesu.apple.com"
-    - "swscan.apple.com"
-    - "*.msftconnecttest.com"
-    - "*.msftncsi.com"
-    - "music.163.com"
-    - "*.music.163.com"
-    - "*.126.net"
-    - "y.qq.com"
-    - "*.y.qq.com"
-    - "www.bilibili.com"
-    - "api.bilibili.com"
-    - "localhost.ptlogin2.qq.com"
-
-# ===========================================================
-# 代理节点
-# ===========================================================
 proxies:
   # --- Reality / VLESS ---
   - name: "us-vless-reality"
@@ -275,10 +223,13 @@ proxy-groups:
       - us-vmess-ws-olegon
       - us-vless-reality
 
-# ===========================================================
-# 规则集 (Rule Providers)
-# ===========================================================
-rules:
+
+
+
+
+
+
+rules: 
     - 'IP-CIDR,1.1.1.1/32,PROXY,no-resolve'
     - 'IP-CIDR,8.8.8.8/32,PROXY,no-resolve'
     - 'DOMAIN-SUFFIX,services.googleapis.cn,PROXY'

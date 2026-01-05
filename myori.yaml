@@ -1,3 +1,6 @@
+# ===========================================================
+# 基础设置
+# ===========================================================
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -11,6 +14,9 @@ unified-delay: true
 tcp-concurrent: true
 external-controller: "127.0.0.1:9090"
 
+# ===========================================================
+# DNS 设置
+# ===========================================================
 dns:
   enable: true
   ipv6: true
@@ -62,86 +68,25 @@ dns:
     - "api.bilibili.com"
     - "localhost.ptlogin2.qq.com"
 
+# ===========================================================
+# 代理节点
+# ===========================================================
 proxies:
-  - name: "爪云-JP-WS"
+  # --- Reality / VLESS ---
+  - name: "us-vless-reality"
     type: vless
-    server: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
-    port: 443
-    uuid: 340ce710-8daf-4204-8d0d-74f2edc46386
-    udp: true
-    tls: true
-    network: ws
-    servername: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
-    ws-opts:
-      path: /
-      headers:
-        Host: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
-
-  - name: "马来"
-    type: socks5
-    server: 1.9.206.192
-    port: 6023
-    username: bp-zhongxiang
-    password: ip666666
-    udp: true
-    dialer-proxy: 台湾2
-
-  - name: "老家hy"
-    type: hysteria2
-    server: pan.juns.top
-    port: 51376
-    password: TNncOpYbCn
-    tls: true
-    servername: ts2.tc.mm.bing.net
-    skip-cert-verify: true
-    up: 1000
-    down: 1000
-    alpn:
-      - h3
-      - h2
-      - http/1.1
-
-  - name: "台"
-    type: vless
-    server: 1.12.53.220
-    port: 59156
-    uuid: b813bea4-816c-47a9-bbb6-a7ec5d991bb4
+    server: 35.212.222.192
+    port: 51615
+    uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
     network: tcp
-    tls: true
     udp: true
-    servername: google.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: NnpWA13G1j6Eg88_YnyLoP9cper7ChatSCVZOCMQtVo
-      short-id: d2094b50
-
-  - name: "台湾1"
-    type: vless
-    server: 1.12.53.220
-    port: 17183
-    uuid: 766143bd-a64c-4b94-add8-3f3f057af2da
-    network: tcp
     tls: true
-    udp: true
-    servername: google.com
-    client-fingerprint: chrome
+    flow: xtls-rprx-vision
+    servername: apple.com
     reality-opts:
-      public-key: qZOcwoOCxmIdneXcskwV-FlGl_fnztQ2RWslgDinAVM
-      short-id: f73a5d
-
-  - name: "台湾2"
-    type: vless
-    server: 1.12.53.220
-    port: 30447
-    uuid: e0d8c104-6238-409c-98c8-00ac856b57a8
-    network: tcp
-    tls: true
-    udp: true
-    servername: google.com
+      public-key: eiw0aZwEkPdqvxRYJoruoTcoRV7UzQkh3bKGnAOYjCI
+      short-id: 1baa8b26
     client-fingerprint: chrome
-    reality-opts:
-      public-key: INC5t5OVzej39kZJzpWhRHRfQdGhf6lmzgCoxxDAK2w
-      short-id: "84"
 
   - name: "jp"
     type: vless
@@ -157,87 +102,6 @@ proxies:
       public-key: sn7ZbFvx8WCYQ8nFvl4Bf3ZD_dc0e3HMOMsWjWodrGk
       short-id: 57a5d6
 
-  # --- 已替换节点开始 ---
-  - name: "谷歌云-美国"
-    type: hysteria2
-    server: 35.212.137.61
-    port: 21814
-    password: u8odbHQpHV
-    tls: true
-    servername: www.google.com
-    skip-cert-verify: true
-    alpn:
-      - h3
-      - h2
-      - http/1.1
-  # --- 已替换节点结束 ---
-
-  # --- 已替换节点开始 ---
-  - name: "谷歌云-US2"
-    type: hysteria2
-    server: 35.212.222.192
-    port: 88
-    password: twwjOzHCo5
-    tls: true
-    servername: www.google.com
-    skip-cert-verify: true
-    alpn:
-      - h3
-      - h2
-      - http/1.1
-  # --- 已替换节点结束 ---
-
-
-
-
-
-
-
-  - name: "新加坡23aws"
-    type: hysteria2
-    server: sg23.476579.xyz
-    port: 8080
-    udp: true
-    skip-cert-verify: false
-    sni: sg23.476579.xyz
-    password: 9e509c63-5233-444f-87ca-778274566331
-
-  - name: "中转谷歌云"
-    type: hysteria2
-    server: 35.212.137.61
-    port: 21814
-    password: u8odbHQpHV
-    tls: true
-    servername: www.google.com
-    skip-cert-verify: true
-    down: 1000
-    alpn:
-      - h3
-      - h2
-      - http/1.1
-    dialer-proxy: 新加坡23aws
-
-  # ========== 已添加的三个新节点 ==========
-  - name: "新-HK"
-    type: hysteria2
-    server: test.sunip.qzz.io
-    port: 52366
-    password: bCh7XHETVC
-    tls: true
-    servername: amd.com
-    skip-cert-verify: true
-    udp: true
-
-  - name: "新-US"
-    type: vmess
-    server: 47.100.121.82
-    port: 53164
-    uuid: 6f55ea35-d5d5-4999-a87c-8e89a1012755
-    alterId: 0
-    cipher: auto
-    network: tcp
-    udp: true
-
   - name: "新-JP"
     type: vless
     server: yinghua3.sunipip.com
@@ -252,27 +116,168 @@ proxies:
     reality-opts:
       public-key: Z5RKrZnIv9mgwQ5J7dMvWBqhUg2BSH0BHa15bhKDvjk
       short-id: 353f2c
-  # ========== 三个新节点结束 ==========
 
+  - name: "爪云-JP-WS"
+    type: vless
+    server: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+    port: 443
+    uuid: 340ce710-8daf-4204-8d0d-74f2edc46386
+    udp: true
+    tls: true
+    network: ws
+    servername: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+    ws-opts:
+      path: /
+      headers:
+        Host: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+
+  # --- Hysteria2 ---
+  - name: "us-hysteria2-olegon"
+    type: hysteria2
+    server: 35.212.222.192
+    port: 46911
+    password: 97003903-2e92-4e08-81e0-4f2fb2a927cf
+    alpn: [h3]
+    sni: www.bing.com
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: "谷歌云-美国"
+    type: hysteria2
+    server: 35.212.137.61
+    port: 21814
+    password: u8odbHQpHV
+    tls: true
+    servername: www.google.com
+    skip-cert-verify: true
+    alpn: [h3, h2, http/1.1]
+
+  - name: "谷歌云-US2"
+    type: hysteria2
+    server: 35.212.222.192
+    port: 88
+    password: twwjOzHCo5
+    tls: true
+    servername: www.google.com
+    skip-cert-verify: true
+    alpn: [h3, h2, http/1.1]
+
+  - name: "新加坡23aws"
+    type: hysteria2
+    server: sg23.476579.xyz
+    port: 8080
+    udp: true
+    skip-cert-verify: false
+    sni: sg23.476579.xyz
+    password: 9e509c63-5233-444f-87ca-778274566331
+
+  - name: "老家hy"
+    type: hysteria2
+    server: pan.juns.top
+    port: 51376
+    password: TNncOpYbCn
+    tls: true
+    servername: ts2.tc.mm.bing.net
+    skip-cert-verify: true
+    up: 1000
+    down: 1000
+    alpn: [h3, h2, http/1.1]
+
+  - name: "新-HK"
+    type: hysteria2
+    server: test.sunip.qzz.io
+    port: 52366
+    password: bCh7XHETVC
+    tls: true
+    servername: amd.com
+    skip-cert-verify: true
+    udp: true
+
+  # --- VMess ---
+  - name: "us-vmess-ws-olegon"
+    type: vmess
+    server: 35.212.222.192
+    port: 8080
+    uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: false
+    network: ws
+    servername: www.bing.com
+    ws-opts:
+      path: "97003903-2e92-4e08-81e0-4f2fb2a927cf-vm"
+      headers:
+        Host: www.bing.com
+
+  - name: "新-US"
+    type: vmess
+    server: 47.100.121.82
+    port: 53164
+    uuid: 6f55ea35-d5d5-4999-a87c-8e89a1012755
+    alterId: 0
+    cipher: auto
+    network: tcp
+    udp: true
+
+  # --- TUIC / SOCKS / Relay ---
+  - name: "us-tuic5-olegon"
+    type: tuic
+    server: 35.212.222.192
+    port: 53864
+    uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
+    password: 97003903-2e92-4e08-81e0-4f2fb2a927cf
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  - name: "马来"
+    type: socks5
+    server: 1.9.206.192
+    port: 6023
+    username: bp-zhongxiang
+    password: ip666666
+    udp: true
+    # 注意：此处的 dialer-proxy '台湾2' 在当前配置中未定义，可能会报错
+    # dialer-proxy: 台湾2
+
+  - name: "中转谷歌云"
+    type: hysteria2
+    server: 35.212.137.61
+    port: 21814
+    password: u8odbHQpHV
+    tls: true
+    servername: www.google.com
+    skip-cert-verify: true
+    down: 1000
+    alpn: [h3, h2, http/1.1]
+    dialer-proxy: 新加坡23aws
+
+# ===========================================================
+# 策略组
+# ===========================================================
 proxy-groups:
   - name: PROXY
     type: select
     proxies:
       - DIRECT
-      - 谷歌云-美国
-      - 谷歌云-US2
-      - 中转谷歌云
       - 爪云-JP-WS
       - 新加坡23aws
       - jp
-      - 新-HK
       - 新-US
-      - 新-JP
       - 老家hy
-      - 台湾1
-      - 台湾2
-      - 台
+      - us-tuic5-olegon
+      - us-hysteria2-olegon
+      - us-vmess-ws-olegon
+      - us-vless-reality
 
+# ===========================================================
+# 规则集 (Rule Providers)
+# ===========================================================
 rule-providers:
   reject:
     type: http
@@ -280,84 +285,72 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
     path: ./ruleset/reject.yaml
     interval: 86400
-
   icloud:
     type: http
     behavior: domain
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
     path: ./ruleset/icloud.yaml
     interval: 86400
-
   apple:
     type: http
     behavior: domain
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
     path: ./ruleset/apple.yaml
     interval: 86400
-
   google:
     type: http
     behavior: domain
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
     path: ./ruleset/google.yaml
     interval: 86400
-
   proxy:
     type: http
     behavior: domain
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
     path: ./ruleset/proxy.yaml
     interval: 86400
-
   direct:
     type: http
     behavior: domain
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
     path: ./ruleset/direct.yaml
     interval: 86400
-
   private:
     type: http
     behavior: domain
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
     path: ./ruleset/private.yaml
     interval: 86400
-
   gfw:
     type: http
     behavior: domain
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
     path: ./ruleset/gfw.yaml
     interval: 86400
-
   tld-not-cn:
     type: http
     behavior: domain
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
     path: ./ruleset/tld-not-cn.yaml
     interval: 86400
-
   telegramcidr:
     type: http
     behavior: ipcidr
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
     path: ./ruleset/telegramcidr.yaml
     interval: 86400
-
   cncidr:
     type: http
     behavior: ipcidr
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
     path: ./ruleset/cncidr.yaml
     interval: 86400
-
   lancidr:
     type: http
     behavior: ipcidr
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
     path: ./ruleset/lancidr.yaml
     interval: 86400
-
   applications:
     type: http
     behavior: classical
@@ -365,6 +358,9 @@ rule-providers:
     path: ./ruleset/applications.yaml
     interval: 86400
 
+# ===========================================================
+# 规则
+# ===========================================================
 rules:
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT

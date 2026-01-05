@@ -19,6 +19,7 @@ dns:
     fallback: [1.1.1.1, 8.8.8.8]
     fallback-filter: { geoip: true, geoip-code: CN, geosite: [gfw], ipcidr: [240.0.0.0/4], domain: [+.google.com, +.facebook.com, +.youtube.com] }
 
+##替换哦
 proxies:
   # --- Reality / VLESS ---
   - name: "us-vless-reality"
@@ -222,14 +223,9 @@ proxy-groups:
       - us-hysteria2-olegon
       - us-vmess-ws-olegon
       - us-vless-reality
+#替换
 
-
-
-
-
-
-
-rules: 
+rules:
     - 'IP-CIDR,1.1.1.1/32,PROXY,no-resolve'
     - 'IP-CIDR,8.8.8.8/32,PROXY,no-resolve'
     - 'DOMAIN-SUFFIX,services.googleapis.cn,PROXY'

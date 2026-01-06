@@ -24,7 +24,7 @@ proxies:
   # --- Reality / VLESS ---
   - name: "us-vless-reality"
     type: vless
-    server: 35.212.222.192
+    server: us.junv.top
     port: 51615
     uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
     network: tcp
@@ -103,7 +103,7 @@ proxies:
 
   - name: "谷歌云-US2"
     type: hysteria2
-    server: 35.212.222.192
+    server: us.junv.top
     port: 88
     password: twwjOzHCo5
     tls: true
@@ -145,7 +145,7 @@ proxies:
   # --- VMess ---
   - name: "us-vmess-ws-olegon"
     type: vmess
-    server: 35.212.222.192
+    server: us.junv.top
     port: 8080
     uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
     alterId: 0
@@ -172,7 +172,7 @@ proxies:
   # --- TUIC / SOCKS / Relay ---
   - name: "us-tuic5-olegon"
     type: tuic
-    server: 35.212.222.192
+    server: us.junv.top
     port: 53864
     uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
     password: 97003903-2e92-4e08-81e0-4f2fb2a927cf

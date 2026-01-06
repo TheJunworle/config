@@ -83,7 +83,7 @@ proxies:
   # --- Hysteria2 ---
   - name: "us-hysteria2-olegon"
     type: hysteria2
-    server: 35.212.222.192
+    server: us.junv.top
     port: 46911
     password: 97003903-2e92-4e08-81e0-4f2fb2a927cf
     alpn: [h3]

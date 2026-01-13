@@ -1,0 +1,125 @@
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+dns:
+  enable: false
+  listen: :53
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver: 
+    - 223.5.5.5
+    - 8.8.8.8
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - https://1.0.0.1/dns-query
+    - tls://dns.google
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
+proxies:
+- name: vless-reality-japan               
+  type: vless
+  server: 23.106.143.127                           
+  port: 46655                                
+  uuid: 267f8b48-2916-4ed9-911d-2f1aec4cd96a   
+  network: tcp
+  udp: true
+  tls: true
+  flow: xtls-rprx-vision
+  servername: apple.com                 
+  reality-opts: 
+    public-key: zcdI3GHawVAop9jwQGNkdV35Ki4hJEGVFK8fXV9yBBs    
+    short-id: 29b42acb                    
+  client-fingerprint: chrome                  
+
+- name: vmess-ws-japan                         
+  type: vmess
+  server: 23.106.143.127                        
+  port: 8880                                     
+  uuid: 267f8b48-2916-4ed9-911d-2f1aec4cd96a       
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  network: ws
+  servername: www.bing.com                    
+  ws-opts:
+    path: "267f8b48-2916-4ed9-911d-2f1aec4cd96a-vm"                             
+    headers:
+      Host: www.bing.com                     
+
+
+
+
+
+- name: hysteria2-japan                            
+  type: hysteria2                                      
+  server: 23.106.143.127                               
+  port: 55566                                
+  password: 267f8b48-2916-4ed9-911d-2f1aec4cd96a                          
+  alpn:
+    - h3
+  sni: www.bing.com                               
+  skip-cert-verify: true
+  fast-open: true
+
+- name: tuic5-japan                            
+  server: 23.106.143.127                      
+  port: 61223                                    
+  type: tuic
+  uuid: 267f8b48-2916-4ed9-911d-2f1aec4cd96a       
+  password: 267f8b48-2916-4ed9-911d-2f1aec4cd96a   
+  alpn: [h3]
+  disable-sni: true
+  reduce-rtt: true
+  udp-relay-mode: native
+  congestion-controller: bbr
+  sni: www.bing.com                                
+  skip-cert-verify: true
+
+proxy-groups:
+- name: 负载均衡
+  type: load-balance
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  strategy: round-robin
+  proxies:
+    - vless-reality-japan                              
+    - vmess-ws-japan
+    - hysteria2-japan
+    - tuic5-japan
+
+- name: 自动选择
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  proxies:
+    - vless-reality-japan                              
+    - vmess-ws-japan
+    - hysteria2-japan
+    - tuic5-japan
+    
+- name: 🌍选择代理节点
+  type: select
+  proxies:
+    - 负载均衡                                         
+    - 自动选择
+    - DIRECT
+    - vless-reality-japan                              
+    - vmess-ws-japan
+    - hysteria2-japan
+    - tuic5-japan
+rules:
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🌍选择代理节点

@@ -87,16 +87,6 @@ proxies:
   skip-cert-verify: true
 
 proxy-groups:
-- name: 负载均衡
-  type: load-balance
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  strategy: round-robin
-  proxies:
-    - vless-reality-japan                              
-    - vmess-ws-japan
-    - hysteria2-japan
-    - tuic5-japan
 
 - name: 自动选择
   type: url-test
@@ -109,10 +99,9 @@ proxy-groups:
     - hysteria2-japan
     - tuic5-japan
     
-- name: 🌍选择代理节点
+- name: 代理
   type: select
-  proxies:
-    - 负载均衡                                         
+  proxies:                                
     - 自动选择
     - DIRECT
     - vless-reality-japan                              
@@ -122,4 +111,4 @@ proxy-groups:
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,🌍选择代理节点
+  - MATCH,代理

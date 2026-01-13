@@ -26,9 +26,9 @@ dns:
       - 240.0.0.0/4
 
 proxies:
-- name: vless-reality-japan               
+- name: 搬瓦工日本
   type: vless
-  server: 23.106.143.127                           
+  server: 23.106.143.127          
   port: 46655                                
   uuid: 267f8b48-2916-4ed9-911d-2f1aec4cd96a   
   network: tcp
@@ -42,62 +42,17 @@ proxies:
   client-fingerprint: chrome                  
 
 
-- name: "搬瓦工转美国"
+- name: "美国住宅"
   type: socks5
   server: 38.30.207.202
   port: 5206
   username: wgkhhduip52y
   password: dcwz3j7p3s8i
   udp: true
-  dialer-proxy: vless-reality-japan
-#38.30.207.202:5206:wgkhhduip52y:dcwz3j7p3s8i
+  dialer-proxy: 搬瓦工日本
  
 
 
-- name: vmess-ws-japan                         
-  type: vmess
-  server: 23.106.143.127                        
-  port: 8880                                     
-  uuid: 267f8b48-2916-4ed9-911d-2f1aec4cd96a       
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  network: ws
-  servername: www.bing.com                    
-  ws-opts:
-    path: "267f8b48-2916-4ed9-911d-2f1aec4cd96a-vm"                             
-    headers:
-      Host: www.bing.com                     
-
-
-
-
-
-- name: hysteria2-japan                            
-  type: hysteria2                                      
-  server: 23.106.143.127                               
-  port: 55566                                
-  password: 267f8b48-2916-4ed9-911d-2f1aec4cd96a                          
-  alpn:
-    - h3
-  sni: www.bing.com                               
-  skip-cert-verify: true
-  fast-open: true
-
-- name: tuic5-japan                            
-  server: 23.106.143.127                      
-  port: 61223                                    
-  type: tuic
-  uuid: 267f8b48-2916-4ed9-911d-2f1aec4cd96a       
-  password: 267f8b48-2916-4ed9-911d-2f1aec4cd96a   
-  alpn: [h3]
-  disable-sni: true
-  reduce-rtt: true
-  udp-relay-mode: native
-  congestion-controller: bbr
-  sni: www.bing.com                                
-  skip-cert-verify: true
 
 proxy-groups:
 
@@ -107,23 +62,25 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-japan                              
-    - vmess-ws-japan
-    - hysteria2-japan
-    - tuic5-japan
-    - 搬瓦工转美国
-    
+    - 搬瓦工日本
+  
 - name: 代理
   type: select
-  proxies:                                
+  proxies:
     - 自动选择
     - DIRECT
-    - vless-reality-japan                              
-    - vmess-ws-japan
-    - hysteria2-japan
-    - tuic5-japan
-    - 搬瓦工转美国
+    - 搬瓦工日本
+    - 美国住宅
+
+- name: iphone
+  type: select
+  proxies:               
+    - 美国住宅
+    - DIRECT
+
+
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
+  - SRC-IP-CIDR,192.168.16.3/32,iphone
   - MATCH,代理

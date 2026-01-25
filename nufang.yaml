@@ -3,13 +3,6 @@ allow-lan: false
 mode: rule
 log-level: info
 external-controller: 127.0.0.1:9090
-tun:
-  enable: true
-  stack: system
-  auto-route: true
-  auto-detect-interface: true
-  dns-hijack:
-    - any:53
 dns:
   enable: true
   ipv6: false

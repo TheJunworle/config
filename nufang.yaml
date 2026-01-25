@@ -10,94 +10,78 @@ dns:
   ipv6: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
-  default-nameserver: 
-    - 223.5.5.5
+  default-nameserver:
+    - 1.1.1.1
     - 8.8.8.8
   nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    - 1.1.1.1
+    - 8.8.8.8
   fallback:
-    - https://1.0.0.1/dns-query
-    - tls://dns.google
+    - 1.1.1.1
+    - 8.8.8.8
   fallback-filter:
     geoip: true
     geoip-code: CN
     ipcidr:
       - 240.0.0.0/4
-
 proxies:
-- name: 搬瓦工日本
-  type: vless
-  server: 23.106.143.127          
-  port: 46655                                
-  uuid: 267f8b48-2916-4ed9-911d-2f1aec4cd96a   
-  network: tcp
-  udp: true
-  tls: true
-  flow: xtls-rprx-vision
-  servername: apple.com                 
-  reality-opts: 
-    public-key: zcdI3GHawVAop9jwQGNkdV35Ki4hJEGVFK8fXV9yBBs    
-    short-id: 29b42acb                    
-  client-fingerprint: chrome                  
-
-
-
-- { name: 日本01aws, server: 1jp003.156786.xyz, port: 8081, udp: true, skip-cert-verify: false, sni: 1jp003.156786.xyz, type: hysteria2, password: 9e509c63-5233-444f-87ca-778274566331 }
-
-- name: "美国住宅"
-  type: socks5
-  server: 38.30.207.202
-  port: 5206
-  username: wgkhhduip52y
-  password: dcwz3j7p3s8i
-  udp: true
-  dialer-proxy: 搬瓦工日本
-
-
-- name: "美区ip-1月"
-  type: socks5
-  server: 154.3.27.158
-  port: 31829
-  username: 5A2fhJA154327158A31829
-  password: xf2rMElDCAzT
-  udp: true
-  dialer-proxy: 日本01aws
- 
-
+  - alpn:
+      - h3
+      - h2
+      - http/1.1
+    flow: xtls-rprx-vision
+    name: 搬瓦工日本
+    port: 23873
+    server: 23.106.143.127
+    servername: www.mozilla.org
+    skip-cert-verify: true
+    tls: true
+    type: vless
+    uuid: 1697e1be-0c37-4d6b-a8bf-1835e5dfb0a3
+  - alpn:
+      - h3
+      - h2
+      - http/1.1
+    flow: xtls-rprx-vision
+    name: 美国住宅
+    port: 24659
+    server: 23.106.143.127
+    servername: www.mozilla.org
+    skip-cert-verify: true
+    tls: true
+    type: vless
+    uuid: 1697e1be-0c37-4d6b-a8bf-1835e5dfb0a3
+  - alpn:
+      - h3
+      - h2
+      - http/1.1
+    flow: xtls-rprx-vision
+    name: 美国住宅-1月
+    port: 22285
+    server: 23.106.143.127
+    servername: www.mozilla.org
+    skip-cert-verify: true
+    tls: true
+    type: vless
+    uuid: 1697e1be-0c37-4d6b-a8bf-1835e5dfb0a3
 proxy-groups:
-
-- name: 自动选择
-  type: url-test
-  url: https://www.gstatic.com/generate_204
-  interval: 300
-  tolerance: 50
-  proxies:
-    - 搬瓦工日本
-  
-- name: 代理
-  type: select
-  proxies:
-    - 自动选择
-    - DIRECT
-    - 搬瓦工日本
-    - 美国住宅
-    - 美区ip-1月
-
-- name: iphone
-  type: select
-  proxies:               
-    - 美国住宅
-    - DIRECT
-
-- name: Sanxing
-  type: select
-  proxies:               
-    - 美区ip-1月
-    - DIRECT
-
-
-
+  - name: 代理
+    type: select
+    proxies:
+      - 搬瓦工日本
+      - DIRECT
+      - 美国住宅
+      - 美国住宅-1月
+  - name: iphone
+    type: select
+    proxies:
+      - 美国住宅
+      - DIRECT
+  - name: Sanxing
+    type: select
+    proxies:
+      - 美国住宅-1月
+      - DIRECT
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT

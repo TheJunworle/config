@@ -1,29 +1,35 @@
-port: 7890
-allow-lan: true
+mixed-port: 7890
+allow-lan: false
 mode: rule
 log-level: info
-unified-delay: true
-global-client-fingerprint: chrome
+external-controller: 127.0.0.1:9090
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
 dns:
   enable: true
-  ipv6: true
+  ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
-  respect-rules: true
   default-nameserver:
-    - 1.1.1.1
     - 8.8.8.8
+    - 1.1.1.1
   nameserver:
     - 1.1.1.1
     - 8.8.8.8
   fallback:
     - 1.1.1.1
-    - 8.8.8.8
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    ipcidr:
-      - 240.0.0.0/4
+  fake-ip-filter:
+    - "*.lan"
+    - localhost
+    - "*.local"
+rules:
+  - GEOIP,Private,DIRECT
+  - MATCH,代理
 
 proxies:
   - alpn:

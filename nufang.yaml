@@ -50,6 +50,16 @@ proxies:
   password: dcwz3j7p3s8i
   udp: true
   dialer-proxy: 搬瓦工日本
+
+
+- name: "美区ip-1月"
+  type: socks5
+  server: 154.3.27.158
+  port: 31829
+  username: 5A2fhJA154327158A31829
+  password: xf2rMElDCAzT
+  udp: true
+  dialer-proxy: 搬瓦工日本
  
 
 
@@ -78,9 +88,17 @@ proxy-groups:
     - 美国住宅
     - DIRECT
 
+- name: Sanxing
+  type: select
+  proxies:               
+    - 美区ip-1月
+    - DIRECT
+
+
 
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - SRC-IP-CIDR,192.168.16.3/32,iphone
+  - SRC-IP-CIDR,192.168.16.4/32,Sanxing
   - MATCH,代理

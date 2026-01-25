@@ -5,11 +5,11 @@ log-level: info
 unified-delay: true
 global-client-fingerprint: chrome
 dns:
-  enable: false
-  listen: :53
+  enable: true
   ipv6: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  respect-rules: true
   default-nameserver:
     - 1.1.1.1
     - 8.8.8.8
@@ -24,6 +24,7 @@ dns:
     geoip-code: CN
     ipcidr:
       - 240.0.0.0/4
+
 proxies:
   - alpn:
       - h3

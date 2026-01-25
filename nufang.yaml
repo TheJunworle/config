@@ -42,6 +42,9 @@ proxies:
   client-fingerprint: chrome                  
 
 
+
+- { name: 日本01aws, server: 1jp003.156786.xyz, port: 8081, udp: true, skip-cert-verify: false, sni: 1jp003.156786.xyz, type: hysteria2, password: 9e509c63-5233-444f-87ca-778274566331 }
+
 - name: "美国住宅"
   type: socks5
   server: 38.30.207.202
@@ -59,7 +62,7 @@ proxies:
   username: 5A2fhJA154327158A31829
   password: xf2rMElDCAzT
   udp: true
-  dialer-proxy: 搬瓦工日本
+  dialer-proxy: 日本01aws
  
 
 proxy-groups:

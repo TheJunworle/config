@@ -53,11 +53,6 @@ proxies:
    tls: true
    type: vless
    uuid: 1697e1be-0c37-4d6b-a8bf-1835e5dfb0a3
- - alpn:
-    - h3
-    - h2
-    - http/1.1
-   flow: xtls-rprx-vision
  - name: us-vless-reality
    type: vless
    server: us.juncur.xyz

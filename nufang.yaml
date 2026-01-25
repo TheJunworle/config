@@ -61,14 +61,6 @@ proxies:
   udp: true
   dialer-proxy: 搬瓦工日本
  
-- name: "美区ip-1月直连"
-  type: socks5
-  server: 154.3.27.158
-  port: 31829
-  username: 5A2fhJA154327158A31829
-  password: xf2rMElDCAzT
-  udp: true
- 
 
 proxy-groups:
 
@@ -87,7 +79,6 @@ proxy-groups:
     - DIRECT
     - 搬瓦工日本
     - 美国住宅
-    - 美区ip-1月直连
     - 美区ip-1月
 
 - name: iphone

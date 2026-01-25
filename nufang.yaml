@@ -27,9 +27,7 @@ dns:
     - "*.lan"
     - localhost
     - "*.local"
-rules:
-  - GEOIP,Private,DIRECT
-  - MATCH,代理
+
 
 proxies:
   - alpn:
@@ -90,6 +88,7 @@ proxy-groups:
       - 美国住宅-1月
       - DIRECT
 rules:
+  - GEOIP,Privare,DIRECT
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - SRC-IP-CIDR,192.168.16.3/32,iphone

@@ -9,11 +9,11 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   default-nameserver:
-    - 8.8.8.8
+    - 1.1.1.1
   nameserver:
-    - 8.8.8.8
+    - 1.1.1.1
   fallback:
-    - 8.8.8.8
+    - 1.1.1.1
   fake-ip-filter:
     - "*.lan"
     - localhost

@@ -10,12 +10,10 @@ dns:
   fake-ip-range: 198.18.0.1/16
   default-nameserver:
     - 8.8.8.8
-    - 1.1.1.1
   nameserver:
-    - 1.1.1.1
     - 8.8.8.8
   fallback:
-    - 1.1.1.1
+    - 8.8.8.8
   fake-ip-filter:
     - "*.lan"
     - localhost

@@ -8,37 +8,41 @@ external-controller: 127.0.0.1:9090
 unified-delay: true
 tcp-concurrent: true
 dns:
- enable: true
- ipv6: true
- default-nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
-  - 114.114.114.114
- enhanced-mode: redir-host
- use-hosts: true
- respect-rules: true
- proxy-server-nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
-  - 114.114.114.114
- nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
-  - 114.114.114.114
- fallback:
-  - 1.1.1.1
-  - 8.8.8.8
- fallback-filter:
-  geoip: true
-  geoip-code: CN
-  geosite:
-   - gfw
-  ipcidr:
-   - 240.0.0.0/4
-  domain:
-   - +.google.com
-   - +.facebook.com
-   - +.youtube.com
+  enable: true
+  ipv6: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+  use-hosts: true
+
+  # 解析用的“优先”nameserver（通常用来解析 nameserver 主机名）
+  default-nameserver:
+    - 114.114.114.114
+
+  # 全局 nameserver（兜底）：把国外上游标记为通过代理解析（#proxy）
+  # 注意：若你的前端/内核不支持 "#proxy" 语法，可把相同的地址放入 proxy-server-nameserver。
+  nameserver:
+    - '1.1.1.1'
+    - '8.8.8.8'
+
+  # 核心：把 geosite:cn（中国域名集合）走国内 DNS（114）
+  # 只要域名命中 geosite:cn，就用上面指定的 114.114.114.114 去解析
+  nameserver-policy:
+    'geosite:cn': 114.114.114.114
+
+  # 备用上游（可选）
+  fallback:
+    - 1.1.1.1
+    - 8.8.8.8
+
+
+  # 强制通过代理解析节点主机名（避免节点解析时泄露）
+  proxy-server-nameserver:
+    - 1.1.1.1
+
+
 proxies:
  - alpn:
     - h3

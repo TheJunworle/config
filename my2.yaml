@@ -167,7 +167,20 @@ proxy-groups:
     - 搬瓦工日本
 
 
+
+rule-providers:
+  cn-ipv6:
+    type: http
+    # 这里使用的是苍狼山庄的纯文本 IPv6 列表
+    url: "https://ispip.clang.cn/all_cn_ipv6.txt"
+    path: ./rule-set/cn-ipv6.yaml
+    # 建议设置较短的更新间隔，因为 IPv6 段变动相对频繁
+    interval: 86400 # 每24小时更新一次
+
+
+
 rules:
+  - RULE-SET,cn-ipv6,DIRECT
   # 广告拦截（最高优先级）
   - DOMAIN-KEYWORD,adservice,REJECT
   - DOMAIN-SUFFIX,googlesyndication.com,REJECT

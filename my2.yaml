@@ -15,8 +15,8 @@ dns:
   fake-ip-range: 198.18.0.1/16
   use-hosts: true
   nameserver:
-    - https://dns.alidns.com/dns-query  # 国内DoH
-    - https://doh.pub/dns-query          # 国内DoH备用
+    - 119.29.29.29
+    - 223.5.5.5
   fallback:
     - https://1.1.1.1/dns-query           # 国外DoH
     - tls://1.1.1.1:853                  # 国外DoT备用

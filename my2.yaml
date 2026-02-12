@@ -181,7 +181,7 @@ rule-providers:
 
 
 rules:
-  #- RULE-SET,cn-ipv6,DIRECT
+  - RULE-SET,cn-ipv6,DIRECT
   # 广告拦截（最高优先级）
   - DOMAIN-KEYWORD,adservice,REJECT
   - DOMAIN-SUFFIX,googlesyndication.com,REJECT

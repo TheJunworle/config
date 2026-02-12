@@ -21,8 +21,8 @@ dns:
     - https://1.1.1.1/dns-query           # 国外DoH
     - tls://1.1.1.1:853                  # 国外DoT备用
   fallback-filter:
-    geoip: true
-    geoip-code: CN
+    { geoip: true, geoip-code: CN, geosite: [gfw], ipcidr: [240.0.0.0/4], domain: [+.google.com, +.facebook.com, +.youtube.com] }
+
 
 proxies:
  - alpn:

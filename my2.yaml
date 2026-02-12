@@ -172,6 +172,7 @@ rule-providers:
   cn-ipv6:
     type: http
     # 这里使用的是苍狼山庄的纯文本 IPv6 列表
+    behavior: ipcidr
     url: "https://ispip.clang.cn/all_cn_ipv6.txt"
     path: ./rule-set/cn-ipv6.yaml
     # 建议设置较短的更新间隔，因为 IPv6 段变动相对频繁

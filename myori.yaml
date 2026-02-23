@@ -8,178 +8,149 @@ external-controller: 127.0.0.1:9090
 unified-delay: true
 tcp-concurrent: true
 dns:
- enable: true
- ipv6: true
- default-nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
-  - 114.114.114.114
- enhanced-mode: redir-host
- use-hosts: true
- respect-rules: true
- proxy-server-nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
-  - 114.114.114.114
- nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
-  - 114.114.114.114
- fallback:
-  - 1.1.1.1
-  - 8.8.8.8
- fallback-filter:
-  geoip: true
-  geoip-code: CN
-  geosite:
-   - gfw
-  ipcidr:
-   - 240.0.0.0/4
-  domain:
-   - +.google.com
-   - +.facebook.com
-   - +.youtube.com
+  enable: true
+  ipv6: true
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 114.114.114.114
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  respect-rules: true
+  proxy-server-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 114.114.114.114
+  fallback:
+    - 1.1.1.1
+    - 8.8.8.8
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - +.google.com
+      - +.facebook.com
+      - +.youtube.com
+
+# 代理节点配置（统一缩进+修复语法错误）
 proxies:
- - alpn:
-    - h3
-    - h2
-    - http/1.1
-   flow: xtls-rprx-vision
-   name: 搬瓦工日本
-   port: 23873
-   server: 23.106.143.127
-   servername: www.mozilla.org
-   skip-cert-verify: true
-   tls: true
-   type: vless
-   uuid: 1697e1be-0c37-4d6b-a8bf-1835e5dfb0a3
- - name: us-vless-reality
-   type: vless
-   server: us.juncur.xyz
-   port: 51615
-   uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
-   network: tcp
-   udp: true
-   tls: true
-   flow: xtls-rprx-vision
-   servername: apple.com
-   reality-opts:
-    public-key: eiw0aZwEkPdqvxRYJoruoTcoRV7UzQkh3bKGnAOYjCI
-    short-id: 1baa8b26
-   client-fingerprint: chrome
- - name: jp
-   type: vless
-   server: jp.sunipip.com
-   port: 32483
-   uuid: 63499dce-cbf6-4f24-98ff-05d4e84d7857
-   network: tcp
-   tls: true
-   udp: true
-   servername: tesla.com
-   client-fingerprint: chrome
-   reality-opts:
-    public-key: sn7ZbFvx8WCYQ8nFvl4Bf3ZD_dc0e3HMOMsWjWodrGk
-    short-id: 57a5d6
- - name: 爪云-JP-WS
-   type: vless
-   server: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
-   port: 443
-   uuid: 340ce710-8daf-4204-8d0d-74f2edc46386
-   udp: true
-   tls: true
-   network: ws
-   servername: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
-   ws-opts:
-    path: /
-    headers: null
-    Host: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
- - name: us-hysteria2-olegon
-   type: hysteria2
-   server: us.juncur.xyz
-   port: 46911
-   password: 97003903-2e92-4e08-81e0-4f2fb2a927cf
-   alpn:
-    - h3
-   sni: www.bing.com
-   skip-cert-verify: true
-   fast-open: true
- - name: 谷歌云-US2
-   type: hysteria2
-   server: us.juncur.xyz
-   port: 88
-   password: twwjOzHCo5
-   tls: true
-   servername: www.google.com
-   skip-cert-verify: true
-   alpn:
-    - h3
-    - h2
-    - http/1.1
- - name: 新加坡23aws
-   type: hysteria2
-   server: sg23.476579.xyz
-   port: 8080
-   udp: true
-   skip-cert-verify: false
-   sni: sg23.476579.xyz
-   password: 9e509c63-5233-444f-87ca-778274566331
- - name: 老家hy
-   type: hysteria2
-   server: pan.juns.top
-   port: 51376
-   password: TNncOpYbCn
-   tls: true
-   servername: ts2.tc.mm.bing.net
-   skip-cert-verify: true
-   up: 1000
-   down: 1000
-   alpn:
-    - h3
-    - h2
-    - http/1.1
- - name: us-vmess-ws-olegon
-   type: vmess
-   server: us.juncur.xyz
-   port: 8080
-   uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
-   alterId: 0
-   cipher: auto
-   udp: true
-   tls: false
-   network: ws
-   servername: www.bing.com
-   ws-opts:
-    path: 97003903-2e92-4e08-81e0-4f2fb2a927cf-vm
-    headers: null
-    Host: www.bing.com
- - name: us-tuic5-olegon
-   type: tuic
-   server: us.juncur.xyz
-   port: 53864
-   uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
-   password: 97003903-2e92-4e08-81e0-4f2fb2a927cf
-   alpn:
-    - h3
-   disable-sni: true
-   reduce-rtt: true
-   udp-relay-mode: native
-   congestion-controller: bbr
-   sni: www.bing.com
-   skip-cert-verify: true
+  - name: 'HK09'
+    type: trojan
+    server: line-cn-2cdra.nod3.org
+    port: 22118
+    password: 8c2fbe88-f8fd-4cd2-801e-73688c1d32c7
+    udp: true
+    sni: cas.baidu.com
+    skip-cert-verify: true
+
+  - name: 搬瓦工日本
+    type: vless
+    server: 23.106.143.127
+    port: 23873
+    uuid: 1697e1be-0c37-4d6b-a8bf-1835e5dfb0a3
+    encryption: none
+    alpn:
+      - h3
+      - h2
+      - http/1.1
+    flow: xtls-rprx-vision
+    servername: www.mozilla.org
+    skip-cert-verify: true
+    tls: true
+
+  - name: "谷歌云美国-vmess"
+    type: vmess
+    server: 35.212.231.224
+    port: 56287
+    uuid: 83e55013-de5f-4585-954d-e7c842626fc0
+    alterId: 0
+    cipher: auto
+    network: tcp
+    tls: false
+    servername: ""
+    udp: false
+
+  - name: "谷歌云美国-vless"
+    type: vless
+    server: 35.212.231.224
+    port: 38447
+    uuid: c8d026a0-f158-4c8c-8ba3-c3e7a86635b3
+    encryption: none
+    network: tcp
+    tls: false
+    servername: ""
+    udp: false
+
+  - name: jp
+    type: vless
+    server: jp.sunipip.com
+    port: 32483
+    uuid: 63499dce-cbf6-4f24-98ff-05d4e84d7857
+    network: tcp
+    tls: true
+    udp: true
+    servername: tesla.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: sn7ZbFvx8WCYQ8nFvl4Bf3ZD_dc0e3HMOMsWjWodrGk
+      short-id: 57a5d6
+
+  - name: 爪云-JP-WS
+    type: vless
+    server: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+    port: 443
+    uuid: 340ce710-8daf-4204-8d0d-74f2edc46386
+    udp: true
+    tls: true
+    network: ws
+    servername: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+    ws-opts:
+      path: /
+      headers: {}  # 修复null为空对象，符合Clash规范
+      Host: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+
+  - { name: 新加坡02aws, server: vsg05.344233.cc, port: 8080, udp: true, skip-cert-verify: false, sni: vsg05.344233.cc, type: hysteria2, password: 9e509c63-5233-444f-87ca-778274566331 }
+
+  - name: 老家hy
+    type: hysteria2
+    server: pan.juns.top
+    port: 51376
+    password: TNncOpYbCn
+    tls: true
+    servername: ts2.tc.mm.bing.net
+    skip-cert-verify: true
+    up: 1000  # 单位：Mbps（hysteria2 带宽限制）
+    down: 1000
+    alpn:
+      - h3
+      - h2
+      - http/1.1
+
+# 代理组配置（统一缩进+规范格式）
 proxy-groups:
- - name: PROXY
-   type: select
-   proxies:
-    - DIRECT
-    - 爪云-JP-WS
-    - 新加坡23aws
-    - jp
-    - 老家hy
-    - us-tuic5-olegon
-    - us-hysteria2-olegon
-    - us-vmess-ws-olegon
-    - us-vless-reality
-    - 搬瓦工日本
+  - name: PROXY
+    type: select
+    proxies:
+      - DIRECT
+      - 老家hy
+      - 谷歌云美国-vless
+      - 谷歌云美国-vmess
+      - 新加坡02aws
+      - 搬瓦工日本
+      - jp
+      - 爪云-JP-WS
+      - HK09
+
+
 rules:
  - DOMAIN-KEYWORD,speedtest,PROXY
  - IP-CIDR,1.1.1.1/32,PROXY,no-resolve

@@ -43,7 +43,10 @@ dns:
 
 # 代理节点配置（统一缩进+修复语法错误）
 proxies:
-  - name: 'HK09'
+
+  - { name: 🇭🇰香港高速01|良心云, type: vless, server: aws-link1.liangxin1.xyz, port: 35248, uuid: 6ad8f548-3baf-403f-86a1-9ecebf3a5d3b, udp: true, tls: true, skip-cert-verify: false, flow: xtls-rprx-vision, client-fingerprint: chrome, servername: www.lamer.com.hk, reality-opts: { public-key: IGsSxC0wgn7wLy0NM0QN_yOREDKT_814Y_3_rbgDoTc, short-id: c8c0f951 } }
+  - { name: 🇭🇰香港高速02|良心云, type: vless, server: aws-link2.liangxin1.xyz, port: 38725, uuid: 6ad8f548-3baf-403f-86a1-9ecebf3a5d3b, udp: true, tls: true, skip-cert-verify: false, flow: xtls-rprx-vision, client-fingerprint: chrome, servername: www.lamer.com.hk, reality-opts: { public-key: HvwnLBMMKsmvghGX5yVPq3J2HWxwr1GGQB2WIvbPvAY, short-id: 8f6ca378 } }
+  - name: '🇭🇰香港03-10Mbps'
     type: trojan
     server: line-cn-2cdra.nod3.org
     port: 22118
@@ -140,6 +143,7 @@ proxy-groups:
   - name: PROXY
     type: select
     proxies:
+      - 自动选择
       - DIRECT
       - 老家hy
       - 谷歌云美国-vless
@@ -148,10 +152,54 @@ proxy-groups:
       - 搬瓦工日本
       - jp
       - 爪云-JP-WS
-      - HK09
+      - 🇭🇰香港高速01|良心云
+      - 🇭🇰香港高速02|良心云
+      - 🇭🇰香港03-10Mbps
 
+  - name: AI
+    type: select
+    proxies:
+      - 非香港自动
+      - 谷歌云美国-vless
+      - 谷歌云美国-vmess
+      - 新加坡02aws
+      - 搬瓦工日本
+      - jp
+      - 爪云-JP-WS
+
+  - name: 非香港自动
+    type: url-test
+    proxies:
+      - 谷歌云美国-vless
+      - 谷歌云美国-vmess
+      - 新加坡02aws
+      - 搬瓦工日本
+      - jp
+      - 爪云-JP-WS
+    url: http://www.gstatic.com/generate_204  # 测速URL（谷歌204，稳定）
+    interval: 300  # 测速间隔（秒），5分钟测一次
+    timeout: 5000  # 超时时间（毫秒），5秒没响应算超时
+    tolerance: 50  # 容差（毫秒），延迟差小于50ms不切换，避免频繁跳动
+
+  - name: 自动选择
+    type: url-test
+    proxies:
+      - 谷歌云美国-vless
+      - 谷歌云美国-vmess
+      - 新加坡02aws
+      - 搬瓦工日本
+      - jp
+      - 爪云-JP-WS
+      - 🇭🇰香港高速01|良心云
+      - 🇭🇰香港高速02|良心云
+    url: http://www.gstatic.com/generate_204  # 测速URL（谷歌204，稳定）
+    interval: 300  # 测速间隔（秒），5分钟测一次
+    timeout: 5000  # 超时时间（毫秒），5秒没响应算超时
+    tolerance: 50  # 容差（毫秒），延迟差小于50ms不切换，避免频繁跳动
 
 rules:
+ - DOMAIN,openai.com,AI
+ - DOMAIN,chatgpt.com,AI
  - DOMAIN-KEYWORD,speedtest,PROXY
  - IP-CIDR,1.1.1.1/32,PROXY,no-resolve
  - IP-CIDR,8.8.8.8/32,PROXY,no-resolve

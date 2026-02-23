@@ -1,0 +1,210 @@
+mixed-port: 7890
+ipv6: true
+allow-lan: false
+bind-address: "*"
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+unified-delay: true
+tcp-concurrent: true
+dns:
+  enable: true
+  ipv6: true
+  default-nameserver: [223.5.5.5, 119.29.29.29]  # 系统默认DNS
+  enhanced-mode: fake-ip  # 必须使用Fake-IP模式
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  respect-rules: true
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+  fallback:
+    - https://1.1.1.1/dns-query           # 国外DoH
+    - tls://1.1.1.1:853                  # 国外DoT备用
+  fallback-filter:
+    { geoip: true, geoip-code: CN, geosite: [gfw], ipcidr: [240.0.0.0/4], domain: [+.google.com, +.facebook.com, +.youtube.com] }
+
+
+proxies:
+ - alpn:
+    - h3
+    - h2
+    - http/1.1
+   flow: xtls-rprx-vision
+   name: 搬瓦工日本
+   port: 23873
+   server: 23.106.143.127
+   servername: www.mozilla.org
+   skip-cert-verify: true
+   tls: true
+   type: vless
+   uuid: 1697e1be-0c37-4d6b-a8bf-1835e5dfb0a3
+ - name: us-vless-reality
+   type: vless
+   server: us.juncur.xyz
+   port: 51615
+   uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
+   network: tcp
+   udp: true
+   tls: true
+   flow: xtls-rprx-vision
+   servername: apple.com
+   reality-opts:
+    public-key: eiw0aZwEkPdqvxRYJoruoTcoRV7UzQkh3bKGnAOYjCI
+    short-id: 1baa8b26
+   client-fingerprint: chrome
+ - name: jp
+   type: vless
+   server: jp.sunipip.com
+   port: 32483
+   uuid: 63499dce-cbf6-4f24-98ff-05d4e84d7857
+   network: tcp
+   tls: true
+   udp: true
+   servername: tesla.com
+   client-fingerprint: chrome
+   reality-opts:
+    public-key: sn7ZbFvx8WCYQ8nFvl4Bf3ZD_dc0e3HMOMsWjWodrGk
+    short-id: 57a5d6
+ - name: 爪云-JP-WS
+   type: vless
+   server: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+   port: 443
+   uuid: 340ce710-8daf-4204-8d0d-74f2edc46386
+   udp: true
+   tls: true
+   network: ws
+   servername: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+   ws-opts:
+    path: /
+    headers: null
+    Host: pwctqbvswnne.ap-northeast-1.clawcloudrun.com
+ - name: us-hysteria2-olegon
+   type: hysteria2
+   server: us.juncur.xyz
+   port: 46911
+   password: 97003903-2e92-4e08-81e0-4f2fb2a927cf
+   alpn:
+    - h3
+   sni: www.bing.com
+   skip-cert-verify: true
+   fast-open: true
+ - name: 谷歌云-US2
+   type: hysteria2
+   server: us.juncur.xyz
+   port: 88
+   password: twwjOzHCo5
+   tls: true
+   servername: www.google.com
+   skip-cert-verify: true
+   alpn:
+    - h3
+    - h2
+    - http/1.1
+ - name: 新加坡23aws
+   type: hysteria2
+   server: sg23.476579.xyz
+   port: 8080
+   udp: true
+   skip-cert-verify: false
+   sni: sg23.476579.xyz
+   password: 9e509c63-5233-444f-87ca-778274566331
+ - name: 老家hy
+   type: hysteria2
+   server: pan.juns.top
+   port: 51376
+   password: TNncOpYbCn
+   tls: true
+   servername: ts2.tc.mm.bing.net
+   skip-cert-verify: true
+   up: 1000
+   down: 1000
+   alpn:
+    - h3
+    - h2
+    - http/1.1
+ - name: us-vmess-ws-olegon
+   type: vmess
+   server: us.juncur.xyz
+   port: 8080
+   uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
+   alterId: 0
+   cipher: auto
+   udp: true
+   tls: false
+   network: ws
+   servername: www.bing.com
+   ws-opts:
+    path: 97003903-2e92-4e08-81e0-4f2fb2a927cf-vm
+    headers: null
+    Host: www.bing.com
+ - name: us-tuic5-olegon
+   type: tuic
+   server: us.juncur.xyz
+   port: 53864
+   uuid: 97003903-2e92-4e08-81e0-4f2fb2a927cf
+   password: 97003903-2e92-4e08-81e0-4f2fb2a927cf
+   alpn:
+    - h3
+   disable-sni: true
+   reduce-rtt: true
+   udp-relay-mode: native
+   congestion-controller: bbr
+   sni: www.bing.com
+   skip-cert-verify: true
+proxy-groups:
+ - name: Proxy
+   type: select
+   proxies:
+    - DIRECT
+    - 爪云-JP-WS
+    - 新加坡23aws
+    - jp
+    - 老家hy
+    - us-tuic5-olegon
+    - us-hysteria2-olegon
+    - us-vmess-ws-olegon
+    - us-vless-reality
+    - 搬瓦工日本
+
+
+
+rule-providers:
+  cn-ipv6:
+    type: http
+    # 这里使用的是苍狼山庄的纯文本 IPv6 列表
+    behavior: ipcidr
+    url: "https://ispip.clang.cn/all_cn_ipv6.txt"
+    path: ./rule-set/cn-ipv6.yaml
+    # 建议设置较短的更新间隔，因为 IPv6 段变动相对频繁
+    interval: 86400 # 每24小时更新一次
+
+
+
+rules:
+  # 广告拦截（最高优先级）
+  - DOMAIN-KEYWORD,adservice,REJECT
+  - DOMAIN-SUFFIX,googlesyndication.com,REJECT
+  
+  # 局域网直连
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  
+  # 国内直连
+  - GEOIP,CN,DIRECT,no-resolve
+  - DOMAIN-SUFFIX,cn,DIRECT
+  - DOMAIN-KEYWORD,baidu,DIRECT
+  - DOMAIN-KEYWORD,taobao,DIRECT
+  - DOMAIN-KEYWORD,jd,DIRECT
+  
+  # 国外代理
+  - DOMAIN-SUFFIX,google.com,Proxy
+  - DOMAIN-KEYWORD,youtube,Proxy
+  - DOMAIN-KEYWORD,netflix,Proxy
+  - DOMAIN-SUFFIX,twitter.com,Proxy
+  
+  # 默认规则（必须放在最后）
+  - RULE-SET,cn-ipv6,DIRECT
+  - MATCH,Proxy
+

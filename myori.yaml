@@ -46,7 +46,7 @@ proxies:
 
   - { name: 🇭🇰香港高速01|良心云, type: vless, server: aws-link1.liangxin1.xyz, port: 35248, uuid: 6ad8f548-3baf-403f-86a1-9ecebf3a5d3b, udp: true, tls: true, skip-cert-verify: false, flow: xtls-rprx-vision, client-fingerprint: chrome, servername: www.lamer.com.hk, reality-opts: { public-key: IGsSxC0wgn7wLy0NM0QN_yOREDKT_814Y_3_rbgDoTc, short-id: c8c0f951 } }
   - { name: 🇭🇰香港高速02|良心云, type: vless, server: aws-link2.liangxin1.xyz, port: 38725, uuid: 6ad8f548-3baf-403f-86a1-9ecebf3a5d3b, udp: true, tls: true, skip-cert-verify: false, flow: xtls-rprx-vision, client-fingerprint: chrome, servername: www.lamer.com.hk, reality-opts: { public-key: HvwnLBMMKsmvghGX5yVPq3J2HWxwr1GGQB2WIvbPvAY, short-id: 8f6ca378 } }
-  - name: '🇭🇰香港03-10Mbps'
+  - name: '🇭🇰香港高速03'
     type: trojan
     server: line-cn-2cdra.nod3.org
     port: 22118
@@ -154,7 +154,7 @@ proxy-groups:
       - 爪云-JP-WS
       - 🇭🇰香港高速01|良心云
       - 🇭🇰香港高速02|良心云
-      - 🇭🇰香港03-10Mbps
+      - 🇭🇰香港高速03
 
   - name: AI
     type: select

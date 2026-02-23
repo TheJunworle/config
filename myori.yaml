@@ -198,8 +198,8 @@ proxy-groups:
     tolerance: 50  # 容差（毫秒），延迟差小于50ms不切换，避免频繁跳动
 
 rules:
- - DOMAIN,openai.com,AI
- - DOMAIN,chatgpt.com,AI
+ - DOMAIN-KEYWORD,openai.com,AI
+ - DOMAIN-KEYWORD,chatgpt.com,AI
  - DOMAIN-KEYWORD,speedtest,PROXY
  - IP-CIDR,1.1.1.1/32,PROXY,no-resolve
  - IP-CIDR,8.8.8.8/32,PROXY,no-resolve

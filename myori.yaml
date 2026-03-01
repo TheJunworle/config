@@ -132,7 +132,6 @@ proxy-groups:
     proxies:
       - 自动选择
       - DIRECT
-      - 老家hy
       - 谷歌云美国-vless
       - 谷歌云美国-vmess
       - 新加坡02aws

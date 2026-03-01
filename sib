@@ -2,323 +2,161 @@
   "log": {
     "level": "info"
   },
+
   "dns": {
+    "strategy": "prefer_ipv4",
+    "independent_cache": true,
     "servers": [
-      { "address": "223.5.5.5", "port": 53 },
-      { "address": "119.29.29.29", "port": 53 },
-      { "address": "114.114.114.114", "port": 53 },
-      { "address": "1.1.1.1", "port": 53 },
-      { "address": "8.8.8.8", "port": 53 }
+      {
+        "tag": "remote",
+        "type": "https",
+        "server": "8.8.8.8",
+        "detour": "select"
+      },
+      {
+        "tag": "local",
+        "type": "https",
+        "server": "223.5.5.5"
+      },
+      {
+        "tag": "fakeip",
+        "type": "fakeip",
+        "inet4_range": "198.18.0.0/15"
+      }
     ],
-    "disable_cache": false
+    "rules": [
+      {
+        "query_type": ["A","AAAA"],
+        "server": "fakeip"
+      },
+      {
+        "rule_set": ["geosite-cn","ext-cn-domain"],
+        "server": "local"
+      }
+    ]
   },
+
   "inbounds": [
     {
-      "type": "socks",
-      "tag": "in-socks",
-      "listen": "0.0.0.0",
-      "port": 7890,
-      "sniff": false,
-      "auth": {
-        "method": "noauth"
-      }
+      "type": "tun",
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "system",
+      "sniff": true
     },
     {
-      "type": "http",
-      "tag": "in-http",
-      "listen": "0.0.0.0",
-      "port": 7891
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "127.0.0.1",
+      "listen_port": 7890,
+      "sniff": true
     }
   ],
+
   "outbounds": [
     {
-      "type": "direct",
-      "tag": "DIRECT"
-    },
-    {
-      "type": "blackhole",
-      "tag": "REJECT"
-    },
-
-    {
-      "type": "vless",
-      "tag": "🇭🇰香港高速01|良心云",
-      "server": "aws-link1.liangxin1.xyz",
-      "port": 35248,
-      "uuid": "6ad8f548-3baf-403f-86a1-9ecebf3a5d3b",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.lamer.com.hk",
-        "allow_insecure": false
-      },
-      "flow": "xtls-rprx-vision",
-      "transport": {
-        "type": "tcp"
-      },
-      "reality": {
-        "public_key": "IGsSxC0wgn7wLy0NM0QN_yOREDKT_814Y_3_rbgDoTc",
-        "short_id": "c8c0f951"
-      }
-    },
-
-    {
-      "type": "vless",
-      "tag": "🇭🇰香港高速02|良心云",
-      "server": "aws-link2.liangxin1.xyz",
-      "port": 38725,
-      "uuid": "6ad8f548-3baf-403f-86a1-9ecebf3a5d3b",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.lamer.com.hk",
-        "allow_insecure": false
-      },
-      "flow": "xtls-rprx-vision",
-      "transport": {
-        "type": "tcp"
-      },
-      "reality": {
-        "public_key": "HvwnLBMMKsmvghGX5yVPq3J2HWxwr1GGQB2WIvbPvAY",
-        "short_id": "8f6ca378"
-      }
-    },
-
-    {
-      "type": "trojan",
-      "tag": "🇭🇰香港高速03",
-      "server": "line-cn-2cdra.nod3.org",
-      "port": 22118,
-      "password": "8c2fbe88-f8fd-4cd2-801e-73688c1d32c7",
-      "tls": {
-        "enabled": true,
-        "server_name": "cas.baidu.com",
-        "allow_insecure": true
-      },
-      "udp": true
-    },
-
-    {
-      "type": "vless",
-      "tag": "搬瓦工日本",
-      "server": "23.106.143.127",
-      "port": 23873,
-      "uuid": "1697e1be-0c37-4d6b-a8bf-1835e5dfb0a3",
-      "tls": {
-        "enabled": true,
-        "server_name": "www.mozilla.org",
-        "allow_insecure": true
-      },
-      "flow": "xtls-rprx-vision",
-      "transport": {
-        "type": "tcp",
-        "alpn": ["h3","h2","http/1.1"]
-      },
-      "udp": true
-    },
-
-    {
-      "type": "vmess",
-      "tag": "谷歌云美国-vmess",
-      "server": "35.212.231.224",
-      "port": 56287,
-      "uuid": "83e55013-de5f-4585-954d-e7c842626fc0",
-      "alter_id": 0,
-      "cipher": "auto",
-      "network": "tcp",
-      "tls": {
-        "enabled": false
-      },
-      "udp": false
-    },
-
-    {
-      "type": "vless",
-      "tag": "谷歌云美国-vless",
-      "server": "35.212.231.224",
-      "port": 38447,
-      "uuid": "c8d026a0-f158-4c8c-8ba3-c3e7a86635b3",
-      "transport": {
-        "type": "tcp"
-      },
-      "tls": {
-        "enabled": false
-      },
-      "udp": false
-    },
-
-    {
-      "type": "vless",
-      "tag": "jp",
-      "server": "jp.sunipip.com",
-      "port": 32483,
-      "uuid": "63499dce-cbf6-4f24-98ff-05d4e84d7857",
-      "tls": {
-        "enabled": true,
-        "server_name": "tesla.com",
-        "allow_insecure": false
-      },
-      "transport": {
-        "type": "tcp"
-      },
-      "udp": true,
-      "reality": {
-        "public_key": "sn7ZbFvx8WCYQ8nFvl4Bf3ZD_dc0e3HMOMsWjWodrGk",
-        "short_id": "57a5d6"
-      }
-    },
-
-    {
-      "type": "vless",
-      "tag": "爪云-JP-WS",
-      "server": "pwctqbvswnne.ap-northeast-1.clawcloudrun.com",
-      "port": 443,
-      "uuid": "340ce710-8daf-4204-8d0d-74f2edc46386",
-      "tls": {
-        "enabled": true,
-        "server_name": "pwctqbvswnne.ap-northeast-1.clawcloudrun.com",
-        "allow_insecure": true
-      },
-      "network": "ws",
-      "transport": {
-        "type": "ws",
-        "path": "/",
-        "headers": {
-          "Host": "pwctqbvswnne.ap-northeast-1.clawcloudrun.com"
-        }
-      },
-      "udp": true
-    },
-
-    {
-      "type": "hysteria",
-      "tag": "新加坡02aws",
-      "server": "vsg05.344233.cc",
-      "port": 8080,
-      "password": "9e509c63-5233-444f-87ca-778274566331",
-      "tls": {
-        "enabled": true,
-        "server_name": "vsg05.344233.cc",
-        "allow_insecure": false
-      },
-      "udp": true
-    },
-
-    {
-      "type": "hysteria",
-      "tag": "老家hy",
-      "server": "pan.juns.top",
-      "port": 51376,
-      "password": "TNncOpYbCn",
-      "tls": {
-        "enabled": true,
-        "server_name": "ts2.tc.mm.bing.net",
-        "allow_insecure": true
-      },
-      "hysteria": {
-        "up_mbps": 1000,
-        "down_mbps": 1000
-      }
-    }
-  ],
-  "balancers": [
-    {
-      "tag": "PROXY",
-      "strategy": "round_robin",
-      "selector": [
-        "自动选择",
-        "DIRECT",
-        "老家hy",
-        "谷歌云美国-vless",
-        "谷歌云美国-vmess",
-        "新加坡02aws",
-        "搬瓦工日本",
-        "jp",
-        "爪云-JP-WS",
+      "type": "selector",
+      "tag": "select",
+      "default": "urltest",
+      "outbounds": [
+        "urltest",
         "🇭🇰香港高速01|良心云",
         "🇭🇰香港高速02|良心云",
-        "🇭🇰香港高速03"
-      ]
-    },
-    {
-      "tag": "AI",
-      "strategy": "round_robin",
-      "selector": [
-        "非香港自动",
-        "谷歌云美国-vless",
-        "谷歌云美国-vmess",
-        "新加坡02aws",
+        "🇭🇰香港高速03",
         "搬瓦工日本",
-        "jp",
-        "爪云-JP-WS"
-      ]
-    },
-    {
-      "tag": "非香港自动",
-      "strategy": "url_test",
-      "selector": [
-        "谷歌云美国-vless",
         "谷歌云美国-vmess",
-        "新加坡02aws",
-        "搬瓦工日本",
-        "jp",
-        "爪云-JP-WS"
-      ],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": 300,
-      "timeout": 5000
-    },
-    {
-      "tag": "自动选择",
-      "strategy": "url_test",
-      "selector": [
         "谷歌云美国-vless",
-        "谷歌云美国-vmess",
-        "新加坡02aws",
-        "搬瓦工日本",
         "jp",
         "爪云-JP-WS",
+        "新加坡02aws",
+        "老家hy"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "urltest",
+      "outbounds": [
         "🇭🇰香港高速01|良心云",
-        "🇭🇰香港高速02|良心云"
+        "🇭🇰香港高速02|良心云",
+        "🇭🇰香港高速03",
+        "搬瓦工日本",
+        "谷歌云美国-vmess",
+        "谷歌云美国-vless",
+        "jp",
+        "爪云-JP-WS",
+        "新加坡02aws",
+        "老家hy"
       ],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": 300,
-      "timeout": 5000
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "5m"
+    },
+
+    // ====== 下面保留你原来的所有节点 ======
+    
+    {
+      "server": "aws-link1.liangxin1.xyz",
+      "server_port": 35248,
+      "tag": "🇭🇰香港高速01|良心云",
+      "type": "vless",
+      "uuid": "6ad8f548-3baf-403f-86a1-9ecebf3a5d3b",
+      "flow": "xtls-rprx-vision",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.lamer.com.hk",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "IGsSxC0wgn7wLy0NM0QN_yOREDKT_814Y_3_rbgDoTc",
+          "short_id": "c8c0f951"
+        }
+      }
+    },
+
+    {
+      "tag": "direct",
+      "type": "direct"
     }
   ],
-  "routing": {
+
+  "route": {
+    "auto_detect_interface": true,
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-cn.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "ext-cn-domain",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/xmdhs/cn-domain-list/rule-set/ext-cn-list.srs"
+      }
+    ],
     "rules": [
-      { "type": "domain_keyword", "value": "openai.com", "outbound": "AI" },
-      { "type": "domain_keyword", "value": "chatgpt.com", "outbound": "AI" },
-      { "type": "domain_keyword", "value": "speedtest", "outbound": "PROXY" },
-
-      { "type": "ip_cidr", "value": "1.1.1.1/32", "outbound": "PROXY" },
-      { "type": "ip_cidr", "value": "8.8.8.8/32", "outbound": "PROXY" },
-
-      { "type": "domain_suffix", "value": "services.googleapis.cn", "outbound": "PROXY" },
-      { "type": "domain_suffix", "value": "xn--ngstr-lra8j.com", "outbound": "PROXY" },
-
-      { "type": "domain", "value": "safebrowsing.urlsec.qq.com", "outbound": "DIRECT" },
-      { "type": "domain", "value": "safebrowsing.googleapis.com", "outbound": "DIRECT" },
-
-      { "type": "domain", "value": "developer.apple.com", "outbound": "PROXY" },
-
-      { "type": "domain_suffix", "value": "icloud.com", "outbound": "DIRECT" },
-      { "type": "domain_suffix", "value": "mzstatic.com", "outbound": "DIRECT" },
-
-      { "type": "geoip", "value": "CN", "outbound": "DIRECT" },
-
-      { "type": "domain_suffix", "value": "cn", "outbound": "DIRECT" },
-
-      { "type": "domain_keyword", "value": "amazon", "outbound": "PROXY" },
-      { "type": "domain_keyword", "value": "google", "outbound": "PROXY" },
-      { "type": "domain_keyword", "value": "gmail", "outbound": "PROXY" },
-
-      { "type": "ip_cidr", "value": "91.108.4.0/22", "outbound": "PROXY" },
-      { "type": "ip_cidr", "value": "91.108.8.0/21", "outbound": "PROXY" },
-      { "type": "ip_cidr", "value": "91.108.16.0/22", "outbound": "PROXY" },
-      { "type": "ip_cidr", "value": "91.108.56.0/22", "outbound": "PROXY" },
-      { "type": "ip_cidr", "value": "149.154.160.0/20", "outbound": "PROXY" },
-
-      { "type": "final", "outbound": "PROXY" }
-    ]
+      {
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "direct"
+      }
+    ],
+    "final": "select"
   }
 }

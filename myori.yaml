@@ -93,19 +93,6 @@ proxies:
     servername: ""
     udp: false
 
-  - name: jp
-    type: vless
-    server: jp.sunipip.com
-    port: 32483
-    uuid: 63499dce-cbf6-4f24-98ff-05d4e84d7857
-    network: tcp
-    tls: true
-    udp: true
-    servername: tesla.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: sn7ZbFvx8WCYQ8nFvl4Bf3ZD_dc0e3HMOMsWjWodrGk
-      short-id: 57a5d6
 
   - name: 爪云-JP-WS
     type: vless
@@ -145,12 +132,10 @@ proxy-groups:
     proxies:
       - 自动选择
       - DIRECT
-      - 老家hy
       - 谷歌云美国-vless
       - 谷歌云美国-vmess
       - 新加坡02aws
       - 搬瓦工日本
-      - jp
       - 爪云-JP-WS
       - 🇭🇰香港高速01|良心云
       - 🇭🇰香港高速02|良心云
@@ -164,7 +149,6 @@ proxy-groups:
       - 谷歌云美国-vmess
       - 新加坡02aws
       - 搬瓦工日本
-      - jp
       - 爪云-JP-WS
 
   - name: 非香港自动
@@ -174,7 +158,6 @@ proxy-groups:
       - 谷歌云美国-vmess
       - 新加坡02aws
       - 搬瓦工日本
-      - jp
       - 爪云-JP-WS
     url: http://www.gstatic.com/generate_204  # 测速URL（谷歌204，稳定）
     interval: 300  # 测速间隔（秒），5分钟测一次
@@ -188,7 +171,6 @@ proxy-groups:
       - 谷歌云美国-vmess
       - 新加坡02aws
       - 搬瓦工日本
-      - jp
       - 爪云-JP-WS
       - 🇭🇰香港高速01|良心云
       - 🇭🇰香港高速02|良心云
@@ -199,6 +181,7 @@ proxy-groups:
 
 rules:
  - DOMAIN-KEYWORD,openai.com,AI
+ - DOMAIN-KEYWORD,gemini,AI
  - DOMAIN-KEYWORD,chatgpt.com,AI
  - DOMAIN-KEYWORD,speedtest,PROXY
  - IP-CIDR,1.1.1.1/32,PROXY,no-resolve

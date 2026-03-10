@@ -1,0 +1,162 @@
+{
+  "log": {
+    "level": "info"
+  },
+
+  "dns": {
+    "strategy": "prefer_ipv4",
+    "independent_cache": true,
+    "servers": [
+      {
+        "tag": "remote",
+        "type": "https",
+        "server": "8.8.8.8",
+        "detour": "select"
+      },
+      {
+        "tag": "local",
+        "type": "https",
+        "server": "223.5.5.5"
+      },
+      {
+        "tag": "fakeip",
+        "type": "fakeip",
+        "inet4_range": "198.18.0.0/15"
+      }
+    ],
+    "rules": [
+      {
+        "query_type": ["A","AAAA"],
+        "server": "fakeip"
+      },
+      {
+        "rule_set": ["geosite-cn","ext-cn-domain"],
+        "server": "local"
+      }
+    ]
+  },
+
+  "inbounds": [
+    {
+      "type": "tun",
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "system",
+      "sniff": true
+    },
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "127.0.0.1",
+      "listen_port": 7890,
+      "sniff": true
+    }
+  ],
+
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "select",
+      "default": "urltest",
+      "outbounds": [
+        "urltest",
+        "🇭🇰香港高速01|良心云",
+        "🇭🇰香港高速02|良心云",
+        "🇭🇰香港高速03",
+        "搬瓦工日本",
+        "谷歌云美国-vmess",
+        "谷歌云美国-vless",
+        "jp",
+        "爪云-JP-WS",
+        "新加坡02aws",
+        "老家hy"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "urltest",
+      "outbounds": [
+        "🇭🇰香港高速01|良心云",
+        "🇭🇰香港高速02|良心云",
+        "🇭🇰香港高速03",
+        "搬瓦工日本",
+        "谷歌云美国-vmess",
+        "谷歌云美国-vless",
+        "jp",
+        "爪云-JP-WS",
+        "新加坡02aws",
+        "老家hy"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "5m"
+    },
+
+    // ====== 下面保留你原来的所有节点 ======
+    
+    {
+      "server": "aws-link1.liangxin1.xyz",
+      "server_port": 35248,
+      "tag": "🇭🇰香港高速01|良心云",
+      "type": "vless",
+      "uuid": "6ad8f548-3baf-403f-86a1-9ecebf3a5d3b",
+      "flow": "xtls-rprx-vision",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.lamer.com.hk",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "IGsSxC0wgn7wLy0NM0QN_yOREDKT_814Y_3_rbgDoTc",
+          "short_id": "c8c0f951"
+        }
+      }
+    },
+
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+
+  "route": {
+    "auto_detect_interface": true,
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-cn.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "ext-cn-domain",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/xmdhs/cn-domain-list/rule-set/ext-cn-list.srs"
+      }
+    ],
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "direct"
+      }
+    ],
+    "final": "select"
+  }
+}

@@ -72,7 +72,7 @@ proxies:
 
   - name: "谷歌云美国-vmess"
     type: vmess
-    server: 35.212.183.9
+    server: us.junv.top
     port: 31532
     uuid: 6a890372-cffe-42ee-b40d-cb77c3946495
     alterId: 0
@@ -83,7 +83,7 @@ proxies:
 
   - name: "谷歌云美国-vless"
     type: vless
-    server: 35.212.183.9
+    server: us.junv.top
     port: 30004
     uuid: ec0920c6-3e38-4569-8567-525cfa2f40b9
     network: tcp

@@ -43,6 +43,8 @@ dns:
 
 # 代理节点配置（统一缩进+修复语法错误）
 proxies:
+  - {"name":"香港 01 HKIX","type":"vmess","server":"select-hk.ddnskunlun.com","port":9002,"uuid":"c814cdaa-3fd1-32a3-b1af-852a4fb5c634","alterId":0,"cipher":"auto","udp":true}
+  - {"name":"香港 02 HKIX","type":"vmess","server":"select-hk.ddnskunlun.com","port":9003,"uuid":"c814cdaa-3fd1-32a3-b1af-852a4fb5c634","alterId":0,"cipher":"auto","udp":true}
   - { name: '🇸🇬 SG02', type: trojan, server: q2v8m1r5t9c4k7xp-sg.nod3.org, port: 24104, password: 8c2fbe88-f8fd-4cd2-801e-73688c1d32c7, udp: true, sni: cas.baidu.com, skip-cert-verify: true }
   - {"name":"日本 05 SoftBank","type":"vmess","server":"select-jp.kunlunddns.com","port":9034,"uuid":"c814cdaa-3fd1-32a3-b1af-852a4fb5c634","alterId":0,"cipher":"auto","udp":true}
   - {"name":"日本 02 SoftBank","type":"vmess","server":"select-jp.kunlunddns.com","port":9031,"uuid":"c814cdaa-3fd1-32a3-b1af-852a4fb5c634","alterId":0,"cipher":"auto","udp":true}
@@ -92,6 +94,15 @@ proxies:
     tls: false
     udp: true
 
+  - name: "香港转谷歌"
+    type: vless
+    server: 35.212.227.18
+    port: 27438
+    uuid: d1d3cff1-1b0c-4499-8ce0-8bf2075ed641
+    network: tcp
+    tls: false
+    udp: true
+    dialer-proxy: "香港自动"
 
   - name: 爪云-JP-WS
     type: vless
@@ -129,7 +140,11 @@ proxy-groups:
     type: select
     proxies:
       - 自动选择
+      - 香港自动
       - DIRECT
+      - 香港 01 HKIX
+      - 香港 02 HKIX
+      - 香港转谷歌
       - 谷歌云美国-vless
       - 谷歌云美国-vmess
       - 搬瓦工日本
@@ -147,10 +162,12 @@ proxy-groups:
       - "[IPLC]日本"
       - "[IPLC]韩国"
 
+
   - name: AI
     type: select
     proxies:
       - 非香港自动
+      - 香港转谷歌
       - 谷歌云美国-vless
       - 谷歌云美国-vmess
       - 搬瓦工日本
@@ -163,11 +180,14 @@ proxy-groups:
       - "[IPLC]新加坡"
       - "[IPLC]日本"
       - "[IPLC]韩国"
+
+
   - name: 非香港自动
     type: url-test
     proxies:
       - 谷歌云美国-vless
       - 谷歌云美国-vmess
+      - 香港转谷歌
       - 搬瓦工日本
       - 爪云-JP-WS
       - 新加坡 04 Singtel
@@ -178,6 +198,8 @@ proxy-groups:
       - "[IPLC]新加坡"
       - "[IPLC]日本"
       - "[IPLC]韩国"
+
+
     url: http://www.gstatic.com/generate_204  # 测速URL（谷歌204，稳定）
     interval: 300  # 测速间隔（秒），5分钟测一次
     timeout: 5000  # 超时时间（毫秒），5秒没响应算超时
@@ -188,6 +210,7 @@ proxy-groups:
     proxies:
       - 谷歌云美国-vless
       - 谷歌云美国-vmess
+      - 香港转谷歌
       - 搬瓦工日本
       - 爪云-JP-WS
       - 🇭🇰香港高速01|良心云
@@ -202,10 +225,30 @@ proxy-groups:
       - "[IPLC]新加坡"
       - "[IPLC]日本"
       - "[IPLC]韩国"
+      - 香港 01 HKIX
+      - 香港 02 HKIX
+
     url: http://www.gstatic.com/generate_204  # 测速URL（谷歌204，稳定）
     interval: 300  # 测速间隔（秒），5分钟测一次
     timeout: 5000  # 超时时间（毫秒），5秒没响应算超时
     tolerance: 50  # 容差（毫秒），延迟差小于50ms不切换，避免频繁跳动
+
+
+  - name: 香港自动
+    type: url-test
+    proxies:
+      - 🇭🇰 HK04
+      - 🇭🇰 HK05
+      - 香港 01 HKIX
+      - 香港 02 HKIX
+      - 🇭🇰香港高速01|良心云
+      - 🇭🇰香港高速02|良心云
+
+    url: http://www.gstatic.com/generate_204  # 测速URL（谷歌204，稳定）
+    interval: 300  # 测速间隔（秒），5分钟测一次
+    timeout: 5000  # 超时时间（毫秒），5秒没响应算超时
+    tolerance: 40  # 容差（毫秒），延迟差小于50ms不切换，避免频繁跳动
+
 
 rules:
  - DOMAIN-KEYWORD,openai.com,AI

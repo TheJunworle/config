@@ -56,8 +56,7 @@ proxies:
   - { name: 🇭🇰香港高速02|良心云, type: vless, server: aws-link2.liangxin1.xyz, port: 38725, uuid: 6ad8f548-3baf-403f-86a1-9ecebf3a5d3b, udp: true, tls: true, skip-cert-verify: false, flow: xtls-rprx-vision, client-fingerprint: chrome, servername: www.lamer.com.hk, reality-opts: { public-key: HvwnLBMMKsmvghGX5yVPq3J2HWxwr1GGQB2WIvbPvAY, short-id: 8f6ca378 } }
   - {"name":"[IPLC]新加坡","type":"vmess","server":"select-sg.ddnskunlun.com","port":9039,"uuid":"c814cdaa-3fd1-32a3-b1af-852a4fb5c634","alterId":0,"cipher":"auto","udp":true}
   - {"name":"[IPLC]日本","type":"vmess","server":"select-jp.ddnskunlun.com","port":9032,"uuid":"c814cdaa-3fd1-32a3-b1af-852a4fb5c634","alterId":0,"cipher":"auto","udp":true}
-  - {"name":"[IPLC]韩国","type":"vmess","server":"select-kr.ddnskunlun.com","port":9057,"uuid":"c814cdaa-3fd1-32a3-b1af-852a4fb5c634","alterId":0,"cipher":"auto","udp":true}
-
+  - { name: 🇸🇬新加坡高速01|良心云, type: vless, server: aws-link7.liangxin1.xyz, port: 48574, uuid: 6ad8f548-3baf-403f-86a1-9ecebf3a5d3b, udp: true, tls: true, skip-cert-verify: false, flow: xtls-rprx-vision, client-fingerprint: chrome, servername: www.lamer.com.sg, reality-opts: { public-key: lmxSayN8tUg2Dag2MPXrdqZ2SQK9K3OjlaKk8wVCRnc, short-id: f8f18902 } }
 
   - name: 搬瓦工日本
     type: vless
@@ -160,7 +159,7 @@ proxy-groups:
       - 🇸🇬 SG02
       - "[IPLC]新加坡"
       - "[IPLC]日本"
-      - "[IPLC]韩国"
+      - 🇸🇬新加坡高速01|良心云
 
 
   - name: AI
@@ -179,8 +178,7 @@ proxy-groups:
       - 🇸🇬 SG02
       - "[IPLC]新加坡"
       - "[IPLC]日本"
-      - "[IPLC]韩国"
-
+      - 🇸🇬新加坡高速01|良心云
 
   - name: 非香港自动
     type: url-test
@@ -197,8 +195,7 @@ proxy-groups:
       - 🇸🇬 SG02
       - "[IPLC]新加坡"
       - "[IPLC]日本"
-      - "[IPLC]韩国"
-
+      - 🇸🇬新加坡高速01|良心云
 
     url: http://www.gstatic.com/generate_204  # 测速URL（谷歌204，稳定）
     interval: 300  # 测速间隔（秒），5分钟测一次
@@ -224,10 +221,9 @@ proxy-groups:
       - 🇸🇬 SG02
       - "[IPLC]新加坡"
       - "[IPLC]日本"
-      - "[IPLC]韩国"
       - 香港 01 HKIX
       - 香港 02 HKIX
-
+      - 🇸🇬新加坡高速01|良心云
     url: http://www.gstatic.com/generate_204  # 测速URL（谷歌204，稳定）
     interval: 300  # 测速间隔（秒），5分钟测一次
     timeout: 5000  # 超时时间（毫秒），5秒没响应算超时

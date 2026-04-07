@@ -482,6 +482,9 @@ proxy-groups:
 
 
 rules:
+ - DOMAIN-KEYWORD,api.cloudflare.com,DIRECT
+ - DOMAIN-KEYWORD,claude,AI
+ - DOMAIN-KEYWORD,anthropic,AI
  - DOMAIN-KEYWORD,openai.com,AI
  - DOMAIN-KEYWORD,gemini,AI
  - DOMAIN-KEYWORD,aistudio,AI

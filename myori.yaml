@@ -13,7 +13,6 @@ dns:
     respect-rules: true
     default-nameserver: [119.29.29.29, 114.114.114.114]
     proxy-server-nameserver: ['https://dns.alidns.com/dns-query', 'https://doh.pub/dns-query', 'tls://dot.pub']
-    enhanced-mode: fake-ip
     fake-ip-range: 198.18.0.1/16
     fake-ip-filter: ['*.lan', localhost.ptlogin2.qq.com]
     use-hosts: true
@@ -410,7 +409,6 @@ proxy-groups:
       - 新加坡 05 Singtel
       - 日本 02 SoftBank
       - 日本 05 SoftBank
-      - 🇸🇬 SG02
       - "[IPLC]新加坡"
       - "[IPLC]日本"
 
@@ -482,14 +480,19 @@ proxy-groups:
 
 
 rules:
- - DOMAIN-KEYWORD,gemini,AI
+ - DOMAIN-KEYWORD,api.cloudflare.com,DIRECT #匹配域名关键字(交由Proxy代理服务器组)
+ - DOMAIN-KEYWORD,claude,AI #匹配域名关键字(交由Proxy代理服务器组)
+ - DOMAIN-KEYWORD,anthropic,AI #匹配域名关键字(交由Proxy代理服务器组)
  - DOMAIN-KEYWORD,googleapi,AI
- - DOMAIN-KEYWORD,openai.com,AI
- - DOMAIN-KEYWORD,mtalk.google,AI
- - DOMAIN-KEYWORD,api.cloudflare.com,DIRECT
- - DOMAIN-KEYWORD,claude,AI
- - DOMAIN-KEYWORD,anthropic,AI
+ - DOMAIN-KEYWORD,googleusercontent,AI
+ - DOMAIN-KEYWORD,gstatic,AI
+ - DOMAIN-KEYWORD,googletagmanager,AI
+ - DOMAIN-KEYWORD,clients6.google,AI
+  - DOMAIN-KEYWORD,gemini,AI
  - DOMAIN-KEYWORD,aistudio,AI
+ - DOMAIN-KEYWORD,play.google.com,AI
+ - DOMAIN-KEYWORD,mtalk.google,AI
+ - DOMAIN-KEYWORD,openai.com,AI
  - DOMAIN-KEYWORD,chatgpt.com,AI
  - DOMAIN-KEYWORD,speedtest,PROXY
  - IP-CIDR,1.1.1.1/32,PROXY,no-resolve
